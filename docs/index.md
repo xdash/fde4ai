@@ -5,6 +5,9 @@ hero:
   name: 前线部署工程师
   text: 开源指南 · 免费全文
   tagline: The open-source field guide for Forward Deployed Engineers — 写给在客户一线创造真实价值的 AI 交付者
+  image:
+    src: /cover.png
+    alt: 《前线部署工程师》封面
   actions:
     - theme: brand
       text: 开始阅读 Start Reading
@@ -15,6 +18,16 @@ hero:
     - theme: alt
       text: GitHub
       link: https://github.com/xdash/FDE-the-Guidance-Book-of-Forward-Deployed-Engineer
+features:
+  - icon: 📖
+    title: 开源免费
+    details: 全文在线免费阅读，欢迎在 GitHub 上纠错与共建
+  - icon: 🛠️
+    title: 实战导向
+    details: 来自客户一线的部署方法论与真实案例
+  - icon: 🔄
+    title: 持续更新
+    details: 版本化迭代，站点与 GitHub 仓库自动同步
 ---
 
 <a id="course"></a>

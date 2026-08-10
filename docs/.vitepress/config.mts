@@ -10,11 +10,11 @@ export default defineConfig({
   cleanUrls: true,
   themeConfig: {
     nav: [
-      { text: 'Book 书', link: '/book/' },
-      { text: 'Cases 案例', link: '/cases' },
-      { text: 'Directory 名录', link: '/directory' },
-      { text: 'Map 地图', link: '/map' },
-      { text: 'Course 课程', link: '/#course' },
+      { text: '书', link: '/book/' },
+      { text: '案例', link: '/cases' },
+      { text: '名录', link: '/directory' },
+      { text: '地图', link: '/map' },
+      { text: '课程', link: '/#course' },
     ],
     sidebar: {
       '/book/': bookSidebar,
@@ -25,6 +25,26 @@ export default defineConfig({
     footer: {
       message: 'Book content open-sourced on GitHub',
       copyright: '© 2026 FDE4.AI',
+    },
+  },
+  locales: {
+    root: {
+      label: '中文',
+      lang: 'zh-CN',
+    },
+    en: {
+      label: 'English',
+      lang: 'en-US',
+      link: '/en/',
+      themeConfig: {
+        nav: [
+          { text: 'Book', link: '/book/' },
+          { text: 'Cases', link: '/en/cases' },
+          { text: 'Directory', link: '/en/directory' },
+          { text: 'Map', link: '/en/map' },
+          { text: 'Course', link: '/en/#course' },
+        ],
+      },
     },
   },
 })
