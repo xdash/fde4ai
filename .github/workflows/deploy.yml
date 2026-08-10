@@ -1,0 +1,54 @@
+name: sync-and-deploy
+
+on:
+  repository_dispatch:
+    types: [book-updated]
+  schedule:
+    - cron: '0 20 * * *'   # 每日 04:00 (Asia/Shanghai) 兜底同步
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Checkout 书 repo
+        uses: actions/checkout@v4
+        with:
+          repository: xdash/FDE-the-Guidance-Book-of-Forward-Deployed-Engineer
+          path: book-src
+
+      - name: 同步书稿
+        run: python3 scripts/sync_book.py book-src docs
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm run docs:build
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs/.vitepress/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
