@@ -1,6 +1,8 @@
 name: sync-and-deploy
 
 on:
+  push:
+    branches: [main]   # 站点自身改动直接发布
   repository_dispatch:
     types: [book-updated]
   schedule:
