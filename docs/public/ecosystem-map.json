@@ -1,0 +1,567 @@
+{
+ "updated": "2026-08-12",
+ "viewBox": [
+  1200,
+  860
+ ],
+ "regions": [
+  {
+   "id": "palantir-origin",
+   "name": "模式发明者 · Palantir 系",
+   "x": 40,
+   "y": 70,
+   "w": 460,
+   "h": 320
+  },
+  {
+   "id": "model-giants",
+   "name": "模型巨头自营",
+   "x": 540,
+   "y": 70,
+   "w": 300,
+   "h": 260
+  },
+  {
+   "id": "vertical-startups",
+   "name": "垂直与创业公司",
+   "x": 880,
+   "y": 70,
+   "w": 300,
+   "h": 380
+  },
+  {
+   "id": "platform-vendors",
+   "name": "平台厂商与相邻岗位",
+   "x": 540,
+   "y": 370,
+   "w": 300,
+   "h": 140
+  },
+  {
+   "id": "china",
+   "name": "中国力量",
+   "x": 40,
+   "y": 430,
+   "w": 460,
+   "h": 190
+  },
+  {
+   "id": "sources",
+   "name": "知识源头",
+   "x": 40,
+   "y": 660,
+   "w": 1140,
+   "h": 170
+  },
+  {
+   "id": "career",
+   "name": "职业与薪酬",
+   "x": 880,
+   "y": 490,
+   "w": 300,
+   "h": 160
+  }
+ ],
+ "nodes": [
+  {
+   "id": "shyam-sankar",
+   "name": "希亚姆·桑卡尔（Shyam Sankar）",
+   "label": "希亚姆·桑卡尔",
+   "type": "person",
+   "summary": "Palantir 总裁兼首席技术官，早期员工。被普遍认为是 FDE 战略的发明者：把「现场定制」从成本重新定义为「产品发现」的人。他的公开发言，是理解 Palantir 哲学的第一手材料。",
+   "layer": "palantir-origin",
+   "x": 132.7,
+   "y": 159.3
+  },
+  {
+   "id": "bob-mcgrew",
+   "name": "鲍勃·麦格鲁（Bob McGrew）",
+   "label": "鲍勃·麦格鲁",
+   "type": "person",
+   "summary": "PayPal 早期工程师、Palantir 早期高管、OpenAI 前首席研究官（领导 ChatGPT、GPT-4、o1 研发）。FDE 模式最好的阐释者。「砾石路与高速公路」「在规模上做不可规模化的事」皆出自他口。必读……",
+   "layer": "palantir-origin",
+   "x": 270.0,
+   "y": 159.3
+  },
+  {
+   "id": "stephen-cohen",
+   "name": "斯蒂芬·科恩（Stephen Cohen）",
+   "label": "斯蒂芬·科恩",
+   "type": "person",
+   "summary": "Palantir 联合创始人。演示循环的发明者：「这东西太糟了」「那你们希望它哪里不一样」的主角。",
+   "layer": "palantir-origin",
+   "x": 407.3,
+   "y": 159.3
+  },
+  {
+   "id": "alex-karp",
+   "name": "亚历克斯·卡普（Alex Karp）",
+   "label": "亚历克斯·卡普",
+   "type": "person",
+   "summary": "Palantir 首席执行官。「法国侍者」行为模型的提出者：反对唯唯诺诺的接单式工程文化。",
+   "layer": "palantir-origin",
+   "x": 132.7,
+   "y": 242.0
+  },
+  {
+   "id": "palantir-fde-org",
+   "name": "Palantir FDE 组织",
+   "label": "Palantir FDE ",
+   "type": "team",
+   "summary": "模式的发明者与完成形态。「回声-三角洲-平台」三角，训练营机器。",
+   "layer": "palantir-origin",
+   "x": 270.0,
+   "y": 242.0
+  },
+  {
+   "id": "barry",
+   "name": "Barry",
+   "label": "Barry",
+   "type": "person",
+   "summary": "前 Palantir 前线部署工程师，《理解前线部署工程》一文作者。FDE 模式最重要的一篇「内部人警告」：成本、混乱与倦怠的真实账本。",
+   "layer": "palantir-origin",
+   "x": 407.3,
+   "y": 242.0
+  },
+  {
+   "id": "ted-mabrey",
+   "name": "泰德·梅布里（Ted Mabrey）",
+   "label": "泰德·梅布里",
+   "type": "person",
+   "summary": "Palantir 资深员工与写作者，「桑卡尔炸弹」邮件（桑卡尔那封宣告战略转向的全员邮件）的亲历回忆者。他把「一切用结果说话」拆成两问：「它真的管用吗？它真的要紧吗？」",
+   "layer": "palantir-origin",
+   "x": 132.7,
+   "y": 324.7
+  },
+  {
+   "id": "nabeel-qureshi",
+   "name": "纳比尔·库雷希（Nabeel Qureshi）",
+   "label": "纳比尔·库雷希",
+   "type": "person",
+   "summary": "在 Palantir 做了近八年前线部署工程师，《Palantir 八年反思》（Reflections on Palantir，2024 年）作者。图卢兹空客现场驻场一年；「去他的可泛化性」、招聘的「蝙蝠信号」反向筛选……",
+   "layer": "palantir-origin",
+   "x": 270.0,
+   "y": 324.7
+  },
+  {
+   "id": "vinoo-ganesh",
+   "name": "维努·加内什（Vinoo Ganesh）",
+   "label": "维努·加内什",
+   "type": "person",
+   "summary": "Palantir 轮岗培养计划（Project Frontline）的设计者，《FDE 权威指南》（The Definitive Guide to FDE，2026 年）作者。「你没法靠招聘建出真正的 FDE 组织，只能……",
+   "layer": "palantir-origin",
+   "x": 407.3,
+   "y": 324.7
+  },
+  {
+   "id": "openai-fde-team",
+   "name": "OpenAI 前线部署工程团队",
+   "label": "OpenAI 前线部署工程",
+   "type": "team",
+   "summary": "2024 年组建，全球分布式，约翰迪尔与西班牙对外银行的操盘者；2026 年升级为「部署公司」。",
+   "layer": "model-giants",
+   "x": 627.0,
+   "y": 165.0
+  },
+  {
+   "id": "anthropic-applied-ai-team",
+   "name": "Anthropic 应用人工智能团队",
+   "label": "Anthropic 应用人…",
+   "type": "team",
+   "summary": "以「应用人工智能工程师」名义组建的 FDE 建制，FIS 金融犯罪智能体的共建者；2026 年与黑石等组建企业人工智能服务合资公司。",
+   "layer": "model-giants",
+   "x": 753.0,
+   "y": 165.0
+  },
+  {
+   "id": "colin-jarvis",
+   "name": "科林·贾维斯（Colin Jarvis）",
+   "label": "科林·贾维斯",
+   "type": "person",
+   "summary": "OpenAI 前线部署工程团队负责人，从零组建 OpenAI FDE 建制的人。",
+   "layer": "model-giants",
+   "x": 627.0,
+   "y": 259.0
+  },
+  {
+   "id": "brad-lightcap",
+   "name": "布拉德·莱特凯普（Brad Lightcap）",
+   "label": "布拉德·莱特凯普",
+   "type": "person",
+   "summary": "OpenAI 首席运营官，「部署公司」的主导者。",
+   "layer": "model-giants",
+   "x": 753.0,
+   "y": 259.0
+  },
+  {
+   "id": "sierra-agent-eng-team",
+   "name": "Sierra 智能体工程团队",
+   "label": "Sierra 智能体工程",
+   "type": "team",
+   "summary": "按结果收费 + 托管交付的极限形态（2023 年创立，2024 年 10 月估值 45 亿美元，此后据报道继续攀升）。",
+   "layer": "vertical-startups",
+   "x": 967.0,
+   "y": 156.5
+  },
+  {
+   "id": "harvey-deployment-team",
+   "name": "Harvey 部署团队",
+   "label": "Harvey 部署",
+   "type": "team",
+   "summary": "垂直行业（法律）FDE 的教科书（2022 年创立，2026 年 3 月估值 110 亿美元，用户覆盖 10 万+ 律师）。",
+   "layer": "vertical-startups",
+   "x": 1093.0,
+   "y": 156.5
+  },
+  {
+   "id": "cognition-fde-team",
+   "name": "Cognition 前线部署团队",
+   "label": "Cognition 前线部署",
+   "type": "team",
+   "summary": "「嵌入伙伴体内」的生态捆绑样板：2026 年起一支嵌入式前线部署工程师团队常驻全球信息技术服务巨头 Cognizant，负责项目筛选、工程师带教与成效度量，借伙伴几十年攒下的客户关系把产品铺进医疗、金融与保险大企业。",
+   "layer": "vertical-startups",
+   "x": 967.0,
+   "y": 233.5
+  },
+  {
+   "id": "natalie-meurer",
+   "name": "娜塔莉·默勒（Natalie Meurer）",
+   "label": "娜塔莉·默勒",
+   "type": "person",
+   "summary": "Sierra 智能体工程负责人（前 Palantir 五年）。「智能体工程师」命名者。必读：Latent Space 播客访谈（2026 年 7 月）。",
+   "layer": "vertical-startups",
+   "x": 1093.0,
+   "y": 233.5
+  },
+  {
+   "id": "bret-taylor-clay-bavor",
+   "name": "布雷特·泰勒（Bret Taylor）/ 克莱·巴沃尔（Clay Bavor）",
+   "label": "布雷特·泰勒/ 克莱·巴沃尔",
+   "type": "person",
+   "summary": "Sierra 创始人（前者曾任 Salesforce 联合首席执行官，后者曾任谷歌副总裁）。把 FDE 模式做成商业模式本身（按结果收费）的人。",
+   "layer": "vertical-startups",
+   "x": 967.0,
+   "y": 310.5
+  },
+  {
+   "id": "david-wakeling",
+   "name": "大卫·韦克林（David Wakeling）",
+   "label": "大卫·韦克林",
+   "type": "person",
+   "summary": "年利达律师事务所前市场创新负责人，Harvey 首个灯塔部署的所内支持者。客户方支持者视角的最佳样本。",
+   "layer": "vertical-startups",
+   "x": 1093.0,
+   "y": 310.5
+  },
+  {
+   "id": "jesse-zhang-ashwin-sreenivas",
+   "name": "杰西·张（Jesse Zhang）/ 阿什温·斯里尼瓦斯（Ashwin Sreenivas）",
+   "label": "杰西·张/ 阿什温·斯里尼…",
+   "type": "person",
+   "summary": "Decagon 创始人（后者出身 Palantir）。智能体操作流程的设计者，「交付经验产品化」的样板。",
+   "layer": "vertical-startups",
+   "x": 1030.0,
+   "y": 387.5
+  },
+  {
+   "id": "fde-adjacent-teams",
+   "name": "Scale AI / Databricks / Salesforce / 谷歌云 / Mistral / Cohere",
+   "label": "Scale AI 等",
+   "type": "team",
+   "summary": "各自设有 FDE 或同构岗位，名称不同（解决方案架构师、客户工程师等），骨架相同。",
+   "layer": "platform-vendors",
+   "x": 690.0,
+   "y": 452.0
+  },
+  {
+   "id": "volcengine-doubao-fde-team",
+   "name": "火山引擎豆包大模型 FDE 团队",
+   "label": "火山引擎豆包大模型 FDE ",
+   "type": "team",
+   "summary": "中国互联网大厂中最明确的 FDE 建制（2026 年成立，覆盖汽车、医疗、教育、金融、半导体；与安永共建千人级团队）。",
+   "layer": "china",
+   "x": 167.0,
+   "y": 537.0
+  },
+  {
+   "id": "china-fde-pioneers",
+   "name": "中国本土 FDE 先行者：启盟科技、钱拓科技",
+   "label": "中国本土 FDE 先行者：…",
+   "type": "team",
+   "summary": "以不动产设施管理、金融业为阵地的本土服务商，公开输出了「FDE 不等于驻场外包」的定义性思考。",
+   "layer": "china",
+   "x": 373.0,
+   "y": 537.0
+  },
+  {
+   "id": "source-yc-lightcone-mcgrew",
+   "name": "YC Lightcone 播客：《给人工智能创业公司的 FDE 打法——鲍勃·麦格鲁访谈》（2025 年 9 月）",
+   "label": "YC Lightcone …",
+   "type": "source",
+   "summary": "模式第一讲述者的 51 分钟复盘。",
+   "layer": "sources",
+   "x": 173.2,
+   "y": 732.5
+  },
+  {
+   "id": "source-a16z-margin-for-moat",
+   "name": "a16z：《用利润率换护城河》（Trading Margin for Moat）",
+   "label": "a16z：《用利润率换护城…",
+   "type": "source",
+   "summary": "商业模式分析的标杆。",
+   "layer": "sources",
+   "x": 391.6,
+   "y": 732.5
+  },
+  {
+   "id": "source-barry-understanding-fde",
+   "name": "Barry：《理解前线部署工程》（Understanding Forward Deployed Engineering）",
+   "label": "Barry：《理解前线部署…",
+   "type": "source",
+   "summary": "内部人的冷静警告。",
+   "layer": "sources",
+   "x": 610.0,
+   "y": 732.5
+  },
+  {
+   "id": "source-mit-nanda-genai-divide",
+   "name": "麻省理工学院 NANDA 实验室：《生成式人工智能的鸿沟：2025 年商业人工智能现状》（The GenAI Divide）",
+   "label": "麻省理工学院 NANDA …",
+   "type": "source",
+   "summary": "「95% 失败率」的出处，FDE 存在理由的数据地基。",
+   "layer": "sources",
+   "x": 828.4,
+   "y": 732.5
+  },
+  {
+   "id": "source-new-stack-fde-teams",
+   "name": "The New Stack：《为什么 OpenAI 和 Anthropic 都在抢建 FDE 团队》（2026 年 5 月）。",
+   "label": "The New Stack…",
+   "type": "source",
+   "summary": "",
+   "layer": "sources",
+   "x": 1046.8,
+   "y": 732.5
+  },
+  {
+   "id": "source-cio-anthropic-fis",
+   "name": "CIO.com：《Anthropic 的金融智能体，暴露了前线部署工程师这个新瓶颈》（2026 年 5 月）",
+   "label": "CIO.com：《Anth…",
+   "type": "source",
+   "summary": "买方视角与高德纳预警。",
+   "layer": "sources",
+   "x": 173.2,
+   "y": 781.5
+  },
+  {
+   "id": "source-latent-space-fde",
+   "name": "Latent Space 播客：《前线部署工程师与软件工程的未来》（2026 年 7 月）",
+   "label": "Latent Space …",
+   "type": "source",
+   "summary": "Sierra 视角。",
+   "layer": "sources",
+   "x": 391.6,
+   "y": 781.5
+  },
+  {
+   "id": "source-palantir-fde-day",
+   "name": "Palantir 官方博客：《Palantir 前线部署工程师的一天》（2020 年）",
+   "label": "Palantir 官方博客…",
+   "type": "source",
+   "summary": "官方自述，有中文译本流传。",
+   "layer": "sources",
+   "x": 610.0,
+   "y": 781.5
+  },
+  {
+   "id": "source-openfde-community",
+   "name": "OpenFDE 社区（open-fde.com）",
+   "label": "OpenFDE 社区",
+   "type": "source",
+   "summary": "从业者的开源共同体，岗位与公司图谱。",
+   "layer": "sources",
+   "x": 828.4,
+   "y": 781.5
+  },
+  {
+   "id": "source-china-context-36kr-chenguo",
+   "name": "36 氪《中国 To B 软件，走出亏损式增长的陷阱》、陈果 George 公众号 FDE 系列文章",
+   "label": "36 氪《中国 To B …",
+   "type": "source",
+   "summary": "中国语境的必读对照。",
+   "layer": "sources",
+   "x": 1046.8,
+   "y": 781.5
+  },
+  {
+   "id": "resource-getperspective-salary-2026",
+   "name": "GetPerspective：《2026 前线部署工程师薪酬报告》（1200 个样本）",
+   "label": "GetPerspectiv…",
+   "type": "resource",
+   "summary": "头部实验室中级 FDE 年总薪酬中位数约 38.5 万美元、资深约 61 万美元、首席超过 120 万美元。",
+   "layer": "career",
+   "x": 967.0,
+   "y": 560.0
+  },
+  {
+   "id": "resource-fde-career-sites",
+   "name": "fdenest.com / fde.academy / sundeepteki.org",
+   "label": "fdenest.com 等",
+   "type": "resource",
+   "summary": "面试准备与职业路径的三家专题站点。",
+   "layer": "career",
+   "x": 1093.0,
+   "y": 560.0
+  },
+  {
+   "id": "resource-levels-fyi",
+   "name": "Levels.fyi",
+   "label": "Levels.fyi",
+   "type": "resource",
+   "summary": "Palantir 等职位的实时薪酬数据。",
+   "layer": "career",
+   "x": 967.0,
+   "y": 604.0
+  },
+  {
+   "id": "resource-fde-job-postings",
+   "name": "招聘启事本身是最好的教科书：OpenAI、Anthropic、Decagon、Harvey、Scale AI 的 FDE 招聘启事，值得逐字研读。",
+   "label": "招聘启事本身是最好的教科书…",
+   "type": "resource",
+   "summary": "",
+   "layer": "career",
+   "x": 1093.0,
+   "y": 604.0
+  }
+ ],
+ "edges": [
+  {
+   "x1": 132.7,
+   "y1": 159.3,
+   "x2": 270.0,
+   "y2": 242.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 270.0,
+   "y1": 159.3,
+   "x2": 270.0,
+   "y2": 242.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 407.3,
+   "y1": 159.3,
+   "x2": 270.0,
+   "y2": 242.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 132.7,
+   "y1": 242.0,
+   "x2": 270.0,
+   "y2": 242.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 407.3,
+   "y1": 242.0,
+   "x2": 270.0,
+   "y2": 242.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 132.7,
+   "y1": 324.7,
+   "x2": 270.0,
+   "y2": 242.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 270.0,
+   "y1": 324.7,
+   "x2": 270.0,
+   "y2": 242.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 407.3,
+   "y1": 324.7,
+   "x2": 270.0,
+   "y2": 242.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 627.0,
+   "y1": 259.0,
+   "x2": 627.0,
+   "y2": 165.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 753.0,
+   "y1": 259.0,
+   "x2": 627.0,
+   "y2": 165.0,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 1093.0,
+   "y1": 233.5,
+   "x2": 967.0,
+   "y2": 156.5,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 967.0,
+   "y1": 310.5,
+   "x2": 967.0,
+   "y2": 156.5,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 1093.0,
+   "y1": 310.5,
+   "x2": 1093.0,
+   "y2": 156.5,
+   "kind": "member",
+   "label": ""
+  },
+  {
+   "x1": 270.0,
+   "y1": 242.0,
+   "x2": 627.0,
+   "y2": 165.0,
+   "kind": "alumni",
+   "label": "麦格鲁"
+  },
+  {
+   "x1": 270.0,
+   "y1": 242.0,
+   "x2": 967.0,
+   "y2": 156.5,
+   "kind": "alumni",
+   "label": "默勒"
+  },
+  {
+   "x1": 270.0,
+   "y1": 242.0,
+   "x2": 1030.0,
+   "y2": 387.5,
+   "kind": "alumni",
+   "label": "斯里尼瓦斯"
+  }
+ ]
+}

@@ -4,6 +4,8 @@
 
 <!-- 本页由 fde-book/ecosystem/tools/publish_map.py 生成，禁止手改；分层数据真源 ecosystem/map/map.yaml -->
 
+<ClientOnly><EcosystemMap /></ClientOnly>
+
 
 ## 模式发明者 · Palantir 系
 
