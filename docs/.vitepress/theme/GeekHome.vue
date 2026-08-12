@@ -1,37 +1,79 @@
 <script setup>
 // fde4.ai 首页 · V1 深色极客工具风（参考 dimagent.com）
 // 文案真源：课程 canon v1.1（2026-08-10 锁定 + 08-12 口径增补）
+import { ref, onMounted, onUnmounted } from 'vue'
+
 const props = defineProps({
   lang: { type: String, default: 'zh' },
 })
 
 const BOOK_REPO = 'https://github.com/xdash/FDE-the-Guidance-Book-of-Forward-Deployed-Engineer'
 
+// 固底条：滑到课程区（第三屏）后逐渐出现
+const showDock = ref(false)
+let courseEl = null
+const onScroll = () => {
+  if (!courseEl) courseEl = document.getElementById('course')
+  const trigger = courseEl ? courseEl.offsetTop - window.innerHeight * 0.5 : window.innerHeight * 1.5
+  showDock.value = window.scrollY > trigger
+}
+const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
+
+// 早鸟倒计时（2026-08-18 截止，canon 时间表）
+const daysLeft = ref(0)
+const calcDays = () => {
+  const end = new Date('2026-08-18T23:59:59+08:00').getTime()
+  daysLeft.value = Math.max(0, Math.ceil((end - Date.now()) / 86400000))
+}
+onMounted(() => {
+  onScroll()
+  calcDays()
+  window.addEventListener('scroll', onScroll, { passive: true })
+})
+onUnmounted(() => window.removeEventListener('scroll', onScroll))
+
 const copy = {
   zh: {
-    badge: 'FDE 线上课程（2026）· 早鸟预售 ¥199',
+    badge: '开源手册 · 全文免费 · GitHub 4k+ Star',
     titleDim: '前线部署工程师',
     titleEm: 'FDE',
     heroSub: '开源手册 · 付费课程/社群',
     tagMono: 'THE OPEN-SOURCE FIELD GUIDE FOR FORWARD DEPLOYED ENGINEERS',
-    tagPre: '写给在客户一线',
-    tagShimmer: '创造真实价值',
-    tagPost: '的 AI 交付者',
-    ctaRead: '开始阅读 →',
-    ctaCourse: '了解课程 ↓',
-    info: [['开源书 ', '3500+ Star'], ['全文免费', ''], ['作者范冰亲讲课程', '']],
+    tagPre: '一本写给 AI 交付者的实战手册：从岗位全貌、赢得客户到激活部署，讲清 FDE 怎么',
+    tagShimmer: '在客户一线把 AI 项目做成',
+    tagPost: '。',
+    ctaGh: 'GitHub 项目 ↗',
+    ctaRead: '免费阅读手册 →',
+    ctaCourse: '付费课程/社群 ↓',
+    info: [['范冰 著', ''], ['全文免费', ''], ['GitHub ', '4k+ Star'], ['持续版本化更新', '']],
     features: [
       { ico: '📖', h: '开源免费', p: '全文在线免费阅读，欢迎在 GitHub 上纠错与共建' },
       { ico: '🛠️', h: '实战导向', p: '来自客户一线的部署方法论与真实案例' },
       { ico: '🔄', h: '持续更新', p: '版本化迭代，站点与 GitHub 仓库自动同步' },
     ],
-    courseEyebrow: 'FDE 线上课程（2026）',
-    courseTitle1: '这不是一门视频课，',
-    courseTitle2: '是一个课程包',
-    lead1: '面向「想进入 / 刚进入 FDE 岗位的人」的实战视频课——开源书作者范冰亲讲书里书外，配套可带走的工具包与 90 天学员群。书中内容只占 20%，其余 80% 来自外部一手素材与本人顾问经验。',
-    lead2: '中文圈的 FDE 课全是二手转述。本课直接引一手源：Bob McGrew 的 YC 原版分享、Palantir 官方资料、各厂 FDE 负责人亲述——再加上作者本人顾问失败的复盘。',
+    bookEyebrow: 'THE HANDBOOK · 手册内容',
+    bookTitle: '这本手册讲了什么',
+    bookLead: '从岗位崛起到规模化复制——一个 FDE 的完整作战周期，八章走完。',
+    chapters: [
+      ['01', 'FDE 的崛起'],
+      ['02', '解决正确的问题'],
+      ['03', '赢得客户'],
+      ['04', '激活部署'],
+      ['05', '守住续约'],
+      ['06', '扩大收入'],
+      ['07', '规模化复制'],
+      ['08', '完整案例集'],
+    ],
+    bookOutro: '另有自序、后记《FDE 的职业道德》与三份附录：常用指标清单 / FDE 人物与团队名单 / 全书案例索引与资料出处',
+    bookCta: '免费阅读手册 →',
+    courseEyebrow: '付费课程 · FDE 线上课程（2026）· 早鸟预购中',
+    courseTitle1: '一个人读书，',
+    courseTitle2: '一群人实战',
+    lead1: '开源手册解决「知道」：岗位全貌、方法论主干、落地框架——全文免费，读到够用就到此为止。',
+    lead2: '但如果你要的是「做到」——这门付费课程是手册的实战延伸：与书的重合度不到 20%，其余 80% 全是书里没有的东西。',
+    lead3: '实战为主：作者本人的亲身顾问经验与失败复盘、一手源案例（Bob McGrew 的 YC 原版、Palantir 官方、各厂 FDE 负责人亲述）、能带走的工具包与答疑库，外加 90 天高强度学员社群——中文圈的 FDE 课全是二手转述，这门课不是。',
     stats: [
-      { num: '3500', unit: '+ STAR', lbl: '开源书 GitHub' },
+      { num: '4k', unit: '+ STAR', lbl: '开源书 GitHub' },
       { num: '90', unit: 'MIN 总时长', lbl: '7 节核心视频讲练结合' },
       { num: '5', unit: '件工具包', lbl: '带走就能用 K1–K5' },
       { num: '50', unit: '单启动', lbl: '预售门槛 不满全退' },
@@ -64,13 +106,15 @@ const copy = {
       ['06', '入场双轨：进企业 or 独立接单', '14 min', '能力模型与面试备战 / 接单五步评估与客户筛选'],
       ['07', '第 1 / 3 / 7 天行动清单 + 你的第一张一页纸', '10 min', '实操作业发布，第 7 天带回群打卡'],
     ],
-    priceEyebrow: 'Pricing · No Hidden Tiers',
-    priceTitle: '明码标价，这就是全部',
+    priceEyebrow: 'Pricing · Early Bird Ends Aug 18',
+    priceTitle: '早鸟 ¥199，8 月 18 日后恢复 ¥299',
     priceLead: '¥299 即全部——无后端升单、不加微信卖咨询。透明本身就是卖点。',
+    countPre: '距早鸟截止还有 ',
+    countPost: ' 天',
     tiers: [
       { hot: true, corner: '推荐 · 早鸟', name: '早鸟预售', price: '199', desc: '开售后 7 天内或前 100 名 · 独享「创始学员」权益', cta: '立即预订' },
-      { hot: false, name: '正式价', price: '299', desc: '明码标价，不议价', cta: '了解更多' },
-      { hot: false, name: '老客户', price: '269', desc: '知识星球会员 / 既往学员专属', cta: '了解更多' },
+      { hot: false, name: '正式价', price: '299', desc: '8 月 18 日预售截止后生效 · 明码标价，不议价', cta: '预售期买早鸟更划算 →' },
+      { hot: false, name: '老客户', price: '269', desc: '知识星球会员 / 既往学员专属（专属链接 + 微信返现）', cta: '预售期买早鸟更划算 →' },
     ],
     tierNote: '（收款通道接入中 · 即将开放）',
     tierPerkPre: '附注：购课后 ',
@@ -93,42 +137,76 @@ const copy = {
       '完全没有企业软件 / 交付 / 客户现场经验的人',
       '企业老板 / 决策者——那是万元档线下老板课的受众，请移步',
     ],
-    proof: [['开源书 ', '3500+ Star'], ['作者', '一线企业顾问', '履历'], ['真实交付案例（交易所 RFM、政务 72 项原子事务等）', '']],
+    proof: [['开源书 ', '4k+ Star'], ['作者', '一线企业顾问', '履历'], ['真实交付案例（交易所 RFM、政务 72 项原子事务等）', '']],
+    authorTag: '讲师 · YOUR INSTRUCTOR',
+    authorName: '范冰',
+    authorLines: [
+      '《前线部署工程师》开源手册作者',
+      '一线企业 AI 交付顾问：交易所 RFM、政务 72 项原子事务等真实交付',
+      '书里写方法论，课里讲我是怎么摔的',
+    ],
+    faqEyebrow: 'FAQ · 你可能想问',
+    faqs: [
+      ['课程什么时候能看？', '8 月 18 日预售截止，满 50 单即启动全量制作，8 月 25 日前交付全部视频与工具包。'],
+      ['录播还是直播？', '主体录播，随时看。首期做一次群内直播答疑（录屏归档），后续视群内需求择机做，不承诺频次。'],
+      ['和万元档老板课有什么区别？', '本课面向从业者：怎么上岗、怎么交付。老板课面向决策者：怎么选 FDE、怎么谈合同——别买错。'],
+      ['我读过开源手册了，还需要买课吗？', '重合度不到 20%。手册给方法论主干，课程给实战案例、亲身复盘、工具包与社群。'],
+    ],
     mech1Tag: '预售机制',
     mech1Html: '预售满 <b>50 单</b>即启动全量制作，不满<b>全额退款</b>；8 月 18 日预售截止，8 月 25 日前交付全部视频与工具包，9 月第一周首期群内直播答疑',
     mech2Tag: '预售表单 · 开放题预告',
     mech2Q: '「你最希望这门课回答的一个问题是什么？」',
     mech2P: '——你的问题会进首期答疑题库',
     finalCta: '立即预订 · 早鸟 ¥199 →',
+    finalRisk: '不满 50 单，全额退款——你没有任何风险',
     finalFine: '（收款通道接入中 · 即将开放）',
     footBrand: '《前线部署工程师》开源书 · 作者范冰',
     footGh: 'GitHub 开源共建',
     footNote: '课程咨询：预售表单内留言',
+    dockTop: '返回顶部 ↑',
+    dockCta: '立即预订 · 早鸟 ¥199',
   },
   en: {
-    badge: 'FDE Online Course (2026) · Early Bird ¥199',
+    badge: 'Open-source Handbook · Free to Read · 4k+ GitHub Stars',
     titleDim: 'Forward Deployed Engineer',
     titleEm: 'FDE',
     heroSub: 'Open-source Handbook · Paid Course & Community',
     tagMono: '前线部署工程师的开源实战手册',
-    tagPre: 'For AI builders who create ',
-    tagShimmer: 'real value',
-    tagPost: ' on the customer frontline',
-    ctaRead: 'Start Reading →',
-    ctaCourse: 'About the Course ↓',
-    info: [['', '3500+ GitHub Stars'], ['Free to Read', ''], ['Taught by Fan Bing, the Author', '']],
+    tagPre: 'A field guide for AI builders: from the FDE landscape and winning customers to activating deployments — how FDEs ',
+    tagShimmer: 'get AI projects done on the customer frontline',
+    tagPost: '.',
+    ctaGh: 'GitHub Project ↗',
+    ctaRead: 'Read the Handbook Free →',
+    ctaCourse: 'Paid Course & Community ↓',
+    info: [['By Fan Bing', ''], ['Free to Read', ''], ['GitHub · ', '4k+ Stars'], ['Versioned, Continuously Updated', '']],
     features: [
       { ico: '📖', h: 'Open Source', p: 'Free to read online; corrections & contributions welcome on GitHub' },
       { ico: '🛠️', h: 'Battle-tested', p: 'Field methodology and real cases from the customer frontline' },
       { ico: '🔄', h: 'Continuously Updated', p: 'Versioned releases, auto-synced with the GitHub repo' },
     ],
-    courseEyebrow: 'FDE ONLINE COURSE (2026)',
-    courseTitle1: 'Not just a video course —',
-    courseTitle2: 'a complete course package',
-    lead1: 'A hands-on video course for those entering (or new to) FDE roles — taught by Fan Bing, author of the open-source book, with a take-away toolkit and a 90-day cohort. Only 20% comes from the book; 80% from first-hand sources and the author\'s own consulting work.',
-    lead2: 'Most FDE courses in Chinese are second-hand retellings. This one cites primary sources directly — Bob McGrew\'s original YC talk, Palantir official materials, FDE leads\' own accounts — plus the author\'s own failure post-mortems.',
+    bookEyebrow: 'THE HANDBOOK · CONTENTS',
+    bookTitle: 'What\'s in the handbook',
+    bookLead: 'From the rise of the role to scaling what works — a complete FDE campaign cycle in eight chapters.',
+    chapters: [
+      ['01', 'The Rise of FDE'],
+      ['02', 'Solving the Right Problems'],
+      ['03', 'Winning the Customer'],
+      ['04', 'Activating the Deployment'],
+      ['05', 'Keeping the Renewal'],
+      ['06', 'Expanding Revenue'],
+      ['07', 'Scaling What Works'],
+      ['08', 'The Complete Case Files'],
+    ],
+    bookOutro: 'Plus a preface, an afterword on FDE professional ethics, and three appendices: key metrics / people & teams / full case index & sources',
+    bookCta: 'Read the Handbook Free →',
+    courseEyebrow: 'PAID COURSE · FDE ONLINE COURSE (2026) · EARLY-BIRD PRE-SALE',
+    courseTitle1: 'Don\'t read alone —',
+    courseTitle2: 'join the cohort',
+    lead1: 'The free handbook covers the "what": the role, the methodology backbone, the landing frameworks — free forever, and enough for many.',
+    lead2: 'But if you want to get from "knowing" to "doing" — this paid course is the hands-on extension of the handbook: less than 20% overlap with the book, the other 80% is all new material.',
+    lead3: 'Practice-first: the author\'s own consulting experience and failure post-mortems, first-hand sources (Bob McGrew\'s original YC talk, Palantir official materials, FDE leads\' own accounts), take-away toolkits and a Q&A bank — plus a 90-day intensive student community.',
     stats: [
-      { num: '3500', unit: '+ STARS', lbl: 'Open-source Book' },
+      { num: '4k', unit: '+ STARS', lbl: 'Open-source Book' },
       { num: '90', unit: 'MIN TOTAL', lbl: '7 Core Video Sessions' },
       { num: '5', unit: 'TOOLKITS', lbl: 'Ready-to-use K1–K5' },
       { num: '50', unit: 'SEATS', lbl: 'Pre-sale Threshold, Full Refund' },
@@ -161,13 +239,15 @@ const copy = {
       ['06', 'Two Tracks In: Join a Company or Go Independent', '14 min', 'Competency model & interview prep / five-step project & client screening'],
       ['07', 'Day 1 / 3 / 7 Action List + Your First One-Pager', '10 min', 'Assignment kickoff; report back to the group on day 7'],
     ],
-    priceEyebrow: 'Pricing · No Hidden Tiers',
-    priceTitle: 'One honest price. That\'s everything.',
+    priceEyebrow: 'Pricing · Early Bird Ends Aug 18',
+    priceTitle: 'Early Bird ¥199 — back to ¥299 after Aug 18',
     priceLead: '¥299 is all-inclusive — no upsells, no WeChat consulting funnel. Transparency is the point.',
+    countPre: 'Only ',
+    countPost: ' days left before early bird ends',
     tiers: [
       { hot: true, corner: 'EARLY BIRD', name: 'Early Bird Pre-sale', price: '199', desc: 'First 7 days or first 100 seats · exclusive Founder Member perks', cta: 'Reserve Now' },
-      { hot: false, name: 'Standard', price: '299', desc: 'Flat price, no bargaining', cta: 'Learn More' },
-      { hot: false, name: 'Alumni', price: '269', desc: 'For Planet members / past students', cta: 'Learn More' },
+      { hot: false, name: 'Standard', price: '299', desc: 'Effective after the Aug 18 pre-sale · flat price, no bargaining', cta: 'Early bird ¥199 is better →' },
+      { hot: false, name: 'Alumni', price: '269', desc: 'For Planet members / past students (exclusive link + WeChat cashback)', cta: 'Early bird ¥199 is better →' },
     ],
     tierNote: '(Payment gateway being connected — opening soon)',
     tierPerkPre: 'Note: a ',
@@ -190,17 +270,34 @@ const copy = {
       'Zero enterprise software / delivery / on-site experience',
       'Business owners / decision-makers — that\'s the executive offline course',
     ],
-    proof: [['Open-source book · ', '3500+ Stars'], ['Author\'s ', 'frontline consulting', ' track record'], ['Real delivery cases (exchange RFM, 72 atomic government workflows, etc.)', '']],
+    proof: [['Open-source book · ', '4k+ Stars'], ['Author\'s ', 'frontline consulting', ' track record'], ['Real delivery cases (exchange RFM, 72 atomic government workflows, etc.)', '']],
+    authorTag: 'YOUR INSTRUCTOR',
+    authorName: 'Fan Bing',
+    authorLines: [
+      'Author of the open-source FDE Field Guide',
+      'Frontline AI delivery consultant — exchange RFM, 72 atomic government workflows, and more',
+      'The book teaches the methodology; the course shows how I fell',
+    ],
+    faqEyebrow: 'FAQ · YOU MAY WONDER',
+    faqs: [
+      ['When do I get access?', 'Pre-sale closes Aug 18; production starts at 50 orders; all videos & toolkits delivered by Aug 25.'],
+      ['Live or recorded?', 'Recorded — watch anytime. One live group Q&A for the first cohort (archived); no recurring commitment.'],
+      ['How is this different from the executive course?', 'This course is for practitioners: landing the job, delivering the work. The executive course is for decision-makers: choosing FDEs and negotiating contracts.'],
+      ['I already read the handbook. Do I need the course?', 'Less than 20% overlap. The handbook gives the methodology; the course gives cases, first-hand post-mortems, toolkits, and community.'],
+    ],
     mech1Tag: 'PRE-SALE MECHANICS',
     mech1Html: 'Production starts at <b>50 pre-orders</b>, <b>full refund</b> otherwise; pre-sale closes <b>Aug 18</b>; all videos & toolkits delivered by <b>Aug 25</b>; first live Q&A in the first week of September',
     mech2Tag: 'PRE-SALE FORM · OPEN QUESTION',
     mech2Q: '"What\'s the one question you want this course to answer?"',
     mech2P: '— your question feeds the first Q&A session',
     finalCta: 'Reserve · Early Bird ¥199 →',
+    finalRisk: 'Fewer than 50 pre-orders? Full refund — zero risk for you',
     finalFine: '(Payment gateway being connected — opening soon)',
     footBrand: 'The FDE Field Guide (open source) · by Fan Bing',
     footGh: 'GitHub',
     footNote: 'Course inquiries via the pre-sale form',
+    dockTop: 'Back to Top ↑',
+    dockCta: 'Reserve · Early Bird ¥199',
   },
 }
 
@@ -227,9 +324,9 @@ const bookLink = '/book/'
         </p>
 
         <div class="cta-row rv d4">
-          <a class="btn btn-primary" :href="bookLink">{{ c.ctaRead }}</a>
+          <a class="btn btn-ghost mono" :href="BOOK_REPO" target="_blank" rel="noopener">{{ c.ctaGh }}</a>
+          <a class="btn btn-primary" :href="bookLink" target="_blank" rel="noopener">{{ c.ctaRead }}</a>
           <a class="btn btn-ghost" href="#course">{{ c.ctaCourse }}</a>
-          <a class="btn btn-ghost mono" :href="BOOK_REPO" target="_blank" rel="noopener">GitHub ↗</a>
         </div>
 
         <div class="hero-infobar rv d5">
@@ -255,6 +352,30 @@ const bookLink = '/book/'
 
     <div class="divider"></div>
 
+    <!-- 手册内容区 -->
+    <section class="block">
+      <div class="wrap">
+        <div class="eyebrow rv d1">{{ c.bookEyebrow }}</div>
+        <h2 class="sec-title rv d2">{{ c.bookTitle }}</h2>
+        <p class="lead rv d3">{{ c.bookLead }}</p>
+
+        <div class="chaps rv d4">
+          <div class="chap" v-for="(ch, i) in c.chapters" :key="i">
+            <div class="ch-no">{{ ch[0] }}</div>
+            <div class="ch-tt">{{ ch[1] }}</div>
+          </div>
+        </div>
+
+        <p class="book-outro rv d4">{{ c.bookOutro }}</p>
+
+        <div class="book-cta rv d5">
+          <a class="btn btn-primary" :href="bookLink" target="_blank" rel="noopener">{{ c.bookCta }}</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
     <!-- 屏 2 · 课程总览 -->
     <section class="block" id="course">
       <div class="wrap">
@@ -263,6 +384,7 @@ const bookLink = '/book/'
 
         <p class="lead rv d3">{{ c.lead1 }}</p>
         <p class="lead rv d4">{{ c.lead2 }}</p>
+        <p class="lead rv d5">{{ c.lead3 }}</p>
 
         <div class="stats rv d4">
           <div class="stat" v-for="(s, i) in c.stats" :key="i">
@@ -320,6 +442,7 @@ const bookLink = '/book/'
       <div class="wrap">
         <div class="eyebrow rv d1">{{ c.priceEyebrow }}</div>
         <h2 class="sec-title rv d2">{{ c.priceTitle }}</h2>
+        <p class="countdown rv d2" v-if="daysLeft > 0">{{ c.countPre }}<b>{{ daysLeft }}</b>{{ c.countPost }}</p>
         <p class="lead rv d2">{{ c.priceLead }}</p>
 
         <div class="tiers">
@@ -358,6 +481,26 @@ const bookLink = '/book/'
           <span v-for="(p, i) in c.proof" :key="i">{{ p[0] }}<b v-if="p[1]">{{ p[1] }}</b>{{ p[2] || '' }}</span>
         </div>
 
+        <!-- 作者卡 -->
+        <div class="author rv d3">
+          <div class="a-tag">{{ c.authorTag }}</div>
+          <div class="a-body">
+            <div class="a-name">{{ c.authorName }}</div>
+            <ul>
+              <li v-for="(li, i) in c.authorLines" :key="i">{{ li }}</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq rv d3">
+          <div class="faq-eyebrow">{{ c.faqEyebrow }}</div>
+          <div class="faq-item" v-for="(f, i) in c.faqs" :key="i">
+            <div class="faq-q">{{ f[0] }}</div>
+            <div class="faq-a">{{ f[1] }}</div>
+          </div>
+        </div>
+
         <div class="mech">
           <div class="mech-item rv d2">
             <div class="m-tag">{{ c.mech1Tag }}</div>
@@ -372,10 +515,19 @@ const bookLink = '/book/'
 
         <div class="final-cta rv d3">
           <a class="btn btn-primary" href="#pricing">{{ c.finalCta }}</a>
+          <p class="cta-risk">{{ c.finalRisk }}</p>
           <p class="cta-fine">{{ c.finalFine }}</p>
         </div>
       </div>
     </section>
+
+    <!-- 固底条：滑到课程区后逐渐出现 -->
+    <div class="dock" :class="{ show: showDock }">
+      <div class="dock-inner">
+        <button class="dock-btn" type="button" @click="toTop">{{ c.dockTop }}</button>
+        <a class="dock-btn dock-hot" href="#pricing">{{ c.dockCta }}</a>
+      </div>
+    </div>
 
     <!-- 页脚 -->
     <footer class="geek-footer">
@@ -417,7 +569,8 @@ const bookLink = '/book/'
 }
 .geek-home *{margin:0;padding:0;box-sizing:border-box}
 .geek-home ::selection{background:var(--neon);color:#0A0A0A}
-.geek-home a{color:inherit;text-decoration:none}
+/* 注意：不要给 .geek-home a 设 color——scoped attr 会抬高特异性，压过 .btn-primary 等单类色规则（白字压荧光绿事故） */
+.geek-home a{text-decoration:none}
 
 /* 噪点纹理（inline SVG feTurbulence） */
 .geek-home::after{
@@ -453,13 +606,15 @@ const bookLink = '/book/'
 /* ============ Hero ============ */
 .hero{
   position:relative;
-  padding:110px 0 84px;
+  padding:120px 0 90px;
   overflow:hidden;
+  text-align:center;
 }
 .hero::before{
   content:"";
-  position:absolute;top:-12%;right:-14%;
-  width:640px;height:640px;
+  position:absolute;top:-22%;left:50%;
+  transform:translateX(-50%);
+  width:720px;height:720px;
   background:radial-gradient(circle,rgba(24,240,80,.13) 0%,rgba(24,240,80,.045) 42%,transparent 70%);
   pointer-events:none;
 }
@@ -470,8 +625,8 @@ const bookLink = '/book/'
     linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
   background-size:56px 56px;
-  mask-image:radial-gradient(ellipse 90% 80% at 70% 20%,#000 20%,transparent 75%);
-  -webkit-mask-image:radial-gradient(ellipse 90% 80% at 70% 20%,#000 20%,transparent 75%);
+  mask-image:radial-gradient(ellipse 75% 75% at 50% 28%,#000 20%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 75% 75% at 50% 28%,#000 20%,transparent 75%);
   pointer-events:none;
 }
 .hero .wrap{position:relative;z-index:2}
@@ -526,7 +681,7 @@ h1 .em{
 
 .tagline{
   max-width:640px;
-  margin-top:28px;
+  margin:28px auto 0;
   font-size:17px;color:var(--ink-2);line-height:1.8;
 }
 .tagline .en{
@@ -543,7 +698,7 @@ h1 .em{
   font-weight:600;
 }
 
-.cta-row{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap}
+.cta-row{display:flex;gap:14px;margin-top:40px;flex-wrap:wrap;justify-content:center}
 .btn{
   display:inline-flex;align-items:center;gap:8px;
   font-size:15px;font-weight:600;
@@ -574,6 +729,7 @@ h1 .em{
   font-size:12.5px;letter-spacing:.06em;
   color:var(--ink-3);
   display:flex;gap:0;flex-wrap:wrap;
+  justify-content:center;
 }
 .hero-infobar span{padding:0 18px;border-left:1px solid var(--line)}
 .hero-infobar span:first-child{padding-left:0;border-left:none}
@@ -819,6 +975,49 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
 }
 .proof b{color:var(--neon);font-weight:600}
 
+/* 倒计时 */
+.countdown{
+  font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;
+  color:var(--neon);margin:-8px 0 18px;
+}
+.countdown b{font-size:16px}
+
+/* 作者卡 */
+.author{
+  margin-top:44px;
+  border:1px solid var(--line);border-radius:var(--radius);
+  padding:28px 30px;background:var(--bg-0);
+  display:flex;gap:22px;align-items:flex-start;
+}
+.author .a-tag{
+  font-family:var(--font-mono);font-size:11px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--neon);white-space:nowrap;
+  padding-top:6px;
+}
+.author .a-name{font-size:22px;font-weight:800;letter-spacing:-.01em;margin-bottom:10px}
+.author ul{list-style:none}
+.author li{
+  font-size:14px;color:var(--ink-2);line-height:1.9;
+  padding-left:22px;position:relative;
+}
+.author li::before{content:"→";position:absolute;left:0;color:var(--neon);font-family:var(--font-mono)}
+
+/* FAQ */
+.faq{margin-top:44px}
+.faq-eyebrow{
+  font-family:var(--font-mono);font-size:11px;
+  letter-spacing:.24em;text-transform:uppercase;
+  color:var(--ink-3);margin-bottom:18px;
+}
+.faq-item{
+  border-top:1px solid var(--line);
+  padding:18px 0;
+}
+.faq-item:last-child{border-bottom:1px solid var(--line)}
+.faq-q{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.faq-q::before{content:"Q ";color:var(--neon);font-family:var(--font-mono);margin-right:6px}
+.faq-a{font-size:14px;color:var(--ink-2);line-height:1.85;padding-left:24px}
+
 /* 预售机制 */
 .mech{
   margin-top:44px;
@@ -844,6 +1043,10 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
 /* 主 CTA */
 .final-cta{margin-top:56px;text-align:center}
 .final-cta .btn{font-size:16px;padding:17px 44px}
+.cta-risk{
+  margin-top:16px;font-size:14px;font-weight:600;color:var(--ink-2);
+}
+.cta-risk::before{content:"✓ ";color:var(--neon);font-family:var(--font-mono)}
 .cta-fine{
   margin-top:14px;font-size:12.5px;color:var(--ink-3);
   font-family:var(--font-mono);letter-spacing:.03em;
@@ -866,8 +1069,79 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
 .foot-inner a:hover{color:var(--neon)}
 .foot-inner .sep{margin:0 12px;color:var(--line-strong)}
 
+/* ============ 手册章节流 ============ */
+.chaps{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  margin-top:44px;
+}
+.chap{
+  border:1px solid var(--line);border-radius:12px;
+  padding:20px 22px;background:var(--bg-1);
+  transition:border-color .25s,box-shadow .25s,transform .2s;
+}
+.chap:hover{
+  border-color:rgba(24,240,80,.45);
+  box-shadow:0 0 20px rgba(24,240,80,.08);
+  transform:translateY(-2px);
+}
+.chap .ch-no{
+  font-family:var(--font-mono);font-size:12px;
+  letter-spacing:.2em;color:var(--neon);margin-bottom:8px;
+}
+.chap .ch-tt{font-size:15px;font-weight:700;color:var(--ink);line-height:1.5}
+.book-outro{
+  margin-top:28px;font-size:13.5px;color:var(--ink-3);line-height:1.9;
+  max-width:760px;
+}
+.book-cta{margin-top:36px}
+
+/* ============ 固底条 ============ */
+.dock{
+  position:fixed;left:0;right:0;bottom:0;z-index:90;
+  transform:translateY(110%);
+  opacity:0;
+  transition:transform .45s cubic-bezier(.22,.68,.28,1),opacity .45s;
+  pointer-events:none;
+}
+.dock.show{
+  transform:translateY(0);
+  opacity:1;
+  pointer-events:auto;
+}
+.dock-inner{
+  max-width:560px;margin:0 auto 18px;
+  display:flex;gap:12px;justify-content:center;
+  padding:12px 16px;
+  background:rgba(15,15,15,.88);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  border:1px solid var(--line-strong);
+  border-radius:16px;
+  box-shadow:0 12px 40px rgba(0,0,0,.55);
+}
+.dock-btn{
+  font-family:var(--font-mono);font-size:13px;letter-spacing:.04em;
+  padding:11px 22px;border-radius:10px;cursor:pointer;
+  border:1px solid var(--line-strong);
+  background:transparent;color:var(--ink);
+  transition:border-color .2s,color .2s,box-shadow .25s,transform .18s;
+}
+.dock-btn:hover{border-color:rgba(24,240,80,.55);color:var(--neon)}
+.dock-btn.dock-hot{
+  background:var(--neon);border-color:var(--neon);color:#060806;font-weight:700;
+}
+.dock-btn.dock-hot:hover{
+  color:#060806;
+  box-shadow:0 6px 26px rgba(24,240,80,.4);
+  transform:translateY(-1px);
+}
+@supports (padding: env(safe-area-inset-bottom)){
+  .dock-inner{margin-bottom:calc(18px + env(safe-area-inset-bottom))}
+}
+
 /* ============ 响应式 ============ */
 @media (max-width:960px){
+  .chaps{grid-template-columns:repeat(2,1fr)}
   .cards{grid-template-columns:repeat(2,1fr)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .stat:nth-child(3){border-left:none}
@@ -878,11 +1152,14 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
 }
 @media (max-width:720px){
   .hero{padding:76px 0 64px}
+  .chaps{grid-template-columns:1fr 1fr}
+  .dock-inner{max-width:calc(100% - 24px)}
   .features-grid{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr}
   section.block{padding:68px 0}
   .syll-table th:nth-child(4),.syll-table td:nth-child(4){display:none}
   .founder{flex-direction:column;gap:8px}
+  .author{flex-direction:column;gap:10px}
 }
 @media (prefers-reduced-motion:reduce){
   .geek-home *,.geek-home *::before,.geek-home *::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
