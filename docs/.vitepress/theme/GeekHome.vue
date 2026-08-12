@@ -21,16 +21,23 @@ const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
 // 早鸟倒计时（2026-08-18 截止，canon 时间表）
 const daysLeft = ref(0)
+const saleEnded = ref(false)
 const calcDays = () => {
-  const end = new Date('2026-08-18T23:59:59+08:00').getTime()
-  daysLeft.value = Math.max(0, Math.ceil((end - Date.now()) / 86400000))
+  const remain = new Date('2026-08-18T23:59:59+08:00').getTime() - Date.now()
+  saleEnded.value = remain <= 0
+  daysLeft.value = Math.max(0, Math.floor(remain / 86400000))
 }
+let daysTimer = null
 onMounted(() => {
   onScroll()
   calcDays()
+  daysTimer = setInterval(calcDays, 3600000) // 每小时重算，防长挂标签页过期
   window.addEventListener('scroll', onScroll, { passive: true })
 })
-onUnmounted(() => window.removeEventListener('scroll', onScroll))
+onUnmounted(() => {
+  window.removeEventListener('scroll', onScroll)
+  clearInterval(daysTimer)
+})
 
 const copy = {
   zh: {
@@ -111,6 +118,7 @@ const copy = {
     priceLead: '¥299 即全部——无后端升单、不加微信卖咨询。透明本身就是卖点。',
     countPre: '距早鸟截止还有 ',
     countPost: ' 天',
+    countToday: '今天截止，最后机会',
     tiers: [
       { hot: true, corner: '推荐 · 早鸟', name: '早鸟预售', price: '199', desc: '开售后 7 天内或前 100 名 · 独享「创始学员」权益', cta: '立即预订' },
       { hot: false, name: '正式价', price: '299', desc: '8 月 18 日预售截止后生效 · 明码标价，不议价', cta: '预售期买早鸟更划算 →' },
@@ -244,6 +252,7 @@ const copy = {
     priceLead: '¥299 is all-inclusive — no upsells, no WeChat consulting funnel. Transparency is the point.',
     countPre: 'Only ',
     countPost: ' days left before early bird ends',
+    countToday: 'Ends today — last chance',
     tiers: [
       { hot: true, corner: 'EARLY BIRD', name: 'Early Bird Pre-sale', price: '199', desc: 'First 7 days or first 100 seats · exclusive Founder Member perks', cta: 'Reserve Now' },
       { hot: false, name: 'Standard', price: '299', desc: 'Effective after the Aug 18 pre-sale · flat price, no bargaining', cta: 'Early bird ¥199 is better →' },
@@ -442,7 +451,10 @@ const bookLink = '/book/'
       <div class="wrap">
         <div class="eyebrow rv d1">{{ c.priceEyebrow }}</div>
         <h2 class="sec-title rv d2">{{ c.priceTitle }}</h2>
-        <p class="countdown rv d2" v-if="daysLeft > 0">{{ c.countPre }}<b>{{ daysLeft }}</b>{{ c.countPost }}</p>
+        <p class="countdown rv d2" v-if="!saleEnded">
+          <template v-if="daysLeft > 0">{{ c.countPre }}<b>{{ daysLeft }}</b>{{ c.countPost }}</template>
+          <template v-else><b>{{ c.countToday }}</b></template>
+        </p>
         <p class="lead rv d2">{{ c.priceLead }}</p>
 
         <div class="tiers">
@@ -1055,7 +1067,7 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
 /* ============ 页脚 ============ */
 .geek-footer{
   border-top:1px solid var(--line);
-  padding:38px 0 46px;
+  padding:38px 0 110px; /* 底部余量补偿固底条遮挡 */
   background:var(--bg-0);
 }
 .foot-inner{
@@ -1097,15 +1109,17 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
 
 /* ============ 固底条 ============ */
 .dock{
-  position:fixed;left:0;right:0;bottom:0;z-index:90;
+  position:fixed;left:0;right:0;bottom:0;z-index:20; /* 低于 VPNav(30)，不压移动端全屏菜单 */
   transform:translateY(110%);
   opacity:0;
-  transition:transform .45s cubic-bezier(.22,.68,.28,1),opacity .45s;
+  visibility:hidden;
+  transition:transform .45s cubic-bezier(.22,.68,.28,1),opacity .45s,visibility .45s;
   pointer-events:none;
 }
 .dock.show{
   transform:translateY(0);
   opacity:1;
+  visibility:visible;
   pointer-events:auto;
 }
 .dock-inner{
