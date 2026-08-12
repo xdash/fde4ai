@@ -32,12 +32,12 @@ const copy = {
     lead2: '中文圈的 FDE 课全是二手转述。本课直接引一手源：Bob McGrew 的 YC 原版分享、Palantir 官方资料、各厂 FDE 负责人亲述——再加上作者本人顾问失败的复盘。',
     stats: [
       { num: '3500', unit: '+ STAR', lbl: '开源书 GitHub' },
-      { num: '90', unit: 'MIN × 7 节', lbl: '核心视频讲练结合' },
+      { num: '90', unit: 'MIN 总时长', lbl: '7 节核心视频讲练结合' },
       { num: '5', unit: '件工具包', lbl: '带走就能用 K1–K5' },
       { num: '50', unit: '单启动', lbl: '预售门槛 不满全退' },
     ],
     cards: [
-      { idx: '01 / CORE', h: '核心视频', p: '90 分钟 × 7 节，讲练结合' },
+      { idx: '01 / CORE', h: '核心视频', p: '7 节，共约 90 分钟，讲练结合' },
       { idx: '02 / TOOLKIT', h: '工具包 5 件', p: '带走就能用的模板（K1-K5）' },
       { idx: '03 / PRACTICE', h: '实操作业', p: '用 DROP5 五问法拆解你身边的真实业务，填出人生第一张《企业 AI 项目可行性一页纸》' },
       { idx: '04 / MATERIAL', h: '双层课件', p: '购课即得观看版 PDF；完课 48 小时内发带你姓名水印的精排《复习手册》' },
@@ -129,12 +129,12 @@ const copy = {
     lead2: 'Most FDE courses in Chinese are second-hand retellings. This one cites primary sources directly — Bob McGrew\'s original YC talk, Palantir official materials, FDE leads\' own accounts — plus the author\'s own failure post-mortems.',
     stats: [
       { num: '3500', unit: '+ STARS', lbl: 'Open-source Book' },
-      { num: '90', unit: 'MIN × 7', lbl: 'Core Videos, Learn by Doing' },
+      { num: '90', unit: 'MIN TOTAL', lbl: '7 Core Video Sessions' },
       { num: '5', unit: 'TOOLKITS', lbl: 'Ready-to-use K1–K5' },
       { num: '50', unit: 'SEATS', lbl: 'Pre-sale Threshold, Full Refund' },
     ],
     cards: [
-      { idx: '01 / CORE', h: 'Core Videos', p: '90 min × 7 sessions, learn by doing' },
+      { idx: '01 / CORE', h: 'Core Videos', p: '7 sessions, ~90 min total, learn by doing' },
       { idx: '02 / TOOLKIT', h: 'Toolkit × 5', p: 'Take-away templates that work out of the box (K1–K5)' },
       { idx: '03 / PRACTICE', h: 'Hands-on Assignment', p: 'Dissect a real business scenario around you with the DROP5 five questions, and produce your first Enterprise AI Feasibility One-Pager' },
       { idx: '04 / MATERIAL', h: 'Two-tier Materials', p: 'Viewing PDF on purchase; a typeset Review Handbook with your name watermarked, within 48h of completion' },
