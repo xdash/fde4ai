@@ -71,7 +71,7 @@ FDE 不是模型公司的专利。手里有平台、又肯把工程师派进客�
 - **a16z：《用利润率换护城河》（Trading Margin for Moat）**：商业模式分析的标杆。
 - **Barry：《理解前线部署工程》（Understanding Forward Deployed Engineering）**：内部人的冷静警告。
 - **麻省理工学院 NANDA 实验室：《生成式人工智能的鸿沟：2025 年商业人工智能现状》（The GenAI Divide）**：「95% 失败率」的出处，FDE 存在理由的数据地基。
-- **The New Stack：《为什么 OpenAI 和 Anthropic 都在抢建 FDE 团队》（2026 年 5 月）**
+- **The New Stack：《为什么 OpenAI 和 Anthropic 都在抢建 FDE 团队》（2026 年 5 月）。**
 - **CIO.com：《Anthropic 的金融智能体，暴露了前线部署工程师这个新瓶颈》（2026 年 5 月）**：买方视角与高德纳预警。
 - **Latent Space 播客：《前线部署工程师与软件工程的未来》（2026 年 7 月）**：Sierra 视角。
 - **Palantir 官方博客：《Palantir 前线部署工程师的一天》（2020 年）**：官方自述，有中文译本流传。
@@ -85,4 +85,4 @@ FDE 不是模型公司的专利。手里有平台、又肯把工程师派进客�
 - **GetPerspective：《2026 前线部署工程师薪酬报告》（1200 个样本）**：头部实验室中级 FDE 年总薪酬中位数约 38.5 万美元、资深约 61 万美元、首席超过 120 万美元。
 - **fdenest.com / fde.academy / sundeepteki.org**：面试准备与职业路径的三家专题站点。
 - **Levels.fyi**：Palantir 等职位的实时薪酬数据。
-- **招聘启事本身是最好的教科书：OpenAI、Anthropic、Decagon、Harvey、Scale AI 的 FDE 招聘启事，值得逐字研读**
+- **招聘启事本身是最好的教科书：OpenAI、Anthropic、Decagon、Harvey、Scale AI 的 FDE 招聘启事，值得逐字研读。**

@@ -92,7 +92,7 @@ Decagon 创始人（后者出身 Palantir）。智能体操作流程的设计者
 **麻省理工学院 NANDA 实验室：《生成式人工智能的鸿沟：2025 年商业人工智能现状》（The GenAI Divide）**
 「95% 失败率」的出处，FDE 存在理由的数据地基。
 
-**The New Stack：《为什么 OpenAI 和 Anthropic 都在抢建 FDE 团队》（2026 年 5 月）**
+**The New Stack：《为什么 OpenAI 和 Anthropic 都在抢建 FDE 团队》（2026 年 5 月）。**
 
 **CIO.com：《Anthropic 的金融智能体，暴露了前线部署工程师这个新瓶颈》（2026 年 5 月）**
 买方视角与高德纳预警。
@@ -120,4 +120,4 @@ Sierra 视角。
 **Levels.fyi**
 Palantir 等职位的实时薪酬数据。
 
-**招聘启事本身是最好的教科书：OpenAI、Anthropic、Decagon、Harvey、Scale AI 的 FDE 招聘启事，值得逐字研读**
+**招聘启事本身是最好的教科书：OpenAI、Anthropic、Decagon、Harvey、Scale AI 的 FDE 招聘启事，值得逐字研读。**
