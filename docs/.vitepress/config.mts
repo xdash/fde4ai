@@ -11,10 +11,11 @@ export default defineConfig({
   appearance: 'force-dark',
   themeConfig: {
     nav: [
-      { text: '书', link: '/book/' },
+      { text: '首页', link: '/' },
+      { text: 'FDE 开源手册', link: '/book/' },
       { text: '案例', link: '/cases' },
       { text: '名录', link: '/directory' },
-      { text: '地图', link: '/map' },
+      { text: '生态地图', link: '/map' },
       { text: '课程', link: '/#course' },
     ],
     sidebar: {
@@ -40,10 +41,11 @@ export default defineConfig({
       link: '/en/',
       themeConfig: {
         nav: [
-          { text: 'Book', link: '/book/' },
+          { text: 'Home', link: '/en/' },
+          { text: 'FDE Handbook', link: '/book/' },
           { text: 'Cases', link: '/en/cases' },
           { text: 'Directory', link: '/en/directory' },
-          { text: 'Map', link: '/en/map' },
+          { text: 'Ecosystem Map', link: '/en/map' },
           { text: 'Course', link: '/en/#course' },
         ],
       },

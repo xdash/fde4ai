@@ -34,3 +34,19 @@ html {
   font-family: 'Menlo', 'JetBrains Mono', 'SF Mono', monospace;
   letter-spacing: 0.04em;
 }
+
+/* 品牌名后缀：书名（窄屏隐藏防挤压导航链接） */
+.VPNavBarTitle .title::after {
+  content: '· 前线部署工程师开源手册';
+  font-family: 'Menlo', 'JetBrains Mono', 'SF Mono', monospace;
+  font-size: 0.78em;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--vp-c-text-3, rgba(255, 255, 255, 0.36));
+  margin-left: 10px;
+}
+@media (max-width: 1180px) {
+  .VPNavBarTitle .title::after {
+    display: none;
+  }
+}
