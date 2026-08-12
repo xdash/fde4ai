@@ -1,11 +1,13 @@
 import DefaultTheme from 'vitepress/theme'
-import { h } from 'vue'
+import { h, defineAsyncComponent } from 'vue'
 import './custom.css'
-import EcosystemMap from './EcosystemMap.vue'
 import GeekHome from './GeekHome.vue'
 import BackToBookIndex from './BackToBookIndex.vue'
 import LangMemory from './LangMemory.vue'
 import NotFound from './NotFound.vue'
+
+// 生态地图仅 /map 页使用，异步拆出关键路径（首页/书页不再加载它）
+const EcosystemMap = defineAsyncComponent(() => import('./EcosystemMap.vue'))
 
 export default {
   extends: DefaultTheme,
