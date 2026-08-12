@@ -6,3 +6,4 @@ docs/book/
 docs/.vitepress/book-sidebar.json
 __pycache__/
 design-variants/
+.DS_Store
