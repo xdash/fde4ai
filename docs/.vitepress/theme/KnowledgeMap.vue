@@ -28,25 +28,25 @@ const STAGE_LABEL = {
 const AI_LABEL = { high: '高杠杆', mid: '中杠杆', low: '低杠杆' }
 const MATURITY_LABEL = { 1: '入门', 2: '熟练', 3: '精通' }
 
-// 阶段视角的分类色（6 类，暗底高区分度）
+// 阶段视角的分类色（6 类，浅底明快高区分度）
 const STAGE_COLOR = {
-  foundation: '#d8c9a3', 'pre-sale': '#e05d3a', deployment: '#18F050',
-  renewal: '#5ac8fa', expansion: '#ffd60a', scale: '#bf5af2',
+  foundation: '#64748b', 'pre-sale': '#f0603c', deployment: '#18a058',
+  renewal: '#0284c7', expansion: '#d97706', scale: '#9333ea',
 }
 
 // 节点着色：随当前视角维度取值变化
 function nodeFill(n) {
-  if (view.value === 'stage') return STAGE_COLOR[n.stage] || '#d8c9a3'
-  if (view.value === 'ai') return { high: '#18F050', mid: '#d8c9a3', low: '#6b7a8c' }[n.ai_leverage] || '#d8c9a3'
-  return { 1: 'rgba(216,201,163,0.45)', 2: 'rgba(216,201,163,0.8)', 3: '#e8dcc0' }[n.maturity]
+  if (view.value === 'stage') return STAGE_COLOR[n.stage] || '#94a3b8'
+  if (view.value === 'ai') return { high: '#18a058', mid: '#9fb3c8', low: '#d3dee6' }[n.ai_leverage] || '#94a3b8'
+  return { 1: '#bde5c8', 2: '#5cc489', 3: '#18a058' }[n.maturity]
 }
 
 const legend = computed(() => {
   if (view.value === 'stage')
     return Object.entries(STAGE_LABEL).map(([k, v]) => ({ color: STAGE_COLOR[k], text: v }))
   if (view.value === 'ai')
-    return [{ color: '#18F050', text: '高杠杆' }, { color: '#d8c9a3', text: '中杠杆' }, { color: '#6b7a8c', text: '低杠杆' }]
-  return [{ color: 'rgba(216,201,163,0.45)', text: '入门' }, { color: 'rgba(216,201,163,0.8)', text: '熟练' }, { color: '#e8dcc0', text: '精通' }]
+    return [{ color: '#18a058', text: '高杠杆' }, { color: '#9fb3c8', text: '中杠杆' }, { color: '#d3dee6', text: '低杠杆' }]
+  return [{ color: '#bde5c8', text: '入门' }, { color: '#5cc489', text: '熟练' }, { color: '#18a058', text: '精通' }]
 })
 
 function pick(n) {
@@ -76,7 +76,7 @@ const domainName = computed(() => {
     </div>
 
     <div class="kmap-canvas">
-      <svg :viewBox="`0 0 ${atlas?.viewBox?.[0] ?? 1200} ${atlas?.viewBox?.[1] ?? 1010}`" v-if="atlas"
+      <svg :viewBox="`0 0 ${atlas?.viewBox?.[0] ?? 760} ${atlas?.viewBox?.[1] ?? 1720}`" v-if="atlas"
            role="group" aria-label="FDE 知识图谱">
         <!-- 领地 -->
         <g v-for="r in atlas.regions" :key="r.id" class="region">
@@ -134,84 +134,92 @@ const domainName = computed(() => {
 </template>
 
 <style scoped>
+/* 明亮轻快版（2026-08-19 定稿）：白底卡片 + 明快绿主色，参考 newmeth 产品页气质 */
 .kmap {
-  --ink: #101c28;
-  --ink-panel: #18293a;
-  --sand: #d8c9a3;
-  --sand-bright: #e8dcc0;
-  --signal: #e05d3a;
-  --neon: #18F050;
+  --paper: #ffffff;
+  --panel: #f4f8f5;
+  --ink: #1f2d3d;
+  --ink-soft: #5b6b7c;
+  --ink-faint: #7d8fa0;
+  --line: #dce5ec;
+  --accent: #18a058;
   margin: 1.5rem 0;
-  background: var(--ink);
-  border: 1px solid color-mix(in srgb, var(--sand) 40%, transparent);
-  border-radius: 12px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 4px 20px rgba(31, 45, 61, 0.07);
   padding: 20px 20px 12px;
-  font-family: "Songti SC", "STSong", "Noto Serif CJK SC", serif;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
 }
 .cartouche { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
-.cartouche-title { font-size: 1.35rem; letter-spacing: 0.35em; color: var(--sand-bright); font-weight: 700; }
-.cartouche-sub { font-size: 0.8rem; color: color-mix(in srgb, var(--sand) 70%, transparent); letter-spacing: 0.1em; }
+.cartouche-title { font-size: 1.3rem; letter-spacing: 0.2em; color: var(--ink); font-weight: 700; }
+.cartouche-sub { font-size: 0.8rem; color: var(--ink-faint); letter-spacing: 0.05em; }
 
 .view-switch { display: flex; gap: 8px; margin-bottom: 12px; }
 .view-btn {
-  background: transparent; color: color-mix(in srgb, var(--sand) 70%, transparent);
-  border: 1px solid color-mix(in srgb, var(--sand) 35%, transparent);
+  background: #fff; color: var(--ink-soft);
+  border: 1px solid var(--line);
   border-radius: 999px; padding: 4px 16px; font-size: 0.82rem; cursor: pointer;
-  font-family: inherit; letter-spacing: 0.1em;
+  font-family: inherit; letter-spacing: 0.05em;
+  transition: all 0.2s;
 }
-.view-btn.on { color: var(--ink); background: var(--neon); border-color: var(--neon); font-weight: 700; }
+.view-btn:hover { border-color: var(--accent); color: var(--accent); }
+.view-btn.on { color: #fff; background: var(--accent); border-color: var(--accent); font-weight: 600; }
 
-.kmap-fallback { color: var(--sand); padding: 2rem; text-align: center; }
+.kmap-fallback { color: var(--ink-soft); padding: 2rem; text-align: center; }
 .kmap-canvas { position: relative; overflow-x: auto; }
-svg { width: 100%; height: auto; display: block; min-width: 880px; }
+svg { width: 100%; height: auto; display: block; min-width: 700px; }
 
 .region-border {
-  fill: color-mix(in srgb, var(--sand) 4%, transparent);
-  stroke: color-mix(in srgb, var(--sand) 55%, transparent);
-  stroke-width: 1.4; stroke-dasharray: 7 5;
+  fill: rgba(24, 160, 88, 0.04);
+  stroke: #c2dccd;
+  stroke-width: 1.2; stroke-dasharray: 6 5;
 }
-.region-contour { fill: none; stroke: color-mix(in srgb, var(--sand) 18%, transparent); stroke-width: 1; }
-.region-name { fill: var(--sand); font-size: 15px; font-weight: 700; letter-spacing: 0.18em; }
+.region-contour { fill: none; stroke: rgba(24, 160, 88, 0.12); stroke-width: 1; }
+.region-name { fill: #2f5c44; font-size: 15px; font-weight: 700; letter-spacing: 0.15em; }
 
-.edge { stroke: color-mix(in srgb, var(--sand) 30%, transparent); stroke-width: 1; stroke-dasharray: 4 3; }
-.edge-label { fill: color-mix(in srgb, var(--sand) 55%, transparent); font-size: 11px; text-anchor: middle; }
+.edge { stroke: #b6c6d2; stroke-width: 1; stroke-dasharray: 4 3; }
+.edge-label { fill: var(--ink-faint); font-size: 11px; text-anchor: middle; }
 
 .node { cursor: pointer; outline: none; }
-.node .post { transition: fill 0.25s; }
-.node:hover .post, .node:focus .post, .node.picked .post { stroke: var(--neon); stroke-width: 2; }
-.node-label { fill: var(--sand-bright); font-size: 13.5px; paint-order: stroke; stroke: var(--ink); stroke-width: 3px; }
-.node:hover .node-label, .node.picked .node-label { fill: #fff; }
+.node .post { transition: fill 0.25s; stroke: #fff; stroke-width: 1.5; }
+.node:hover .post, .node:focus .post, .node.picked .post { stroke: var(--ink); stroke-width: 2; }
+.node-label { fill: var(--ink); font-size: 13.5px; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
+.node:hover .node-label, .node.picked .node-label { fill: var(--accent); font-weight: 600; }
 
 .legend {
   display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px;
-  color: color-mix(in srgb, var(--sand) 75%, transparent); font-size: 0.75rem; letter-spacing: 0.08em;
+  color: var(--ink-soft); font-size: 0.75rem; letter-spacing: 0.05em;
 }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .lg-dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; }
-.legend-hint { margin-left: auto; opacity: 0.7; }
+.legend-hint { margin-left: auto; opacity: 0.75; }
 
 .detail {
-  margin-top: 12px; background: var(--ink-panel);
-  border: 1px solid color-mix(in srgb, var(--sand) 45%, transparent);
-  border-radius: 8px; padding: 12px 16px;
+  margin-top: 12px; background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px; padding: 12px 16px;
+  box-shadow: 0 2px 10px rgba(31, 45, 61, 0.05);
 }
 .detail-head { display: flex; align-items: baseline; gap: 10px; }
-.detail-name { color: var(--sand-bright); font-weight: 700; font-size: 1.05rem; }
-.detail-domain { color: var(--signal); font-size: 0.72rem; letter-spacing: 0.2em; }
+.detail-name { color: var(--ink); font-weight: 700; font-size: 1.05rem; }
+.detail-domain { color: var(--accent); font-size: 0.72rem; letter-spacing: 0.15em; font-weight: 600; }
 .detail-close {
-  margin-left: auto; background: none; border: none; color: var(--sand);
+  margin-left: auto; background: none; border: none; color: var(--ink-faint);
   font-size: 1.2rem; cursor: pointer; line-height: 1;
 }
-.detail-desc { color: color-mix(in srgb, var(--sand-bright) 88%, transparent); font-size: 0.85rem; line-height: 1.6; margin: 6px 0; }
+.detail-close:hover { color: var(--ink); }
+.detail-desc { color: var(--ink-soft); font-size: 0.85rem; line-height: 1.65; margin: 6px 0; }
 .detail-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
 .detail-badges span {
-  font-size: 0.72rem; color: var(--neon);
-  border: 1px solid color-mix(in srgb, var(--neon) 45%, transparent);
-  border-radius: 999px; padding: 2px 10px; letter-spacing: 0.06em;
+  font-size: 0.72rem; color: var(--accent);
+  border: 1px solid rgba(24, 160, 88, 0.35);
+  background: rgba(24, 160, 88, 0.06);
+  border-radius: 999px; padding: 2px 10px; letter-spacing: 0.05em;
 }
-.detail-links a { color: var(--neon); font-size: 0.85rem; margin-right: 14px; text-decoration: none; }
+.detail-links a { color: var(--accent); font-size: 0.85rem; margin-right: 14px; text-decoration: none; font-weight: 500; }
 .detail-links a:hover { text-decoration: underline; }
-.detail-cases { color: color-mix(in srgb, var(--sand) 80%, transparent); font-size: 0.85rem; }
+.detail-cases { color: var(--ink-soft); font-size: 0.85rem; }
 
 @media (max-width: 640px) {
   .cartouche { flex-direction: column; gap: 4px; }
