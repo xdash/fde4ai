@@ -190,6 +190,7 @@ const copy = {
     footBrand: '《前线部署工程师》开源书 · 作者范冰',
     footGh: 'GitHub 开源共建',
     footNote: '课程咨询：xdash@duck.com',
+    footLinks: '友情链接',
     dockTop: '返回顶部 ↑',
     dockCta: '立即预订 · 早鸟 ¥199',
   },
@@ -340,6 +341,7 @@ const copy = {
     footBrand: 'The FDE Field Guide (open source) · by Fan Bing',
     footGh: 'GitHub',
     footNote: 'Course inquiries: xdash@duck.com',
+    footLinks: 'Links',
     dockTop: 'Back to Top ↑',
     dockCta: 'Reserve · Early Bird ¥199',
   },
@@ -347,6 +349,11 @@ const copy = {
 
 const c = copy[props.lang] || copy.zh
 const bookLink = '/book/'
+const friendLinks = [
+  { label: 'diy-jarvis.com', href: 'https://diy-jarvis.com' },
+  { label: 'zengzhangheike.com', href: 'https://www.zengzhangheike.com' },
+  { label: 'xdash.me', href: 'https://xdash.me' },
+]
 </script>
 
 <template>
@@ -607,6 +614,9 @@ const bookLink = '/book/'
           <a :href="BOOK_REPO" target="_blank" rel="noopener">{{ c.footGh }}</a>
           <span class="sep">｜</span>
           {{ c.footNote }}
+        </div>
+        <div class="f-links">
+          {{ c.footLinks }}<span class="sep">｜</span><template v-for="(l, i) in friendLinks" :key="l.href"><a :href="l.href" target="_blank" rel="noopener">{{ l.label }}</a><span v-if="i < friendLinks.length - 1" class="sep">｜</span></template>
         </div>
       </div>
     </footer>
@@ -1155,6 +1165,8 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
 .foot-inner a{transition:color .2s}
 .foot-inner a:hover{color:var(--neon)}
 .foot-inner .sep{margin:0 12px;color:var(--line-strong)}
+.foot-inner .f-links{font-family:var(--font-mono);letter-spacing:.04em}
+.foot-inner .f-links a{color:var(--ink-3)}
 
 /* ============ 收尾升华区 ============ */
 .closing{
