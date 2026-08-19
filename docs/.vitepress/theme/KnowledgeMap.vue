@@ -1,19 +1,16 @@
 <script setup>
-// FDE 知识图谱：能力域分区 + 三视角滤镜（成熟度/阶段/AI 杠杆）。
-// 纯渲染组件——区域勘界、节点坐标、关系边全部由
-// fde-book/ecosystem/tools/publish_kmap.py 生成进 .vitepress/knowledge-map.json，
-// 此处静态 import 由 Vite 内联进本 chunk（免一次运行时 fetch 往返）。
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+// FDE 知识图谱：页面内为适配内容栏宽度的缩略图，点击进入浮层看完整交互版。
+// 数据由 fde-book/ecosystem/tools/publish_kmap.py 生成进 .vitepress/knowledge-map.json，
+// 静态 import 内联进本 chunk（免一次运行时 fetch 往返）。
+import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
 import { withBase } from 'vitepress'
 import atlasData from '../knowledge-map.json'
+import KmapSvg from './KmapSvg.vue'
 
 const atlas = ref(atlasData)
 const view = ref('maturity') // maturity | stage | ai
 const active = ref(null)     // 当前选中节点（详情卡）
-
-onMounted(() => {
-  window.addEventListener('keydown', onKey)
-})
+const open = ref(false)      // 浮层开关
 
 const VIEWS = [
   { key: 'maturity', label: '成熟度' },
@@ -27,18 +24,9 @@ const STAGE_LABEL = {
 }
 const AI_LABEL = { high: '高杠杆', mid: '中杠杆', low: '低杠杆' }
 const MATURITY_LABEL = { 1: '入门', 2: '熟练', 3: '精通' }
-
-// 阶段视角的分类色（6 类，浅底明快高区分度）
 const STAGE_COLOR = {
   foundation: '#64748b', 'pre-sale': '#f0603c', deployment: '#18a058',
   renewal: '#0284c7', expansion: '#d97706', scale: '#9333ea',
-}
-
-// 节点着色：随当前视角维度取值变化
-function nodeFill(n) {
-  if (view.value === 'stage') return STAGE_COLOR[n.stage] || '#94a3b8'
-  if (view.value === 'ai') return { high: '#18a058', mid: '#9fb3c8', low: '#d3dee6' }[n.ai_leverage] || '#94a3b8'
-  return { 1: '#bde5c8', 2: '#5cc489', 3: '#18a058' }[n.maturity]
 }
 
 const legend = computed(() => {
@@ -52,11 +40,22 @@ const legend = computed(() => {
 function pick(n) {
   active.value = active.value?.id === n.id ? null : n
 }
-function onKey(e) { if (e.key === 'Escape') active.value = null }
+function closeModal() {
+  open.value = false
+  active.value = null
+}
+function onKey(e) { if (e.key === 'Escape') { open.value ? closeModal() : (active.value = null) } }
 
-onUnmounted(() => window.removeEventListener('keydown', onKey))
+// 浮层打开时锁 body 滚动（组件在 ClientOnly 内，无 SSR 触雷）
+watch(open, v => { document.body.style.overflow = v ? 'hidden' : '' })
+onMounted(() => window.addEventListener('keydown', onKey))
+onUnmounted(() => {
+  window.removeEventListener('keydown', onKey)
+  document.body.style.overflow = ''
+})
+
 const domainName = computed(() => {
-  if (!active.value || !atlas.value) return ''
+  if (!active.value) return ''
   return atlas.value.regions.find(r => r.id === active.value.domain)?.name || ''
 })
 </script>
@@ -65,76 +64,70 @@ const domainName = computed(() => {
   <figure class="kmap">
     <figcaption class="cartouche">
       <span class="cartouche-title">FDE 知识图谱</span>
-      <span class="cartouche-sub">{{ atlas?.regions.length ?? '…' }} 个能力域 · {{ atlas?.nodes.length ?? '…' }} 个能力点 · 勘定 {{ atlas?.updated ?? '' }}</span>
+      <span class="cartouche-sub">{{ atlas.regions.length }} 个能力域 · {{ atlas.nodes.length }} 个能力点 · 勘定 {{ atlas.updated }}</span>
     </figcaption>
 
-    <div class="view-switch" role="tablist" aria-label="视角切换">
-      <button v-for="v in VIEWS" :key="v.key" role="tab"
-              :class="['view-btn', { on: view === v.key }]"
-              :aria-selected="view === v.key"
-              @click="view = v.key">{{ v.label }}</button>
-    </div>
+    <!-- 缩略图：整图等比缩进固定高度，点击进浮层 -->
+    <button class="thumb" @click="open = true" aria-label="放大查看知识图谱">
+      <span class="thumb-frame">
+        <KmapSvg :atlas="atlas" :view="view" />
+      </span>
+      <span class="thumb-hint">🔍 点击放大，查看完整交互版图谱</span>
+    </button>
 
-    <div class="kmap-canvas">
-      <svg :viewBox="`0 0 ${atlas?.viewBox?.[0] ?? 760} ${atlas?.viewBox?.[1] ?? 1720}`" v-if="atlas"
-           role="group" aria-label="FDE 知识图谱">
-        <!-- 领地 -->
-        <g v-for="r in atlas.regions" :key="r.id" class="region">
-          <rect :x="r.x" :y="r.y" :width="r.w" :height="r.h" rx="20" class="region-border" />
-          <rect :x="r.x + 8" :y="r.y + 8" :width="r.w - 16" :height="r.h - 16" rx="14" class="region-contour" />
-          <text :x="r.x + 20" :y="r.y + 30" class="region-name">{{ r.name }}</text>
-        </g>
+    <!-- 浮层：完整交互版 -->
+    <Teleport to="body">
+      <div v-if="open" class="kmap-modal" @click.self="closeModal">
+        <div class="kmap-panel" role="dialog" aria-modal="true" aria-label="FDE 知识图谱完整版">
+          <div class="panel-head">
+            <div class="view-switch" role="tablist" aria-label="视角切换">
+              <button v-for="v in VIEWS" :key="v.key" role="tab"
+                      :class="['view-btn', { on: view === v.key }]"
+                      :aria-selected="view === v.key"
+                      @click="view = v.key">{{ v.label }}</button>
+            </div>
+            <button class="panel-close" @click="closeModal" aria-label="关闭">×</button>
+          </div>
 
-        <!-- 关系边 -->
-        <g class="edges">
-          <template v-for="(e, i) in atlas.edges" :key="i">
-            <line :x1="e.x1" :y1="e.y1" :x2="e.x2" :y2="e.y2" class="edge" />
-            <text v-if="e.label" class="edge-label"
-                  :x="(e.x1 + e.x2) / 2" :y="(e.y1 + e.y2) / 2 - 4">{{ e.label }}</text>
-          </template>
-        </g>
+          <div class="panel-body">
+            <div class="panel-canvas">
+              <KmapSvg :atlas="atlas" :view="view" interactive :active-id="active?.id ?? ''" @pick="pick" />
+            </div>
 
-        <!-- 能力点 -->
-        <g v-for="n in atlas.nodes" :key="n.id" class="node"
-           :class="{ picked: active?.id === n.id }"
-           :transform="`translate(${n.x},${n.y})`" tabindex="0"
-           @click="pick(n)" @keydown.enter="pick(n)" @keydown.space.prevent="pick(n)">
-          <circle r="8" class="post" :style="{ fill: nodeFill(n) }" />
-          <text class="node-label" x="14" y="4">{{ n.name }}</text>
-        </g>
-      </svg>
+            <div class="legend">
+              <span v-for="(l, i) in legend" :key="i"><i class="lg-dot" :style="{ background: l.color }"></i>{{ l.text }}</span>
+              <span class="legend-hint">点击能力点查看详情</span>
+            </div>
 
-      <div class="legend" v-if="atlas">
-        <span v-for="(l, i) in legend" :key="i"><i class="lg-dot" :style="{ background: l.color }"></i>{{ l.text }}</span>
-        <span class="legend-hint">点击能力点查看详情</span>
-      </div>
-
-      <!-- 详情卡 -->
-      <div v-if="active" class="detail">
-        <div class="detail-head">
-          <span class="detail-name">{{ active.name }}</span>
-          <span class="detail-domain">{{ domainName }}</span>
-          <button class="detail-close" @click="active = null" aria-label="关闭">×</button>
-        </div>
-        <div class="detail-desc">{{ active.desc }}</div>
-        <div class="detail-badges">
-          <span>成熟度 · {{ MATURITY_LABEL[active.maturity] }}</span>
-          <span>阶段 · {{ STAGE_LABEL[active.stage] }}</span>
-          <span>AI 杠杆 · {{ AI_LABEL[active.ai_leverage] }}</span>
-        </div>
-        <div class="detail-links">
-          <a v-for="c in active.chapter_links" :key="c.num" :href="withBase(`/book/${c.slug}`)">阅读：{{ c.title }} →</a>
-          <span v-if="active.cases.length" class="detail-cases">
-            相关案例：<a :href="withBase('/cases')">{{ active.cases.map(c => '#' + c).join('、') }}</a>
-          </span>
+            <!-- 详情卡 -->
+            <div v-if="active" class="detail">
+              <div class="detail-head">
+                <span class="detail-name">{{ active.name }}</span>
+                <span class="detail-domain">{{ domainName }}</span>
+                <button class="detail-close" @click="active = null" aria-label="关闭详情">×</button>
+              </div>
+              <div class="detail-desc">{{ active.desc }}</div>
+              <div class="detail-badges">
+                <span>成熟度 · {{ MATURITY_LABEL[active.maturity] }}</span>
+                <span>阶段 · {{ STAGE_LABEL[active.stage] }}</span>
+                <span>AI 杠杆 · {{ AI_LABEL[active.ai_leverage] }}</span>
+              </div>
+              <div class="detail-links">
+                <a v-for="c in active.chapter_links" :key="c.num" :href="withBase(`/book/${c.slug}`)">阅读：{{ c.title }} →</a>
+                <span v-if="active.cases.length" class="detail-cases">
+                  相关案例：<a :href="withBase('/cases')">{{ active.cases.map(c => '#' + c).join('、') }}</a>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </Teleport>
   </figure>
 </template>
 
 <style scoped>
-/* 明亮轻快版（2026-08-19 定稿）：白底卡片 + 明快绿主色，参考 newmeth 产品页气质 */
+/* 明亮轻快版：白底卡片 + 明快绿主色；浮层为全屏查看器 */
 .kmap {
   --paper: #ffffff;
   --panel: #f4f8f5;
@@ -148,14 +141,54 @@ const domainName = computed(() => {
   border: 1px solid var(--line);
   border-radius: 14px;
   box-shadow: 0 4px 20px rgba(31, 45, 61, 0.07);
-  padding: 20px 20px 12px;
+  padding: 20px 20px 16px;
   font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
 }
 .cartouche { display: flex; align-items: baseline; gap: 14px; margin-bottom: 12px; }
 .cartouche-title { font-size: 1.3rem; letter-spacing: 0.2em; color: var(--ink); font-weight: 700; }
 .cartouche-sub { font-size: 0.8rem; color: var(--ink-faint); letter-spacing: 0.05em; }
 
-.view-switch { display: flex; gap: 8px; margin-bottom: 12px; }
+/* 缩略图 */
+.thumb {
+  display: block; width: 100%; cursor: zoom-in;
+  background: var(--panel);
+  border: 1px dashed #c2dccd; border-radius: 10px;
+  padding: 12px; font-family: inherit;
+  transition: border-color 0.2s;
+}
+.thumb:hover { border-color: var(--accent); }
+.thumb-frame {
+  display: flex; justify-content: center;
+  height: 440px; overflow: hidden;
+}
+.thumb-frame :deep(svg) { width: auto; height: 100%; }
+.thumb-hint {
+  display: block; margin-top: 8px;
+  color: var(--accent); font-size: 0.82rem; letter-spacing: 0.05em;
+}
+
+/* 浮层（Teleport 到 body，样式仍是 scoped 可命中，因节点由本组件渲染） */
+.kmap-modal {
+  position: fixed; inset: 0; z-index: 100;
+  background: rgba(15, 25, 35, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 3vh 3vw;
+}
+.kmap-panel {
+  background: #fff; border-radius: 14px;
+  width: 100%; max-width: 880px; max-height: 94vh;
+  display: flex; flex-direction: column;
+  box-shadow: 0 16px 60px rgba(15, 25, 35, 0.35);
+  overflow: hidden;
+  font-family: -apple-system, "PingFang SC", "Helvetica Neue", "Microsoft YaHei", sans-serif;
+}
+.panel-head {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 16px; border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+.view-switch { display: flex; gap: 8px; }
 .view-btn {
   background: #fff; color: var(--ink-soft);
   border: 1px solid var(--line);
@@ -165,30 +198,18 @@ const domainName = computed(() => {
 }
 .view-btn:hover { border-color: var(--accent); color: var(--accent); }
 .view-btn.on { color: #fff; background: var(--accent); border-color: var(--accent); font-weight: 600; }
-
-.kmap-fallback { color: var(--ink-soft); padding: 2rem; text-align: center; }
-.kmap-canvas { position: relative; overflow-x: auto; }
-svg { width: 100%; height: auto; display: block; min-width: 700px; }
-
-.region-border {
-  fill: rgba(24, 160, 88, 0.04);
-  stroke: #c2dccd;
-  stroke-width: 1.2; stroke-dasharray: 6 5;
+.panel-close {
+  margin-left: auto; background: none; border: none;
+  color: var(--ink-faint); font-size: 1.5rem; cursor: pointer; line-height: 1;
+  padding: 0 4px;
 }
-.region-contour { fill: none; stroke: rgba(24, 160, 88, 0.12); stroke-width: 1; }
-.region-name { fill: #2f5c44; font-size: 15px; font-weight: 700; letter-spacing: 0.15em; }
+.panel-close:hover { color: var(--ink); }
 
-.edge { stroke: #b6c6d2; stroke-width: 1; stroke-dasharray: 4 3; }
-.edge-label { fill: var(--ink-faint); font-size: 11px; text-anchor: middle; }
-
-.node { cursor: pointer; outline: none; }
-.node .post { transition: fill 0.25s; stroke: #fff; stroke-width: 1.5; }
-.node:hover .post, .node:focus .post, .node.picked .post { stroke: var(--ink); stroke-width: 2; }
-.node-label { fill: var(--ink); font-size: 13.5px; paint-order: stroke; stroke: #fff; stroke-width: 3px; }
-.node:hover .node-label, .node.picked .node-label { fill: var(--accent); font-weight: 600; }
+.panel-body { overflow: auto; padding: 16px; }
+.panel-canvas { max-width: 780px; margin: 0 auto; }
 
 .legend {
-  display: flex; flex-wrap: wrap; gap: 16px; margin-top: 10px;
+  display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px;
   color: var(--ink-soft); font-size: 0.75rem; letter-spacing: 0.05em;
 }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
@@ -223,5 +244,9 @@ svg { width: 100%; height: auto; display: block; min-width: 700px; }
 
 @media (max-width: 640px) {
   .cartouche { flex-direction: column; gap: 4px; }
+  .thumb-frame { height: 320px; }
+  .kmap-modal { padding: 0; }
+  .kmap-panel { max-width: 100%; max-height: 100vh; border-radius: 0; }
+  .panel-canvas { max-width: none; min-width: 620px; }
 }
 </style>
