@@ -1,3 +1,8 @@
+---
+aside: false
+pageClass: kmap-wide
+---
+
 # Knowledge Map 知识图谱
 
 > FDE 能力体系的分域视图：七个能力域、几十个能力点，每个都直链开源手册对应章节。切换「成熟度 / 阶段 / AI 杠杆」三个视角，看同一套能力的不同切面。

@@ -51,3 +51,11 @@ html {
     display: none;
   }
 }
+
+/* 知识图谱页（pageClass: kmap-wide）：去右侧大纲后内容区展宽，SVG 图谱随容器等比放大 */
+.kmap-wide .VPDoc .content-container {
+  max-width: none;
+}
+.kmap-wide .VPDoc .content {
+  max-width: none;
+}
