@@ -2,7 +2,7 @@
 // FDE 知识图谱：页面内为适配内容栏宽度的缩略图，点击进入浮层看完整交互版。
 // 数据由 fde-book/ecosystem/tools/publish_kmap.py 生成进 .vitepress/knowledge-map.json，
 // 静态 import 内联进本 chunk（免一次运行时 fetch 往返）。
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue'
+import { ref, computed, watch, nextTick, onMounted, onUnmounted } from 'vue'
 import { withBase } from 'vitepress'
 import atlasData from '../knowledge-map.json'
 import KmapSvg from './KmapSvg.vue'
@@ -11,6 +11,8 @@ const atlas = ref(atlasData)
 const view = ref('maturity') // maturity | stage | ai
 const active = ref(null)     // 当前选中节点（详情卡）
 const open = ref(false)      // 浮层开关
+const thumbBtn = ref(null)   // 缩略图按钮（关浮层时焦点归还）
+const closeBtn = ref(null)   // 浮层关闭按钮（开浮层时焦点移入）
 
 const VIEWS = [
   { key: 'maturity', label: '成熟度' },
@@ -46,8 +48,11 @@ function closeModal() {
 }
 function onKey(e) { if (e.key === 'Escape') { open.value ? closeModal() : (active.value = null) } }
 
-// 浮层打开时锁 body 滚动（组件在 ClientOnly 内，无 SSR 触雷）
-watch(open, v => { document.body.style.overflow = v ? 'hidden' : '' })
+// 浮层打开时锁 body 滚动 + 焦点移入浮层；关闭时焦点归还触发按钮（组件在 ClientOnly 内，无 SSR 触雷）
+watch(open, v => {
+  document.body.style.overflow = v ? 'hidden' : ''
+  nextTick(() => (v ? closeBtn.value : thumbBtn.value)?.focus())
+})
 onMounted(() => window.addEventListener('keydown', onKey))
 onUnmounted(() => {
   window.removeEventListener('keydown', onKey)
@@ -68,7 +73,7 @@ const domainName = computed(() => {
     </figcaption>
 
     <!-- 缩略图：整图等比缩进固定高度，点击进浮层 -->
-    <button class="thumb" @click="open = true" aria-label="放大查看知识图谱">
+    <button class="thumb" ref="thumbBtn" @click="open = true" aria-label="放大查看知识图谱">
       <span class="thumb-frame">
         <KmapSvg :atlas="atlas" :view="view" />
       </span>
@@ -86,7 +91,7 @@ const domainName = computed(() => {
                       :aria-selected="view === v.key"
                       @click="view = v.key">{{ v.label }}</button>
             </div>
-            <button class="panel-close" @click="closeModal" aria-label="关闭">×</button>
+            <button class="panel-close" ref="closeBtn" @click="closeModal" aria-label="关闭">×</button>
           </div>
 
           <div class="panel-body">
