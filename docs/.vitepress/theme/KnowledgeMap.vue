@@ -1,24 +1,18 @@
 <script setup>
 // FDE 知识图谱：能力域分区 + 三视角滤镜（成熟度/阶段/AI 杠杆）。
 // 纯渲染组件——区域勘界、节点坐标、关系边全部由
-// fde-book/ecosystem/tools/publish_kmap.py 生成进 /knowledge-map.json。
+// fde-book/ecosystem/tools/publish_kmap.py 生成进 .vitepress/knowledge-map.json，
+// 此处静态 import 由 Vite 内联进本 chunk（免一次运行时 fetch 往返）。
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { withBase } from 'vitepress'
+import atlasData from '../knowledge-map.json'
 
-const atlas = ref(null)
-const failed = ref(false)
+const atlas = ref(atlasData)
 const view = ref('maturity') // maturity | stage | ai
 const active = ref(null)     // 当前选中节点（详情卡）
 
-onMounted(async () => {
+onMounted(() => {
   window.addEventListener('keydown', onKey)
-  try {
-    const res = await fetch(withBase('/knowledge-map.json'))
-    if (!res.ok) throw new Error(String(res.status))
-    atlas.value = await res.json()
-  } catch {
-    failed.value = true
-  }
 })
 
 const VIEWS = [
@@ -81,10 +75,8 @@ const domainName = computed(() => {
               @click="view = v.key">{{ v.label }}</button>
     </div>
 
-    <div v-if="failed" class="kmap-fallback">图谱数据加载失败，请直接阅读下方文字版清单。</div>
-
-    <div v-else class="kmap-canvas">
-      <svg :viewBox="`0 0 ${atlas?.viewBox?.[0] ?? 1200} ${atlas?.viewBox?.[1] ?? 900}`" v-if="atlas"
+    <div class="kmap-canvas">
+      <svg :viewBox="`0 0 ${atlas?.viewBox?.[0] ?? 1200} ${atlas?.viewBox?.[1] ?? 1010}`" v-if="atlas"
            role="group" aria-label="FDE 知识图谱">
         <!-- 领地 -->
         <g v-for="r in atlas.regions" :key="r.id" class="region">
@@ -107,8 +99,8 @@ const domainName = computed(() => {
            :class="{ picked: active?.id === n.id }"
            :transform="`translate(${n.x},${n.y})`" tabindex="0"
            @click="pick(n)" @keydown.enter="pick(n)" @keydown.space.prevent="pick(n)">
-          <circle r="7" class="post" :style="{ fill: nodeFill(n) }" />
-          <text class="node-label" x="12" y="4">{{ n.name }}</text>
+          <circle r="8" class="post" :style="{ fill: nodeFill(n) }" />
+          <text class="node-label" x="14" y="4">{{ n.name }}</text>
         </g>
       </svg>
 
@@ -170,8 +162,8 @@ const domainName = computed(() => {
 .view-btn.on { color: var(--ink); background: var(--neon); border-color: var(--neon); font-weight: 700; }
 
 .kmap-fallback { color: var(--sand); padding: 2rem; text-align: center; }
-.kmap-canvas { position: relative; }
-svg { width: 100%; height: auto; display: block; }
+.kmap-canvas { position: relative; overflow-x: auto; }
+svg { width: 100%; height: auto; display: block; min-width: 880px; }
 
 .region-border {
   fill: color-mix(in srgb, var(--sand) 4%, transparent);
@@ -179,15 +171,15 @@ svg { width: 100%; height: auto; display: block; }
   stroke-width: 1.4; stroke-dasharray: 7 5;
 }
 .region-contour { fill: none; stroke: color-mix(in srgb, var(--sand) 18%, transparent); stroke-width: 1; }
-.region-name { fill: var(--sand); font-size: 14px; font-weight: 700; letter-spacing: 0.18em; }
+.region-name { fill: var(--sand); font-size: 15px; font-weight: 700; letter-spacing: 0.18em; }
 
 .edge { stroke: color-mix(in srgb, var(--sand) 30%, transparent); stroke-width: 1; stroke-dasharray: 4 3; }
-.edge-label { fill: color-mix(in srgb, var(--sand) 55%, transparent); font-size: 10px; text-anchor: middle; }
+.edge-label { fill: color-mix(in srgb, var(--sand) 55%, transparent); font-size: 11px; text-anchor: middle; }
 
 .node { cursor: pointer; outline: none; }
 .node .post { transition: fill 0.25s; }
 .node:hover .post, .node:focus .post, .node.picked .post { stroke: var(--neon); stroke-width: 2; }
-.node-label { fill: var(--sand-bright); font-size: 12px; paint-order: stroke; stroke: var(--ink); stroke-width: 3px; }
+.node-label { fill: var(--sand-bright); font-size: 13.5px; paint-order: stroke; stroke: var(--ink); stroke-width: 3px; }
 .node:hover .node-label, .node.picked .node-label { fill: #fff; }
 
 .legend {
@@ -223,6 +215,5 @@ svg { width: 100%; height: auto; display: block; }
 
 @media (max-width: 640px) {
   .cartouche { flex-direction: column; gap: 4px; }
-  .node-label { font-size: 13px; }
 }
 </style>

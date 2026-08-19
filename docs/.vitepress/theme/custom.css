@@ -52,10 +52,10 @@ html {
   }
 }
 
-/* 知识图谱页（pageClass: kmap-wide）：去右侧大纲后内容区展宽，SVG 图谱随容器等比放大 */
+/* 知识图谱页（pageClass: kmap-wide）：去右侧大纲后内容区展宽，SVG 图谱随容器等比放大。
+   三层帽都要解：container（无 sidebar 页被帽在 992/1104px）→ content → content-container（has-aside 帽 688px） */
+.kmap-wide .VPDoc .container,
+.kmap-wide .VPDoc .content,
 .kmap-wide .VPDoc .content-container {
-  max-width: none;
-}
-.kmap-wide .VPDoc .content {
   max-width: none;
 }
