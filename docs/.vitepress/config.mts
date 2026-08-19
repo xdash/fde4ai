@@ -16,6 +16,7 @@ export default defineConfig({
       { text: '案例', link: '/cases' },
       { text: '名录', link: '/directory' },
       { text: '生态地图', link: '/map' },
+      { text: '知识图谱', link: '/kmap' },
       { text: '课程', link: '/#course' },
     ],
     sidebar: {
@@ -46,6 +47,7 @@ export default defineConfig({
           { text: 'Cases', link: '/en/cases' },
           { text: 'Directory', link: '/en/directory' },
           { text: 'Ecosystem Map', link: '/en/map' },
+          { text: 'Knowledge Map', link: '/en/kmap' },
           { text: 'Course', link: '/en/#course' },
         ],
       },

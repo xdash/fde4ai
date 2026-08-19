@@ -6,8 +6,9 @@ import BackToBookIndex from './BackToBookIndex.vue'
 import LangMemory from './LangMemory.vue'
 import NotFound from './NotFound.vue'
 
-// 生态地图仅 /map 页使用，异步拆出关键路径（首页/书页不再加载它）
+// 生态地图与知识图谱仅各自页面使用，异步拆出关键路径（首页/书页不再加载它们）
 const EcosystemMap = defineAsyncComponent(() => import('./EcosystemMap.vue'))
+const KnowledgeMap = defineAsyncComponent(() => import('./KnowledgeMap.vue'))
 
 export default {
   extends: DefaultTheme,
@@ -23,6 +24,7 @@ export default {
   },
   enhanceApp({ app }) {
     app.component('EcosystemMap', EcosystemMap)
+    app.component('KnowledgeMap', KnowledgeMap)
     app.component('GeekHome', GeekHome)
   },
 }

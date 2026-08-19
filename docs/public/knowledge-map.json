@@ -1,0 +1,1033 @@
+{
+ "updated": "2026-08-19",
+ "viewBox": [
+  1200,
+  900
+ ],
+ "regions": [
+  {
+   "id": "cognition",
+   "name": "模式认知",
+   "x": 40,
+   "y": 70,
+   "w": 360,
+   "h": 240
+  },
+  {
+   "id": "problem",
+   "name": "问题定义",
+   "x": 420,
+   "y": 70,
+   "w": 360,
+   "h": 240
+  },
+  {
+   "id": "gtm",
+   "name": "赢得客户",
+   "x": 800,
+   "y": 70,
+   "w": 380,
+   "h": 240
+  },
+  {
+   "id": "delivery",
+   "name": "激活部署",
+   "x": 40,
+   "y": 340,
+   "w": 360,
+   "h": 260
+  },
+  {
+   "id": "retention",
+   "name": "守住续约",
+   "x": 420,
+   "y": 340,
+   "w": 360,
+   "h": 260
+  },
+  {
+   "id": "expansion",
+   "name": "扩大收入",
+   "x": 800,
+   "y": 340,
+   "w": 380,
+   "h": 260
+  },
+  {
+   "id": "scale",
+   "name": "规模化复制",
+   "x": 40,
+   "y": 630,
+   "w": 1140,
+   "h": 240
+  }
+ ],
+ "nodes": [
+  {
+   "id": "fde-definition",
+   "name": "什么是 FDE",
+   "domain": "cognition",
+   "desc": "前线部署工程师的定义与边界：扎根客户现场、用结果说话的工程师。",
+   "maturity": 1,
+   "stage": "foundation",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "01",
+     "slug": "01-第1章-FDE的崛起",
+     "title": "第 1 章 FDE 的崛起"
+    }
+   ],
+   "cases": [],
+   "x": 142.0,
+   "y": 146.0
+  },
+  {
+   "id": "outcome-driven",
+   "name": "一切用结果说话",
+   "domain": "cognition",
+   "desc": "FDE 的第一价值观：不问付出了什么，只问客户得到了什么。",
+   "maturity": 1,
+   "stage": "foundation",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "01",
+     "slug": "01-第1章-FDE的崛起",
+     "title": "第 1 章 FDE 的崛起"
+    }
+   ],
+   "cases": [],
+   "x": 298.0,
+   "y": 146.0
+  },
+  {
+   "id": "four-roles",
+   "name": "团队里的四张面孔",
+   "domain": "cognition",
+   "desc": "FDE 在工程师、顾问、销售、产品经理四种角色间的切换术。",
+   "maturity": 2,
+   "stage": "foundation",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "01",
+     "slug": "01-第1章-FDE的崛起",
+     "title": "第 1 章 FDE 的崛起"
+    }
+   ],
+   "cases": [],
+   "x": 142.0,
+   "y": 202.0
+  },
+  {
+   "id": "fde-hiring",
+   "name": "如何招聘 FDE",
+   "domain": "cognition",
+   "desc": "蝙蝠信号式反向筛选：招聘文案先把不适合的人劝退。",
+   "maturity": 2,
+   "stage": "foundation",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "01",
+     "slug": "01-第1章-FDE的崛起",
+     "title": "第 1 章 FDE 的崛起"
+    }
+   ],
+   "cases": [],
+   "x": 298.0,
+   "y": 202.0
+  },
+  {
+   "id": "become-fde",
+   "name": "如何成为 FDE",
+   "domain": "cognition",
+   "desc": "从业者的入行路径与能力自检清单。",
+   "maturity": 1,
+   "stage": "foundation",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "01",
+     "slug": "01-第1章-FDE的崛起",
+     "title": "第 1 章 FDE 的崛起"
+    }
+   ],
+   "cases": [],
+   "x": 142.0,
+   "y": 258.0
+  },
+  {
+   "id": "fde-toolbox",
+   "name": "常用工具箱",
+   "domain": "cognition",
+   "desc": "FDE 日常工作的工具栈：从数据接入到演示环境的装备清单。",
+   "maturity": 1,
+   "stage": "foundation",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "01",
+     "slug": "01-第1章-FDE的崛起",
+     "title": "第 1 章 FDE 的崛起"
+    }
+   ],
+   "cases": [],
+   "x": 298.0,
+   "y": 258.0
+  },
+  {
+   "id": "poc-graveyard",
+   "name": "概念验证坟墓解剖",
+   "domain": "problem",
+   "desc": "为什么九成的 PoC 走进坟墓：解剖报告与避坑清单。",
+   "maturity": 1,
+   "stage": "pre-sale",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "02",
+     "slug": "02-第2章-解决正确的问题",
+     "title": "第 2 章 解决正确的问题"
+    }
+   ],
+   "cases": [],
+   "x": 522.0,
+   "y": 146.0
+  },
+  {
+   "id": "psf",
+   "name": "PSF 问题-方案契合",
+   "domain": "problem",
+   "desc": "找到问题与方案的契合点，是一切部署的前置条件。",
+   "maturity": 1,
+   "stage": "pre-sale",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "02",
+     "slug": "02-第2章-解决正确的问题",
+     "title": "第 2 章 解决正确的问题"
+    }
+   ],
+   "cases": [],
+   "x": 678.0,
+   "y": 146.0
+  },
+  {
+   "id": "pain-driven",
+   "name": "痛点第一原动力",
+   "domain": "problem",
+   "desc": "催生部署的不是技术好奇心，是真实的业务疼痛。",
+   "maturity": 1,
+   "stage": "pre-sale",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "02",
+     "slug": "02-第2章-解决正确的问题",
+     "title": "第 2 章 解决正确的问题"
+    }
+   ],
+   "cases": [],
+   "x": 522.0,
+   "y": 202.0
+  },
+  {
+   "id": "mvd",
+   "name": "最小可行部署 MVD",
+   "domain": "problem",
+   "desc": "用最小可行部署验证价值，代替无限膨胀的概念验证。",
+   "maturity": 2,
+   "stage": "pre-sale",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "02",
+     "slug": "02-第2章-解决正确的问题",
+     "title": "第 2 章 解决正确的问题"
+    }
+   ],
+   "cases": [],
+   "x": 678.0,
+   "y": 202.0
+  },
+  {
+   "id": "env-compromise",
+   "name": "迁就现有环境的取舍",
+   "domain": "problem",
+   "desc": "早期要不要迁就客户的现有环境：技术债与订单的交换率。",
+   "maturity": 2,
+   "stage": "deployment",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "02",
+     "slug": "02-第2章-解决正确的问题",
+     "title": "第 2 章 解决正确的问题"
+    }
+   ],
+   "cases": [],
+   "x": 522.0,
+   "y": 258.0
+  },
+  {
+   "id": "guerrilla-research",
+   "name": "行胜于言的用户调研",
+   "domain": "problem",
+   "desc": "别问客户要什么，去看他们怎么干活。",
+   "maturity": 1,
+   "stage": "pre-sale",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "02",
+     "slug": "02-第2章-解决正确的问题",
+     "title": "第 2 章 解决正确的问题"
+    }
+   ],
+   "cases": [],
+   "x": 678.0,
+   "y": 258.0
+  },
+  {
+   "id": "lighthouse-select",
+   "name": "灯塔客户筛选",
+   "domain": "gtm",
+   "desc": "第一个客户选谁，决定了后面一百个客户是谁。",
+   "maturity": 1,
+   "stage": "pre-sale",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 879.3,
+   "y": 139.0
+  },
+  {
+   "id": "dumb-things-first",
+   "name": "从最笨的事情做起",
+   "domain": "gtm",
+   "desc": "刻意做不可规模化的事，换取规模化的入场券。",
+   "maturity": 1,
+   "stage": "pre-sale",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 990.0,
+   "y": 139.0
+  },
+  {
+   "id": "trust-dividend",
+   "name": "信任红利与标杆背书",
+   "domain": "gtm",
+   "desc": "标杆客户的背书是可以反复开采的矿藏。",
+   "maturity": 2,
+   "stage": "expansion",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 1100.7,
+   "y": 139.0
+  },
+  {
+   "id": "data-diligence",
+   "name": "用数据摸清客户家底",
+   "domain": "gtm",
+   "desc": "签单前的数据尽职调查：系统、流程与组织的三重摸底。",
+   "maturity": 2,
+   "stage": "pre-sale",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 879.3,
+   "y": 181.0
+  },
+  {
+   "id": "tech-content-marketing",
+   "name": "技术内容营销",
+   "domain": "gtm",
+   "desc": "打造持续输出的信任引擎：内容是最便宜的驻场。",
+   "maturity": 2,
+   "stage": "pre-sale",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 990.0,
+   "y": 181.0
+  },
+  {
+   "id": "procurement-clearance",
+   "name": "采购法务安全通关",
+   "domain": "gtm",
+   "desc": "采购、法务与安全审查的通关术：提前备弹药，不打遭遇战。",
+   "maturity": 2,
+   "stage": "pre-sale",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 1100.7,
+   "y": 181.0
+  },
+  {
+   "id": "ecosystem-bundling",
+   "name": "生态捆绑借渠道",
+   "domain": "gtm",
+   "desc": "站在渠道的肩膀上：借伙伴的客户关系铺自己的产品。",
+   "maturity": 3,
+   "stage": "expansion",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 879.3,
+   "y": 223.0
+  },
+  {
+   "id": "sequencing-strategy",
+   "name": "排期即战略",
+   "domain": "gtm",
+   "desc": "谁先谁后本身就是战略：部署顺序决定资源杠杆。",
+   "maturity": 3,
+   "stage": "pre-sale",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 990.0,
+   "y": 223.0
+  },
+  {
+   "id": "proposal-writing",
+   "name": "提案与验证方案撰写",
+   "domain": "gtm",
+   "desc": "一份好提案的结构：问题、路径、验收标准与退路。",
+   "maturity": 1,
+   "stage": "pre-sale",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 1100.7,
+   "y": 223.0
+  },
+  {
+   "id": "hybrid-delivery",
+   "name": "混合交付的边界",
+   "domain": "gtm",
+   "desc": "从驻场到远程：哪些事必须到场，哪些事可以隔着屏幕做。",
+   "maturity": 2,
+   "stage": "deployment",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "03",
+     "slug": "03-第3章-赢得客户",
+     "title": "第 3 章 赢得客户"
+    }
+   ],
+   "cases": [],
+   "x": 990.0,
+   "y": 265.0
+  },
+  {
+   "id": "first-day-curse",
+   "name": "首日魔咒",
+   "domain": "delivery",
+   "desc": "上线不等于激活：企业部署的第一天决定续命的八成。",
+   "maturity": 1,
+   "stage": "deployment",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "04",
+     "slug": "04-第4章-激活部署",
+     "title": "第 4 章 激活部署"
+    }
+   ],
+   "cases": [],
+   "x": 142.0,
+   "y": 411.5
+  },
+  {
+   "id": "hotfix-culture",
+   "name": "热修复文化",
+   "domain": "delivery",
+   "desc": "部署期的快速迭代：当天问题当天修的组织肌肉。",
+   "maturity": 2,
+   "stage": "deployment",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "04",
+     "slug": "04-第4章-激活部署",
+     "title": "第 4 章 激活部署"
+    }
+   ],
+   "cases": [],
+   "x": 298.0,
+   "y": 411.5
+  },
+  {
+   "id": "eval-driven",
+   "name": "评估体系驱动质量",
+   "domain": "delivery",
+   "desc": "在客户的环境里迭代：用评估体系而非感觉度量质量。",
+   "maturity": 2,
+   "stage": "deployment",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "04",
+     "slug": "04-第4章-激活部署",
+     "title": "第 4 章 激活部署"
+    }
+   ],
+   "cases": [],
+   "x": 142.0,
+   "y": 458.5
+  },
+  {
+   "id": "lower-barrier",
+   "name": "降低使用门槛",
+   "domain": "delivery",
+   "desc": "另辟蹊径降低门槛：让最不懂技术的人也能用起来。",
+   "maturity": 2,
+   "stage": "deployment",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "04",
+     "slug": "04-第4章-激活部署",
+     "title": "第 4 章 激活部署"
+    }
+   ],
+   "cases": [],
+   "x": 298.0,
+   "y": 458.5
+  },
+  {
+   "id": "integration-war",
+   "name": "集成大战",
+   "domain": "delivery",
+   "desc": "旷日持久的集成战：数据接入、清洗、关联的九九八十一难。",
+   "maturity": 2,
+   "stage": "deployment",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "04",
+     "slug": "04-第4章-激活部署",
+     "title": "第 4 章 激活部署"
+    }
+   ],
+   "cases": [],
+   "x": 142.0,
+   "y": 505.5
+  },
+  {
+   "id": "change-management",
+   "name": "变革管理",
+   "domain": "delivery",
+   "desc": "让客户组织为你站台：部署失败往往不是技术问题。",
+   "maturity": 3,
+   "stage": "deployment",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "04",
+     "slug": "04-第4章-激活部署",
+     "title": "第 4 章 激活部署"
+    }
+   ],
+   "cases": [],
+   "x": 298.0,
+   "y": 505.5
+  },
+  {
+   "id": "delivery-automation",
+   "name": "交付工作自动化",
+   "domain": "delivery",
+   "desc": "交付工作本身的自动化：FDE 用 AI 武装自己的第一现场。",
+   "maturity": 3,
+   "stage": "deployment",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "04",
+     "slug": "04-第4章-激活部署",
+     "title": "第 4 章 激活部署"
+    }
+   ],
+   "cases": [],
+   "x": 220.0,
+   "y": 552.5
+  },
+  {
+   "id": "renewal-churn",
+   "name": "续约与流失的账本",
+   "domain": "retention",
+   "desc": "续约率的解剖：客户在流失前三个月就发出了信号。",
+   "maturity": 1,
+   "stage": "renewal",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "05",
+     "slug": "05-第5章-守住续约",
+     "title": "第 5 章 守住续约"
+    }
+   ],
+   "cases": [],
+   "x": 522.0,
+   "y": 419.3
+  },
+  {
+   "id": "perf-stability",
+   "name": "性能与稳定性优化",
+   "domain": "retention",
+   "desc": "续约的技术地基：慢和挂是信任的复利杀手。",
+   "maturity": 2,
+   "stage": "renewal",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "05",
+     "slug": "05-第5章-守住续约",
+     "title": "第 5 章 守住续约"
+    }
+   ],
+   "cases": [],
+   "x": 678.0,
+   "y": 419.3
+  },
+  {
+   "id": "degraded-service",
+   "name": "有损服务的取舍",
+   "domain": "retention",
+   "desc": "放下不必要的坚持：什么时候该主动降级保核心。",
+   "maturity": 3,
+   "stage": "renewal",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "05",
+     "slug": "05-第5章-守住续约",
+     "title": "第 5 章 守住续约"
+    }
+   ],
+   "cases": [],
+   "x": 522.0,
+   "y": 482.0
+  },
+  {
+   "id": "onboarding",
+   "name": "新用户快速上手",
+   "domain": "retention",
+   "desc": "引导新用户快速上手：激活是持续动作，不是一次性事件。",
+   "maturity": 1,
+   "stage": "renewal",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "05",
+     "slug": "05-第5章-守住续约",
+     "title": "第 5 章 守住续约"
+    }
+   ],
+   "cases": [],
+   "x": 678.0,
+   "y": 482.0
+  },
+  {
+   "id": "org-single-point",
+   "name": "组织维系与单点依赖",
+   "domain": "retention",
+   "desc": "关键人离职怎么办：客户关系的多点冗余设计。",
+   "maturity": 2,
+   "stage": "renewal",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "05",
+     "slug": "05-第5章-守住续约",
+     "title": "第 5 章 守住续约"
+    }
+   ],
+   "cases": [],
+   "x": 522.0,
+   "y": 544.7
+  },
+  {
+   "id": "health-score",
+   "name": "健康分与预警干预",
+   "domain": "retention",
+   "desc": "设计客户健康分：把续约从冲刺变成可预警的日常。",
+   "maturity": 2,
+   "stage": "renewal",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "05",
+     "slug": "05-第5章-守住续约",
+     "title": "第 5 章 守住续约"
+    },
+    {
+     "num": "10",
+     "slug": "10-附录A-FDE应当关注的常用指标",
+     "title": "附录 A FDE 应当关注的常用指标"
+    }
+   ],
+   "cases": [],
+   "x": 678.0,
+   "y": 544.7
+  },
+  {
+   "id": "free-validation",
+   "name": "免费验证的世界",
+   "domain": "expansion",
+   "desc": "免费期的使命是验证价值，不是讨好客户。",
+   "maturity": 1,
+   "stage": "expansion",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "06",
+     "slug": "06-第6章-扩大收入",
+     "title": "第 6 章 扩大收入"
+    }
+   ],
+   "cases": [],
+   "x": 879.3,
+   "y": 435.0
+  },
+  {
+   "id": "outcome-pricing",
+   "name": "按结果收费",
+   "domain": "expansion",
+   "desc": "客户得到什么就为什么付钱：FDE 商业模式的极限形态。",
+   "maturity": 3,
+   "stage": "expansion",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "06",
+     "slug": "06-第6章-扩大收入",
+     "title": "第 6 章 扩大收入"
+    }
+   ],
+   "cases": [],
+   "x": 990.0,
+   "y": 435.0
+  },
+  {
+   "id": "land-and-expand",
+   "name": "存量深耕",
+   "domain": "expansion",
+   "desc": "从一个部门到一张大网：存量客户是最好的新客来源。",
+   "maturity": 2,
+   "stage": "expansion",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "06",
+     "slug": "06-第6章-扩大收入",
+     "title": "第 6 章 扩大收入"
+    }
+   ],
+   "cases": [],
+   "x": 1100.7,
+   "y": 435.0
+  },
+  {
+   "id": "pricing-psychology",
+   "name": "定价心理学",
+   "domain": "expansion",
+   "desc": "变惩为奖：用量与扩容定价里的行为设计。",
+   "maturity": 3,
+   "stage": "expansion",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "06",
+     "slug": "06-第6章-扩大收入",
+     "title": "第 6 章 扩大收入"
+    }
+   ],
+   "cases": [],
+   "x": 907.0,
+   "y": 529.0
+  },
+  {
+   "id": "value-metrics",
+   "name": "价值度量系统",
+   "domain": "expansion",
+   "desc": "建立价值度量系统以小博大：所有定价谈判的事实地基。",
+   "maturity": 2,
+   "stage": "expansion",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "06",
+     "slug": "06-第6章-扩大收入",
+     "title": "第 6 章 扩大收入"
+    },
+    {
+     "num": "10",
+     "slug": "10-附录A-FDE应当关注的常用指标",
+     "title": "附录 A FDE 应当关注的常用指标"
+    }
+   ],
+   "cases": [],
+   "x": 1073.0,
+   "y": 529.0
+  },
+  {
+   "id": "replicability-leverage",
+   "name": "可复制性杠杆",
+   "domain": "scale",
+   "desc": "用可复制性撬动交付杠杆：第二次交付必须比第一次便宜。",
+   "maturity": 2,
+   "stage": "scale",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "07",
+     "slug": "07-第7章-规模化复制",
+     "title": "第 7 章 规模化复制"
+    }
+   ],
+   "cases": [],
+   "x": 200.5,
+   "y": 720.0
+  },
+  {
+   "id": "failure-review",
+   "name": "失败复盘传播",
+   "domain": "scale",
+   "desc": "坏事传千里：失败部署的复盘要在组织内充分流通。",
+   "maturity": 2,
+   "stage": "scale",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "07",
+     "slug": "07-第7章-规模化复制",
+     "title": "第 7 章 规模化复制"
+    }
+   ],
+   "cases": [],
+   "x": 473.5,
+   "y": 720.0
+  },
+  {
+   "id": "ride-the-wave",
+   "name": "借势行业风口",
+   "domain": "scale",
+   "desc": "站在行业风口上：时机选择比努力程度更值钱。",
+   "maturity": 2,
+   "stage": "scale",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "07",
+     "slug": "07-第7章-规模化复制",
+     "title": "第 7 章 规模化复制"
+    }
+   ],
+   "cases": [],
+   "x": 746.5,
+   "y": 720.0
+  },
+  {
+   "id": "cross-customer-loop",
+   "name": "跨客户传播循环",
+   "domain": "scale",
+   "desc": "让客户替你获客：跨客户传播循环的设计。",
+   "maturity": 3,
+   "stage": "scale",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "07",
+     "slug": "07-第7章-规模化复制",
+     "title": "第 7 章 规模化复制"
+    }
+   ],
+   "cases": [],
+   "x": 1019.5,
+   "y": 720.0
+  },
+  {
+   "id": "builtin-virality",
+   "name": "产品内置裂变因子",
+   "domain": "scale",
+   "desc": "把传播机制做进产品里，而不是指望客户自觉。",
+   "maturity": 3,
+   "stage": "scale",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "07",
+     "slug": "07-第7章-规模化复制",
+     "title": "第 7 章 规模化复制"
+    }
+   ],
+   "cases": [],
+   "x": 200.5,
+   "y": 804.0
+  },
+  {
+   "id": "org-politics",
+   "name": "组织政治把握",
+   "domain": "scale",
+   "desc": "规模化中的组织政治：客户内部与自家内部的双线博弈。",
+   "maturity": 3,
+   "stage": "scale",
+   "ai_leverage": "low",
+   "chapter_links": [
+    {
+     "num": "07",
+     "slug": "07-第7章-规模化复制",
+     "title": "第 7 章 规模化复制"
+    }
+   ],
+   "cases": [],
+   "x": 473.5,
+   "y": 804.0
+  },
+  {
+   "id": "playbook",
+   "name": "打法手册沉淀",
+   "domain": "scale",
+   "desc": "把 deployment 经验沉淀成 playbook：复制效率的载体。",
+   "maturity": 2,
+   "stage": "scale",
+   "ai_leverage": "high",
+   "chapter_links": [
+    {
+     "num": "07",
+     "slug": "07-第7章-规模化复制",
+     "title": "第 7 章 规模化复制"
+    }
+   ],
+   "cases": [],
+   "x": 746.5,
+   "y": 804.0
+  },
+  {
+   "id": "productization",
+   "name": "产品化策划与打磨",
+   "domain": "scale",
+   "desc": "从项目到产品：什么时候把定制沉淀为通用能力。",
+   "maturity": 3,
+   "stage": "scale",
+   "ai_leverage": "mid",
+   "chapter_links": [
+    {
+     "num": "07",
+     "slug": "07-第7章-规模化复制",
+     "title": "第 7 章 规模化复制"
+    }
+   ],
+   "cases": [],
+   "x": 1019.5,
+   "y": 804.0
+  }
+ ],
+ "edges": [
+  {
+   "x1": 678.0,
+   "y1": 146.0,
+   "x2": 678.0,
+   "y2": 202.0,
+   "label": "前置"
+  },
+  {
+   "x1": 879.3,
+   "y1": 139.0,
+   "x2": 1100.7,
+   "y2": 139.0,
+   "label": "滚雪球"
+  },
+  {
+   "x1": 142.0,
+   "y1": 411.5,
+   "x2": 678.0,
+   "y2": 482.0,
+   "label": "衔接"
+  },
+  {
+   "x1": 678.0,
+   "y1": 544.7,
+   "x2": 522.0,
+   "y2": 419.3,
+   "label": "预警"
+  },
+  {
+   "x1": 1073.0,
+   "y1": 529.0,
+   "x2": 990.0,
+   "y2": 435.0,
+   "label": "计价地基"
+  },
+  {
+   "x1": 746.5,
+   "y1": 804.0,
+   "x2": 200.5,
+   "y2": 720.0,
+   "label": "沉淀"
+  }
+ ]
+}
