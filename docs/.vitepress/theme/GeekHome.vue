@@ -8,7 +8,8 @@ const props = defineProps({
 })
 
 const BOOK_REPO = 'https://github.com/xdash/FDE-the-Guidance-Book-of-Forward-Deployed-Engineer'
-const ORDER_FORM = 'https://zerodaybook.mikecrm.com/oc3Whb0' // 早鸟预购表单（MikeCRM，2026-08-13 上线）
+// 早鸟预售已于 2026-08-26 结束：MikeCRM 表单链接（ORDER_FORM）全站下线，
+// 正式价 ¥299 购买链接待课程制作收尾后再挂（见 08-26 改动记录）
 
 // 固底条：滑到课程区（第三屏）后逐渐出现
 const showDock = ref(false)
@@ -20,26 +21,12 @@ const onScroll = () => {
 }
 const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
-// 早鸟倒计时（2026-08-26 21:00 开播即截止，canon 时间表）
-const daysLeft = ref(0)
-const saleEnded = ref(false)
-const hydrated = ref(false) // SSR 首帧不渲染倒计时，防「今天截止」闪现
-const calcDays = () => {
-  const remain = new Date('2026-08-26T21:00:00+08:00').getTime() - Date.now()
-  saleEnded.value = remain <= 0
-  daysLeft.value = Math.max(0, Math.floor(remain / 86400000))
-}
-let daysTimer = null
 onMounted(() => {
   onScroll()
-  calcDays()
-  hydrated.value = true
-  daysTimer = setInterval(calcDays, 3600000) // 每小时重算，防长挂标签页过期
   window.addEventListener('scroll', onScroll, { passive: true })
 })
 onUnmounted(() => {
   window.removeEventListener('scroll', onScroll)
-  clearInterval(daysTimer)
 })
 
 const copy = {
@@ -89,26 +76,26 @@ const copy = {
       ['link', 'C · 全书案例索引与资料出处', '/book/12-附录C-全书案例索引与资料出处'],
     ],
     bookCta: '免费阅读手册 →',
-    courseEyebrow: '付费课程 · FDE 线上课程（2026）· 早鸟预购中',
+    courseEyebrow: '付费课程 · FDE 线上课程（2026）· 早鸟已结束',
     courseTitle1: '一个人读书，',
     courseTitle2: '一群人实战',
     lead1: '开源手册解决「知道」：岗位全貌、方法论主干、落地框架——全文免费，读到够用就到此为止。',
     lead2: '但如果你要的是「做到」——这门付费课程是手册的实战延伸：与书的重合度不到 20%，其余 80% 全是书里没有的东西。',
-    lead3: '实战为主：大量一手源案例（Bob McGrew 的 YC 原版、Palantir 官方、各厂 FDE 负责人亲述）打底，加上作者本人的亲身顾问经验与失败复盘，再配能带走的工具包，和直播前即可加入的学习社群。',
+    lead3: '实战为主：大量一手源案例（Bob McGrew 的 YC 原版、Palantir 官方、各厂 FDE 负责人亲述）打底，加上作者本人的亲身顾问经验与失败复盘，再配能带走的工具包，和购课即可加入的学习社群。',
     stats: [
       { num: '100', unit: 'MIN+', lbl: '核心视频 只多不少' },
       { num: '80', unit: '%', lbl: '免费手册里没有的增量内容' },
       { num: '5', unit: '件', lbl: '工具包 带走就能用' },
       { num: '直播', unit: '+ 录屏', lbl: '社群内首发 · 群内观看' },
     ],
-    courseCta: '立即购买课程并加入学习社群·早鸟 ¥199 →',
+    courseCta: '课程制作收尾中，即将开售 · 正式价 ¥299',
     cards: [
       { idx: '01 / CORE', h: '核心视频', p: '100min+，讲练结合，只多不少' },
       { idx: '02 / TOOLKIT', h: '工具包 5 件', p: '带走就能用的模板' },
       { idx: '03 / PRACTICE', h: '实操拆解', p: '课程现场抛出问题、逐步讲解，带你拆解一个真实业务场景，当堂完成你的第一张《企业 AI 项目可行性一页纸》' },
       { idx: '04 / MATERIAL', h: '课件与回放', p: '购课即得观看版 PDF；直播后提供完整视频回放' },
       { idx: '05 / LIVE', h: '直播与答疑', p: '学习社群内直播首发（8 月 26 日周三 21:00，仅限群内观看）+ 事后提供直播录屏' },
-      { idx: '06 / COMMUNITY', h: '学习社群', p: '直播前即可入群交流；首发直播仅限群内观看——社群也是同路人的天然过滤器' },
+      { idx: '06 / COMMUNITY', h: '学习社群', p: '购课即可入群交流；首发直播仅限群内观看——社群也是同路人的天然过滤器' },
     ],
     kitHead: 'TOOLKIT · 五件一览',
     kits: [
@@ -130,15 +117,12 @@ const copy = {
       ['06', '入场双轨：进企业 or 独立接单', '能力模型与面试备战 / 接单五步评估与客户筛选'],
       ['07', '第 1 / 3 / 7 天行动清单 + 你的第一张一页纸', '实操拆解收束：当堂产出你的第一张可行性一页纸'],
     ],
-    priceEyebrow: 'Pricing · 早鸟截止 8 月 26 日',
-    priceTitle: '早鸟 ¥199，8 月 26 日开播后恢复 ¥299',
+    priceEyebrow: 'Pricing · 早鸟已结束 · 即将开售',
+    priceTitle: '正式价 ¥299 · 课程制作收尾中，即将开售',
     priceLead: '¥299 即全部——无后端升单、不加微信卖咨询。',
-    countPre: '距早鸟截止还有 ',
-    countPost: ' 天',
-    countToday: '今天截止，最后机会',
     tiers: [
-      { hot: false, name: '正式价', price: '299', desc: '8 月 26 日开播后生效 · 明码标价，不议价', cta: '预售期买早鸟更划算 →' },
-      { hot: true, corner: '优选 · 早鸟', name: '早鸟预售', price: '199', desc: '预售价 ¥199 · 8 月 26 日 21:00 开播前有效，之后恢复 ¥299', cta: '立即预订' },
+      { hot: true, corner: '即将开售', name: '正式价', price: '299', desc: '早鸟预售已结束 · 明码标价，不议价', cta: '课程制作收尾中，即将开售', disabled: true },
+      { hot: false, ended: true, corner: '已结束', name: '早鸟预售', price: '199', desc: '预售价 ¥199 · 已于 8 月 26 日截止，感谢预购用户', cta: '早鸟已结束', disabled: true },
       { hot: false, name: '老客户红包', price: '99', desc: '知识星球（ZengZhang.AI VIP）成员购买后，微信联络我并出示购买成功截图，派发 99 元红包', cta: '去我知识星球看看 →', link: 'https://wx.zsxq.com/group/15528815482422' },
     ],
     fitYes: '适合谁',
@@ -173,15 +157,15 @@ const copy = {
       ['可以开发票吗？购买后能退款吗？', '发票：本课程为个人数字内容产品，无企业主体，无法开具发票，介意请慎拍。退款：虚拟数字内容一经售出，概不退款——下单前如有任何疑问，欢迎先发邮件到 xdash@duck.com 问清楚再买。'],
       ['我是企业经营决策者 / 老板 / 非一线业务人士，适合学吗？', '看您的学习目标：如果您对业务细节感兴趣、希望身先士卒搞清楚一线怎么把 AI 项目做成，可以学——这门课教的就是一线实操；如果您只想建立概念、把握方向，这门课的实操浓度对您可能太高——更适合您的线下课我正在制作中。'],
     ],
-    perksTag: '预购专享 · 开播后绝版',
-    perksTitle: '现在预购，独享三项福利',
+    perksTag: '预购专享 · 已结束',
+    perksTitle: '预购用户独享三项福利',
     perksNote: '三项福利均为预购专享——8 月 26 日开播后购买，只有回放与课件，不再享有',
     perks: [
       { t: '首发直播入场券', p: '8 月 26 日（周三）21:00 学习社群内直播，仅限群内观看，现场提问现场答；开播后购买只能看回放' },
       { t: '你的问题进课堂', p: '提交购买表单时留下你最感兴趣的问题——我大概率会在课程内直接解答' },
       { t: '让我认识你', p: '表单里留下你的背景信息 / 业务介绍：为你介绍适合的项目；信息足够真实优质，收录进 fde4.ai 生态地图、行业名录、案例库，向行业公开展示' },
     ],
-    finalCta: '立即预订 · 早鸟 ¥199 →',
+    finalCta: '课程制作收尾中，即将开售 · 正式价 ¥299',
     finalRisk: '直播后两天内 Email 收到课件（PDF + 视频回放），不依赖任何第三方平台',
     closingEyebrow: 'WHY NOW · 写在最后',
     closingTitle: 'AI 时代最稀缺的，不是模型，是把模型变成结果的人',
@@ -192,7 +176,7 @@ const copy = {
     footNote: '课程咨询：xdash@duck.com',
     footLinks: '友情链接',
     dockTop: '返回顶部 ↑',
-    dockCta: '立即预订 · 早鸟 ¥199',
+    dockCta: '即将开售 · 正式价 ¥299',
   },
   en: {
     badge: 'Open-source Handbook · Free to Read · 4k+ GitHub Stars',
@@ -240,26 +224,26 @@ const copy = {
       ['link', 'C · Case Index & Sources', '/book/12-附录C-全书案例索引与资料出处'],
     ],
     bookCta: 'Read the Handbook Free →',
-    courseEyebrow: 'PAID COURSE · FDE ONLINE COURSE (2026) · EARLY-BIRD PRE-SALE',
+    courseEyebrow: 'PAID COURSE · FDE ONLINE COURSE (2026) · EARLY BIRD ENDED',
     courseTitle1: 'Don\'t read alone —',
     courseTitle2: 'join the cohort',
     lead1: 'The free handbook covers the "what": the role, the methodology backbone, the landing frameworks — free forever, and enough for many.',
     lead2: 'But if you want to get from "knowing" to "doing" — this paid course is the hands-on extension of the handbook: less than 20% overlap with the book, the other 80% is all new material.',
-    lead3: 'Practice-first: the author\'s own consulting experience and failure post-mortems, first-hand sources (Bob McGrew\'s original YC talk, Palantir official materials, FDE leads\' own accounts), take-away toolkits — plus a learning community you can join before the live premiere.',
+    lead3: 'Practice-first: the author\'s own consulting experience and failure post-mortems, first-hand sources (Bob McGrew\'s original YC talk, Palantir official materials, FDE leads\' own accounts), take-away toolkits — plus a learning community you join on purchase.',
     stats: [
       { num: '100', unit: 'MIN+', lbl: 'Core Video, More if Anything' },
       { num: '80', unit: '%', lbl: 'New Beyond the Free Handbook' },
       { num: '5', unit: '', lbl: 'Take-away Toolkits' },
       { num: 'Live', unit: '+ Replay', lbl: 'Community Premiere' },
     ],
-    courseCta: 'Buy the Course & Join the Community · Early Bird ¥199 →',
+    courseCta: 'In Final Production — Launching Soon · ¥299',
     cards: [
       { idx: '01 / CORE', h: 'Core Videos', p: '100min+ core videos, learn by doing — more if anything' },
       { idx: '02 / TOOLKIT', h: 'Toolkit × 5', p: 'Take-away templates that work out of the box' },
       { idx: '03 / PRACTICE', h: 'Live Teardown', p: 'A real business scenario is posed and worked through in class — you finish your first Enterprise AI Feasibility One-Pager on the spot' },
       { idx: '04 / MATERIAL', h: 'Materials & Replay', p: 'Viewing PDF on purchase; full video replay after the live session' },
       { idx: '05 / LIVE', h: 'Live & Q&A', p: 'Premiere live in the community (Aug 26, Wed 21:00, members only) + recording afterwards' },
-      { idx: '06 / COMMUNITY', h: 'Learning Community', p: 'Join and chat before the premiere; the live premiere is members-only — the community is a natural filter for fellow travelers' },
+      { idx: '06 / COMMUNITY', h: 'Learning Community', p: 'Join the community on purchase; the live premiere is members-only — the community is a natural filter for fellow travelers' },
     ],
     kitHead: 'TOOLKIT · ALL FIVE',
     kits: [
@@ -281,15 +265,12 @@ const copy = {
       ['06', 'Two Tracks In: Join a Company or Go Independent', 'Competency model & interview prep / five-step project & client screening'],
       ['07', 'Day 1 / 3 / 7 Action List + Your First One-Pager', 'Live teardown finale: produce your first feasibility one-pager in class'],
     ],
-    priceEyebrow: 'Pricing · Early Bird Ends Aug 26',
-    priceTitle: 'Early Bird ¥199 — back to ¥299 once we go live Aug 26',
+    priceEyebrow: 'Pricing · Early Bird Ended · Launching Soon',
+    priceTitle: 'Standard ¥299 · In Final Production, Launching Soon',
     priceLead: '¥299 is all-inclusive — no upsells, no WeChat consulting funnel.',
-    countPre: 'Only ',
-    countPost: ' days left before early bird ends',
-    countToday: 'Ends today — last chance',
     tiers: [
-      { hot: false, name: 'Standard', price: '299', desc: 'Effective after the Aug 26 premiere · flat price, no bargaining', cta: 'Early bird ¥199 is better →' },
-      { hot: true, corner: 'BEST PICK', name: 'Early Bird Pre-sale', price: '199', desc: '¥199 until the Aug 26 premiere (21:00 GMT+8), then ¥299', cta: 'Reserve Now' },
+      { hot: true, corner: 'COMING SOON', name: 'Standard', price: '299', desc: 'Early bird has ended · flat price, no bargaining', cta: 'In final production — launching soon', disabled: true },
+      { hot: false, ended: true, corner: 'ENDED', name: 'Early Bird Pre-sale', price: '199', desc: '¥199 pre-sale · closed on Aug 26 — thanks to all who pre-ordered', cta: 'Early Bird Ended', disabled: true },
       { hot: false, name: 'Alumni Red Packet', price: '99', desc: 'Planet (ZengZhang.AI VIP) members: after purchase, message me on WeChat with your receipt screenshot for a ¥99 red packet', cta: 'Visit my Planet →', link: 'https://wx.zsxq.com/group/15528815482422' },
     ],
     fitYes: 'Who it\'s for',
@@ -324,15 +305,15 @@ const copy = {
       ['Can I get an invoice? Is it refundable?', 'Invoice: this is a personal digital product with no corporate entity, so no invoice (fapiao) can be issued — please don\'t buy if you need one. Refund: digital content is final sale, no refunds once purchased — if you have any doubts, email xdash@duck.com and ask before ordering.'],
       ['I\'m a business owner / decision-maker, not a frontline practitioner. Is this for me?', 'It depends on your goal: if you enjoy getting into the details and want to lead from the front — to understand how AI projects actually land on the ground — yes, that\'s exactly what this course teaches. If you only want concepts and direction, it\'s probably too hands-on for you — a course designed for you is in the works.'],
     ],
-    perksTag: 'PRE-ORDER ONLY · GONE AFTER LAUNCH',
-    perksTitle: 'Three perks you only get by pre-ordering',
+    perksTag: 'PRE-ORDER ONLY · ENDED',
+    perksTitle: 'Three perks reserved for pre-order buyers',
     perksNote: 'All three are pre-order exclusives — buy after the Aug 26 premiere and you get the replay and materials only',
     perks: [
       { t: 'Seat at the Premiere', p: 'Live in the community on Aug 26 (Wed) 21:00, members only — ask questions in real time; later buyers get the replay only' },
       { t: 'Your Question in Class', p: 'Leave the question you care about most in the order form — chances are I\'ll answer it directly in the course' },
       { t: 'Let Me Know You', p: 'Share your background / business in the form: I\'ll point you to fitting projects; authentic, strong profiles get featured in fde4.ai\'s ecosystem map, industry directory, and case library' },
     ],
-    finalCta: 'Reserve · Early Bird ¥199 →',
+    finalCta: 'In Final Production — Launching Soon · ¥299',
     finalRisk: 'Materials (PDF + video replay) arrive by email within two days of the live session — no third-party platform required',
     closingEyebrow: 'WHY NOW · PARTING WORDS',
     closingTitle: 'The scarcest thing in the AI era is not models — it\'s people who turn models into results',
@@ -343,7 +324,7 @@ const copy = {
     footNote: 'Course inquiries: xdash@duck.com',
     footLinks: 'Links',
     dockTop: 'Back to Top ↑',
-    dockCta: 'Reserve · Early Bird ¥199',
+    dockCta: 'Launching Soon · ¥299',
   },
 }
 
@@ -447,7 +428,7 @@ const friendLinks = [
         <p class="lead rv d4">{{ c.lead2 }}</p>
         <p class="lead rv d5">{{ c.lead3 }}</p>
         <div class="cta-row lead-cta rv d6">
-          <a class="btn btn-primary" :href="ORDER_FORM" target="_blank" rel="noopener">{{ c.courseCta }}</a>
+          <span class="btn is-disabled">{{ c.courseCta }}</span>
         </div>
 
         <div class="stats rv d4">
@@ -504,7 +485,7 @@ const friendLinks = [
       <div class="wrap">
         <div class="eyebrow rv d1">{{ c.priceEyebrow }}</div>
 
-        <!-- 预购专享福利带（开播后绝版） -->
+        <!-- 预购专享福利带（已结束，陈列预购用户权益） -->
         <div class="perks rv d2">
           <div class="perks-head">
             <span class="perks-tag">{{ c.perksTag }}</span>
@@ -521,19 +502,16 @@ const friendLinks = [
         </div>
 
         <h2 class="sec-title rv d2" id="pricing">{{ c.priceTitle }}</h2>
-        <p class="countdown rv d2" v-if="hydrated && !saleEnded">
-          <template v-if="daysLeft > 0">{{ c.countPre }}<b>{{ daysLeft }}</b>{{ c.countPost }}</template>
-          <template v-else><b>{{ c.countToday }}</b></template>
-        </p>
         <p class="lead rv d2">{{ c.priceLead }}</p>
 
         <div class="tiers">
-          <div class="tier rv" :class="[{ hot: t.hot }, 'd' + (i + 2)]" v-for="(t, i) in c.tiers" :key="i">
+          <div class="tier rv" :class="[{ hot: t.hot, ended: t.ended }, 'd' + (i + 2)]" v-for="(t, i) in c.tiers" :key="i">
             <div class="corner" v-if="t.corner">{{ t.corner }}</div>
             <div class="t-name">{{ t.name }}</div>
             <div class="t-price"><span class="cur">¥</span>{{ t.price }}</div>
             <div class="t-desc">{{ t.desc }}</div>
-            <a class="t-cta" :href="t.link || ORDER_FORM" target="_blank" rel="noopener">{{ t.cta }}</a>
+            <span v-if="t.disabled" class="t-cta is-disabled">{{ t.cta }}</span>
+            <a v-else class="t-cta" :href="t.link" target="_blank" rel="noopener">{{ t.cta }}</a>
           </div>
         </div>
 
@@ -577,7 +555,7 @@ const friendLinks = [
         </div>
 
         <div class="final-cta rv d3">
-          <a class="btn btn-primary" :href="ORDER_FORM" target="_blank" rel="noopener">{{ c.finalCta }}</a>
+          <span class="btn is-disabled">{{ c.finalCta }}</span>
           <p class="cta-risk">{{ c.finalRisk }}</p>
         </div>
       </div>
@@ -592,7 +570,7 @@ const friendLinks = [
         <h2 class="closing-title rv d2">{{ c.closingTitle }}</h2>
         <p class="closing-lead rv d3">{{ c.closingLead }}</p>
         <div class="cta-row rv d4">
-          <a class="btn btn-primary" :href="ORDER_FORM" target="_blank" rel="noopener">{{ c.finalCta }}</a>
+          <span class="btn is-disabled">{{ c.finalCta }}</span>
           <a class="btn btn-ghost" :href="bookLink" target="_blank" rel="noopener">{{ c.closingRead }}</a>
         </div>
       </div>
@@ -602,7 +580,7 @@ const friendLinks = [
     <div class="dock" :class="{ show: showDock }">
       <div class="dock-inner">
         <button class="dock-btn" type="button" @click="toTop">{{ c.dockTop }}</button>
-        <a class="dock-btn dock-hot" :href="ORDER_FORM" target="_blank" rel="noopener">{{ c.dockCta }}</a>
+        <span class="dock-btn is-disabled">{{ c.dockCta }}</span>
       </div>
     </div>
 
@@ -999,6 +977,36 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
   margin-bottom:8px;
 }
 
+/* 已结束 / 未开售禁用态（2026-08-26 早鸟结束后上线） */
+.btn.is-disabled,.dock-btn.is-disabled{
+  background:rgba(255,255,255,.05);
+  border:1px solid var(--line-strong);
+  color:var(--ink-3);
+  cursor:not-allowed;
+  box-shadow:none;
+}
+.btn.is-disabled:hover,.dock-btn.is-disabled:hover{
+  transform:none;box-shadow:none;color:var(--ink-3);border-color:var(--line-strong);
+}
+.tier .t-cta.is-disabled,
+.tier.hot .t-cta.is-disabled{
+  background:rgba(255,255,255,.05);
+  border-color:var(--line);
+  color:var(--ink-3);
+  cursor:not-allowed;
+  box-shadow:none;
+}
+.tier .t-cta.is-disabled:hover,
+.tier.hot .t-cta.is-disabled:hover{
+  background:rgba(255,255,255,.05);
+  border-color:var(--line);
+  color:var(--ink-3);
+  box-shadow:none;
+  transform:none;
+}
+.tier.ended{opacity:.55}
+.tier.ended:hover{transform:none;border-color:var(--line)}
+
 /* 适合 / 不适合 */
 .fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
 .fit{
@@ -1031,13 +1039,6 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
   color:var(--ink-3);
 }
 .proof b{color:var(--neon);font-weight:600}
-
-/* 倒计时 */
-.countdown{
-  font-family:var(--font-mono);font-size:13px;letter-spacing:.1em;
-  color:var(--neon);margin:-8px 0 18px;
-}
-.countdown b{font-size:16px}
 
 /* 作者卡 */
 .author{
@@ -1135,7 +1136,7 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
   font-family:var(--font-mono);font-size:13px;letter-spacing:.05em;
   color:var(--ink-2);
 }
-.perks-note::before{content:"⏳ ";font-size:12px}
+.perks-note::before{content:"※ ";font-size:12px}
 
 /* 主 CTA */
 .final-cta{margin-top:56px;text-align:center}
@@ -1270,14 +1271,6 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
   transition:border-color .2s,color .2s,box-shadow .25s,transform .18s;
 }
 .dock-btn:hover{border-color:rgba(24,240,80,.55);color:var(--neon)}
-.dock-btn.dock-hot{
-  background:var(--neon);border-color:var(--neon);color:#060806;font-weight:700;
-}
-.dock-btn.dock-hot:hover{
-  color:#060806;
-  box-shadow:0 6px 26px rgba(24,240,80,.4);
-  transform:translateY(-1px);
-}
 @supports (padding: env(safe-area-inset-bottom)){
   .dock-inner{margin-bottom:calc(18px + env(safe-area-inset-bottom))}
 }
