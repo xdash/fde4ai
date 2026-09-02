@@ -8,8 +8,8 @@ const props = defineProps({
 })
 
 const BOOK_REPO = 'https://github.com/xdash/FDE-the-Guidance-Book-of-Forward-Deployed-Engineer'
-// 早鸟预售已于 2026-08-26 结束：MikeCRM 表单链接（ORDER_FORM）全站下线，
-// 正式价 ¥299 购买链接待课程制作收尾后再挂（见 08-26 改动记录）
+// 正式版 2026-09-02 上线：恢复 MikeCRM 购买表单链接（与预售同一表单），全站 CTA 解除置灰
+const ORDER_FORM = 'https://zerodaybook.mikecrm.com/oc3Whb0'
 
 // 固底条：滑到课程区（第三屏）后逐渐出现
 const showDock = ref(false)
@@ -76,7 +76,7 @@ const copy = {
       ['link', 'C · 全书案例索引与资料出处', '/book/12-附录C-全书案例索引与资料出处'],
     ],
     bookCta: '免费阅读手册 →',
-    courseEyebrow: '付费课程 · FDE 线上课程（2026）· 早鸟已结束',
+    courseEyebrow: '付费课程 · FDE 线上课程（2026）· 正式版已上线',
     courseTitle1: '一个人读书，',
     courseTitle2: '一群人实战',
     lead1: '开源手册解决「知道」：岗位全貌、方法论主干、落地框架——全文免费，读到够用就到此为止。',
@@ -88,13 +88,13 @@ const copy = {
       { num: '5', unit: '件', lbl: '工具包 带走就能用' },
       { num: '直播', unit: '+ 录屏', lbl: '社群内首发 · 群内观看' },
     ],
-    courseCta: '课程制作收尾中，即将开售 · 正式价 ¥299',
+    courseCta: '立即购买 · 正式价 ¥299',
     cards: [
       { idx: '01 / CORE', h: '核心视频', p: '100min+，讲练结合，只多不少' },
       { idx: '02 / TOOLKIT', h: '工具包 5 件', p: '带走就能用的模板' },
       { idx: '03 / PRACTICE', h: '实操拆解', p: '课程现场抛出问题、逐步讲解，带你拆解一个真实业务场景，当堂完成你的第一张《企业 AI 项目可行性一页纸》' },
       { idx: '04 / MATERIAL', h: '课件与回放', p: '购课即得观看版 PDF；直播后提供完整视频回放' },
-      { idx: '05 / LIVE', h: '直播与答疑', p: '学习社群内直播首发（8 月 26 日周三 21:00，仅限群内观看）+ 事后提供直播录屏' },
+      { idx: '05 / LIVE', h: '直播与答疑', p: '学习社群内直播首发（已于 8 月 26 日完成）+ 完整直播录屏' },
       { idx: '06 / COMMUNITY', h: '学习社群', p: '购课即可入群交流；首发直播仅限群内观看——社群也是同路人的天然过滤器' },
     ],
     kitHead: 'TOOLKIT · 五件一览',
@@ -117,11 +117,11 @@ const copy = {
       ['06', '入场双轨：进企业 or 独立接单', '能力模型与面试备战 / 接单五步评估与客户筛选'],
       ['07', '第 1 / 3 / 7 天行动清单 + 你的第一张一页纸', '实操拆解收束：当堂产出你的第一张可行性一页纸'],
     ],
-    priceEyebrow: 'Pricing · 早鸟已结束 · 即将开售',
-    priceTitle: '正式价 ¥299 · 课程制作收尾中，即将开售',
+    priceEyebrow: 'Pricing · 早鸟已结束 · 正式版已上线',
+    priceTitle: '正式价 ¥299 · 已上线，即买即学',
     priceLead: '¥299 即全部——无后端升单、不加微信卖咨询。',
     tiers: [
-      { hot: true, corner: '即将开售', name: '正式价', price: '299', desc: '早鸟预售已结束 · 明码标价，不议价', cta: '课程制作收尾中，即将开售', disabled: true },
+      { hot: true, corner: '已上线', name: '正式价', price: '299', desc: '早鸟预售已结束 · 明码标价，不议价', cta: '立即购买 ¥299', link: ORDER_FORM },
       { hot: false, ended: true, corner: '已结束', name: '早鸟预售', price: '199', desc: '预售价 ¥199 · 已于 8 月 26 日截止，感谢预购用户', cta: '早鸟已结束', disabled: true },
       { hot: false, name: '老客户红包', price: '99', desc: '知识星球（ZengZhang.AI VIP）成员购买后，微信联络我并出示购买成功截图，派发 99 元红包', cta: '去我知识星球看看 →', link: 'https://wx.zsxq.com/group/15528815482422' },
     ],
@@ -151,9 +151,9 @@ const copy = {
     faqs: [
       ['我读过开源手册了，还需要买课吗？', '重合度不到 20%。手册给方法论主干，课程给实战案例、亲身复盘、工具包与社群。'],
       ['直播还是录播？', '直播首发 + 事后录屏。入群可看首发直播并现场交流；不入群也能在两天内通过 Email 收到全部课件。'],
-      ['课程什么时候能看？', '8 月 26 日（周三）21:00 学习社群内首发直播，仅限群内观看；直播后两天内，无论是否入群，都会通过 Email 收到课件（PDF + 视频回放）。'],
-      ['怎么加入学习社群（微信群）？', '购买表单里会要求您留下微信号，我会主动加您——一般在工作时间处理；晚间和周末要带娃，回复可能不及时，请见谅。等人数达到一定规模后集体拉群。另外声明：您也可以选择不进群——不进群就看不到 8 月 26 日的首发直播，但课程视频、课件资料等都会在直播后两天内通过 Email 照常发给您，一样不少。'],
-      ['课件怎么交付？', '首播后两天内，课件 PDF 与视频回放（网盘 / YouTube 链接）统一通过 Email 发送——建议优先使用 Gmail、iCloud 等国际邮箱，QQ、163 等国产邮箱可能误过滤；开课后第一时间没收到，请先检查垃圾箱。客服邮箱：xdash@duck.com'],
+      ['课程什么时候能看？', '课程已正式上线，首播直播已于 8 月 26 日完成。现在购买，课件（PDF + 视频回放）会通过 Email 发送给您；是否入群都不影响课件交付。'],
+      ['怎么加入学习社群（微信群）？', '购买表单里会要求您留下微信号，我会主动加您——一般在工作时间处理；晚间和周末要带娃，回复可能不及时，请见谅。等人数达到一定规模后集体拉群。另外声明：您也可以选择不进群——首播直播已于 8 月 26 日结束，但课程视频、课件资料等都会通过 Email 照常发给您，一样不少。'],
+      ['课件怎么交付？', '购买后，课件 PDF 与视频回放（网盘 / YouTube 链接）统一通过 Email 发送——建议优先使用 Gmail、iCloud 等国际邮箱，QQ、163 等国产邮箱可能误过滤；购买后没收到，请先检查垃圾箱。客服邮箱：xdash@duck.com'],
       ['可以开发票吗？购买后能退款吗？', '发票：本课程为个人数字内容产品，无企业主体，无法开具发票，介意请慎拍。退款：虚拟数字内容一经售出，概不退款——下单前如有任何疑问，欢迎先发邮件到 xdash@duck.com 问清楚再买。'],
       ['我是企业经营决策者 / 老板 / 非一线业务人士，适合学吗？', '看您的学习目标：如果您对业务细节感兴趣、希望身先士卒搞清楚一线怎么把 AI 项目做成，可以学——这门课教的就是一线实操；如果您只想建立概念、把握方向，这门课的实操浓度对您可能太高——更适合您的线下课我正在制作中。'],
     ],
@@ -165,8 +165,8 @@ const copy = {
       { t: '你的问题进课堂', p: '提交购买表单时留下你最感兴趣的问题——我大概率会在课程内直接解答' },
       { t: '让我认识你', p: '表单里留下你的背景信息 / 业务介绍：为你介绍适合的项目；信息足够真实优质，收录进 fde4.ai 生态地图、行业名录、案例库，向行业公开展示' },
     ],
-    finalCta: '课程制作收尾中，即将开售 · 正式价 ¥299',
-    finalRisk: '直播后两天内 Email 收到课件（PDF + 视频回放），不依赖任何第三方平台',
+    finalCta: '立即购买 · 正式价 ¥299',
+    finalRisk: '购买后 Email 收到课件（PDF + 视频回放），不依赖任何第三方平台',
     closingEyebrow: 'WHY NOW · 写在最后',
     closingTitle: 'AI 时代最稀缺的，不是模型，是把模型变成结果的人',
     closingLead: '技术贬值越来越快，一线交付能力越来越贵。FDE 是这轮 AI 浪潮里少数「离钱最近」的技术岗位——手册给你地图，课程和社群陪你走第一程。',
@@ -176,7 +176,7 @@ const copy = {
     footNote: '课程咨询：xdash@duck.com',
     footLinks: '友情链接',
     dockTop: '返回顶部 ↑',
-    dockCta: '即将开售 · 正式价 ¥299',
+    dockCta: '立即购买 · 正式价 ¥299',
   },
   en: {
     badge: 'Open-source Handbook · Free to Read · 4k+ GitHub Stars',
@@ -224,7 +224,7 @@ const copy = {
       ['link', 'C · Case Index & Sources', '/book/12-附录C-全书案例索引与资料出处'],
     ],
     bookCta: 'Read the Handbook Free →',
-    courseEyebrow: 'PAID COURSE · FDE ONLINE COURSE (2026) · EARLY BIRD ENDED',
+    courseEyebrow: 'PAID COURSE · FDE ONLINE COURSE (2026) · NOW LIVE',
     courseTitle1: 'Don\'t read alone —',
     courseTitle2: 'join the cohort',
     lead1: 'The free handbook covers the "what": the role, the methodology backbone, the landing frameworks — free forever, and enough for many.',
@@ -236,13 +236,13 @@ const copy = {
       { num: '5', unit: '', lbl: 'Take-away Toolkits' },
       { num: 'Live', unit: '+ Replay', lbl: 'Community Premiere' },
     ],
-    courseCta: 'In Final Production — Launching Soon · ¥299',
+    courseCta: 'Buy Now · ¥299',
     cards: [
       { idx: '01 / CORE', h: 'Core Videos', p: '100min+ core videos, learn by doing — more if anything' },
       { idx: '02 / TOOLKIT', h: 'Toolkit × 5', p: 'Take-away templates that work out of the box' },
       { idx: '03 / PRACTICE', h: 'Live Teardown', p: 'A real business scenario is posed and worked through in class — you finish your first Enterprise AI Feasibility One-Pager on the spot' },
       { idx: '04 / MATERIAL', h: 'Materials & Replay', p: 'Viewing PDF on purchase; full video replay after the live session' },
-      { idx: '05 / LIVE', h: 'Live & Q&A', p: 'Premiere live in the community (Aug 26, Wed 21:00, members only) + recording afterwards' },
+      { idx: '05 / LIVE', h: 'Live & Q&A', p: 'Premiered live in the community on Aug 26 — full recording included' },
       { idx: '06 / COMMUNITY', h: 'Learning Community', p: 'Join the community on purchase; the live premiere is members-only — the community is a natural filter for fellow travelers' },
     ],
     kitHead: 'TOOLKIT · ALL FIVE',
@@ -265,11 +265,11 @@ const copy = {
       ['06', 'Two Tracks In: Join a Company or Go Independent', 'Competency model & interview prep / five-step project & client screening'],
       ['07', 'Day 1 / 3 / 7 Action List + Your First One-Pager', 'Live teardown finale: produce your first feasibility one-pager in class'],
     ],
-    priceEyebrow: 'Pricing · Early Bird Ended · Launching Soon',
-    priceTitle: 'Standard ¥299 · In Final Production, Launching Soon',
+    priceEyebrow: 'Pricing · Early Bird Ended · Now Live',
+    priceTitle: 'Standard ¥299 · Now Live, Instant Access',
     priceLead: '¥299 is all-inclusive — no upsells, no WeChat consulting funnel.',
     tiers: [
-      { hot: true, corner: 'COMING SOON', name: 'Standard', price: '299', desc: 'Early bird has ended · flat price, no bargaining', cta: 'In final production — launching soon', disabled: true },
+      { hot: true, corner: 'NOW LIVE', name: 'Standard', price: '299', desc: 'Early bird has ended · flat price, no bargaining', cta: 'Buy Now ¥299', link: ORDER_FORM },
       { hot: false, ended: true, corner: 'ENDED', name: 'Early Bird Pre-sale', price: '199', desc: '¥199 pre-sale · closed on Aug 26 — thanks to all who pre-ordered', cta: 'Early Bird Ended', disabled: true },
       { hot: false, name: 'Alumni Red Packet', price: '99', desc: 'Planet (ZengZhang.AI VIP) members: after purchase, message me on WeChat with your receipt screenshot for a ¥99 red packet', cta: 'Visit my Planet →', link: 'https://wx.zsxq.com/group/15528815482422' },
     ],
@@ -299,9 +299,9 @@ const copy = {
     faqs: [
       ['I already read the handbook. Do I need the course?', 'Less than 20% overlap. The handbook gives the methodology; the course gives cases, first-hand post-mortems, toolkits, and community.'],
       ['Live or recorded?', 'Live premiere + recording afterwards. Members watch live and interact; non-members get everything by email within two days.'],
-      ['When do I get access?', 'Premiere live in the community on Aug 26 (Wed) 21:00, members only; within two days, everyone receives the materials (PDF + video replay) by email.'],
-      ['How do I join the community (WeChat group)?', 'The order form asks for your WeChat ID, and I\'ll add you myself — usually during work hours; evenings and weekends are family time, so replies may be slow. Once enough people have joined, I\'ll invite everyone into the group together. Note: you can also choose not to join — you\'d miss the Aug 26 live premiere, but all videos and materials still arrive by email within two days, nothing lost.'],
-      ['How are materials delivered?', 'Within two days of the premiere, the PDF and video replay (cloud drive / YouTube link) are sent by email — Gmail / iCloud recommended; QQ / 163 and other domestic providers may misfilter. If nothing arrives, check spam first. Support: xdash@duck.com'],
+      ['When do I get access?', 'The course is officially live — the premiere aired on Aug 26. Buy now and the materials (PDF + video replay) arrive by email; joining the community is optional.'],
+      ['How do I join the community (WeChat group)?', 'The order form asks for your WeChat ID, and I\'ll add you myself — usually during work hours; evenings and weekends are family time, so replies may be slow. Once enough people have joined, I\'ll invite everyone into the group together. Note: you can also choose not to join — the Aug 26 premiere has aired, but all videos and materials still arrive by email, nothing lost.'],
+      ['How are materials delivered?', 'After purchase, the PDF and video replay (cloud drive / YouTube link) are sent by email — Gmail / iCloud recommended; QQ / 163 and other domestic providers may misfilter. If nothing arrives, check spam first. Support: xdash@duck.com'],
       ['Can I get an invoice? Is it refundable?', 'Invoice: this is a personal digital product with no corporate entity, so no invoice (fapiao) can be issued — please don\'t buy if you need one. Refund: digital content is final sale, no refunds once purchased — if you have any doubts, email xdash@duck.com and ask before ordering.'],
       ['I\'m a business owner / decision-maker, not a frontline practitioner. Is this for me?', 'It depends on your goal: if you enjoy getting into the details and want to lead from the front — to understand how AI projects actually land on the ground — yes, that\'s exactly what this course teaches. If you only want concepts and direction, it\'s probably too hands-on for you — a course designed for you is in the works.'],
     ],
@@ -313,8 +313,8 @@ const copy = {
       { t: 'Your Question in Class', p: 'Leave the question you care about most in the order form — chances are I\'ll answer it directly in the course' },
       { t: 'Let Me Know You', p: 'Share your background / business in the form: I\'ll point you to fitting projects; authentic, strong profiles get featured in fde4.ai\'s ecosystem map, industry directory, and case library' },
     ],
-    finalCta: 'In Final Production — Launching Soon · ¥299',
-    finalRisk: 'Materials (PDF + video replay) arrive by email within two days of the live session — no third-party platform required',
+    finalCta: 'Buy Now · ¥299',
+    finalRisk: 'Materials (PDF + video replay) arrive by email after purchase — no third-party platform required',
     closingEyebrow: 'WHY NOW · PARTING WORDS',
     closingTitle: 'The scarcest thing in the AI era is not models — it\'s people who turn models into results',
     closingLead: 'Tech depreciates fast; frontline delivery appreciates. FDE is one of the closest-to-revenue technical roles of this wave — the handbook gives you the map; the course and community walk the first mile with you.',
@@ -324,7 +324,7 @@ const copy = {
     footNote: 'Course inquiries: xdash@duck.com',
     footLinks: 'Links',
     dockTop: 'Back to Top ↑',
-    dockCta: 'Launching Soon · ¥299',
+    dockCta: 'Buy Now · ¥299',
   },
 }
 
@@ -428,7 +428,7 @@ const friendLinks = [
         <p class="lead rv d4">{{ c.lead2 }}</p>
         <p class="lead rv d5">{{ c.lead3 }}</p>
         <div class="cta-row lead-cta rv d6">
-          <span class="btn is-disabled">{{ c.courseCta }}</span>
+          <a class="btn btn-primary" :href="ORDER_FORM" target="_blank" rel="noopener">{{ c.courseCta }}</a>
         </div>
 
         <div class="stats rv d4">
@@ -555,7 +555,7 @@ const friendLinks = [
         </div>
 
         <div class="final-cta rv d3">
-          <span class="btn is-disabled">{{ c.finalCta }}</span>
+          <a class="btn btn-primary" :href="ORDER_FORM" target="_blank" rel="noopener">{{ c.finalCta }}</a>
           <p class="cta-risk">{{ c.finalRisk }}</p>
         </div>
       </div>
@@ -570,7 +570,7 @@ const friendLinks = [
         <h2 class="closing-title rv d2">{{ c.closingTitle }}</h2>
         <p class="closing-lead rv d3">{{ c.closingLead }}</p>
         <div class="cta-row rv d4">
-          <span class="btn is-disabled">{{ c.finalCta }}</span>
+          <a class="btn btn-primary" :href="ORDER_FORM" target="_blank" rel="noopener">{{ c.finalCta }}</a>
           <a class="btn btn-ghost" :href="bookLink" target="_blank" rel="noopener">{{ c.closingRead }}</a>
         </div>
       </div>
@@ -580,7 +580,7 @@ const friendLinks = [
     <div class="dock" :class="{ show: showDock }">
       <div class="dock-inner">
         <button class="dock-btn" type="button" @click="toTop">{{ c.dockTop }}</button>
-        <span class="dock-btn is-disabled">{{ c.dockCta }}</span>
+        <a class="dock-btn" :href="ORDER_FORM" target="_blank" rel="noopener">{{ c.dockCta }}</a>
       </div>
     </div>
 
