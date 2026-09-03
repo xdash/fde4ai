@@ -34,7 +34,7 @@ const copy = {
     badge: '开源手册 · 全文免费 · GitHub 4k+ Star',
     titleDim: '前线部署工程师',
     titleEm: 'FDE',
-    heroSub: '免费开源手册 + 付费课程·社群',
+    heroSub: '免费开源手册 + 付费课程',
     authorLine: '范冰 著',
     tagMono: 'THE OPEN-SOURCE FIELD GUIDE FOR FORWARD DEPLOYED ENGINEERS',
     tagPre: '一本写给 AI 交付者的实战手册：从岗位全貌、赢得客户到激活部署，讲清 FDE 怎么',
@@ -42,7 +42,7 @@ const copy = {
     tagPost: '。',
     ctaGh: 'GitHub 项目 ↗',
     ctaRead: '免费阅读手册 →',
-    ctaCourse: '付费课程/社群 ↓',
+    ctaCourse: '付费课程 ↓',
     info: [['全文免费', ''], ['GitHub ', '4k+ Star'], ['持续版本化更新', '']],
     features: [],
     whyEyebrow: 'WHY FDE · 岗位背景',
@@ -81,29 +81,19 @@ const copy = {
     courseTitle2: '一群人实战',
     lead1: '开源手册解决「知道」：岗位全貌、方法论主干、落地框架——全文免费，读到够用就到此为止。',
     lead2: '但如果你要的是「做到」——这门付费课程是手册的实战延伸：与书的重合度不到 20%，其余 80% 全是书里没有的东西。',
-    lead3: '实战为主：作者本人的亲身顾问经验与失败复盘打底——两次踩坑、一次交付，全是真实现场；再配能带走的工具包，和购课即可加入的学习社群。',
+    lead3: '实战为主：作者本人的亲身顾问经验与失败复盘打底——两次踩坑、一次交付，全是真实现场；课件 PDF 与完整回放购课后 Email 交付。',
     stats: [
       { num: '约 2', unit: '小时', lbl: '直播全程回放 · 含现场 QA' },
       { num: '80', unit: '%', lbl: '免费手册里没有的增量内容' },
-      { num: '5', unit: '件', lbl: '工具包 带走就能用' },
+      { num: '6', unit: '节', lbl: '正课 + 现场 QA 答疑' },
       { num: '直播', unit: '+ 录屏', lbl: '已于 8/26 完成 · 全程回放' },
     ],
     courseCta: '立即购买 · 正式价 ¥299',
     cards: [
       { idx: '01 / CORE', h: '核心视频', p: '直播实战全程回放，含现场 QA 答疑' },
-      { idx: '02 / TOOLKIT', h: '工具包 5 件', p: '带走就能用的模板' },
-      { idx: '03 / PRACTICE', h: '实操拆解', p: '真实顾问现场逐步拆解：两次踩坑、一次交付，交付三关带你完整走一遍' },
-      { idx: '04 / MATERIAL', h: '课件与回放', p: '购课即得观看版 PDF 课件与完整视频回放（Email 交付）' },
-      { idx: '05 / LIVE', h: '直播与答疑', p: '学习社群内直播首发（已于 8 月 26 日完成）+ 完整直播录屏' },
-      { idx: '06 / COMMUNITY', h: '学习社群', p: '购课即可入群交流；首发直播仅限群内观看——社群也是同路人的天然过滤器' },
-    ],
-    kitHead: 'TOOLKIT · 五件一览',
-    kits: [
-      '《FDE 岗位能力自测表》',
-      '《企业 AI 项目可行性一页纸》',
-      '《交付三关检查清单》',
-      '《FDE 入场前 30 天准备清单》',
-      '《FDE 面试题库与备战清单》',
+      { idx: '02 / PRACTICE', h: '实操拆解', p: '真实顾问现场逐步拆解：两次踩坑、一次交付，交付三关带你完整走一遍' },
+      { idx: '03 / MATERIAL', h: '课件与回放', p: '购课即得观看版 PDF 课件与完整视频回放（Email 交付）' },
+      { idx: '04 / LIVE', h: '直播与答疑', p: '直播首发已于 8 月 26 日完成，完整录屏随课交付' },
     ],
     syllTitle: '大纲（实际交付内容）',
     syllTag: '直播已于 8/26 完成 · AS DELIVERED',
@@ -115,7 +105,7 @@ const copy = {
       ['04', '失败复盘：从踩坑到可交付', '本人顾问现场两次踩坑 + 一次交付实证，全课最重案例'],
       ['05', '进入企业：门槛与能力证据', '真假 FDE 十分钟辨伪三规则；面试门槛与能力证据怎么攒'],
       ['06', '独立接单：获客、定价与拒单', '获客渠道、定价演算（20 分钟 2 万的账）与拒单筛选'],
-      ['QA', '现场问答 + 群内追答', '直播 QA 答疑实录；未尽问题群内继续'],
+      ['QA', '现场问答实录', '直播现场 QA 答疑，随完整回放一同交付'],
     ],
     priceEyebrow: 'Pricing · 早鸟已结束 · 正式版已上线',
     priceTitle: '正式价 ¥299 · 已上线，即买即学',
@@ -149,10 +139,9 @@ const copy = {
     ],
     faqEyebrow: 'FAQ · 你可能想问',
     faqs: [
-      ['我读过开源手册了，还需要买课吗？', '重合度不到 20%。手册给方法论主干，课程给实战案例、亲身复盘、工具包与社群。'],
+      ['我读过开源手册了，还需要买课吗？', '重合度不到 20%。手册给方法论主干，课程给实战案例与亲身复盘。'],
       ['直播还是录播？', '直播首发已于 8 月 26 日完成；现在购买，全部课件与完整直播录屏会通过 Email 发送给您，即买即学。'],
-      ['课程什么时候能看？', '课程已正式上线，首播直播已于 8 月 26 日完成。现在购买，课件（PDF + 视频回放）会通过 Email 发送给您；是否入群都不影响课件交付。'],
-      ['怎么加入学习社群（微信群）？', '购买表单里会要求您留下微信号，我会主动加您——一般在工作时间处理；晚间和周末要带娃，回复可能不及时，请见谅。等人数达到一定规模后集体拉群。另外声明：您也可以选择不进群——首播直播已于 8 月 26 日结束，但课程视频、课件资料等都会通过 Email 照常发给您，一样不少。'],
+      ['有学习社群（微信群）吗？', '学习社群是早鸟预售用户的专享权益，已随 8 月 26 日预售截止一同结束。目前正式版只提供视频课程与课件（PDF + 完整回放，Email 交付），不含社群。'],
       ['课件怎么交付？', '购买后，课件 PDF 与视频回放（网盘 / YouTube 链接）统一通过 Email 发送——建议优先使用 Gmail、iCloud 等国际邮箱，QQ、163 等国产邮箱可能误过滤；购买后没收到，请先检查垃圾箱。客服邮箱：xdash@duck.com'],
       ['可以开发票吗？购买后能退款吗？', '发票：本课程为个人数字内容产品，无企业主体，无法开具发票，介意请慎拍。退款：虚拟数字内容一经售出，概不退款——下单前如有任何疑问，欢迎先发邮件到 xdash@duck.com 问清楚再买。'],
       ['我是企业经营决策者 / 老板 / 非一线业务人士，适合学吗？', '看您的学习目标：如果您对业务细节感兴趣、希望身先士卒搞清楚一线怎么把 AI 项目做成，可以学——这门课教的就是一线实操；如果您只想建立概念、把握方向，这门课的实操浓度对您可能太高——更适合您的线下课我正在制作中。'],
@@ -169,7 +158,7 @@ const copy = {
     finalRisk: '购买后 Email 收到课件（PDF + 视频回放），不依赖任何第三方平台',
     closingEyebrow: 'WHY NOW · 写在最后',
     closingTitle: 'AI 时代最稀缺的，不是模型，是把模型变成结果的人',
-    closingLead: '技术贬值越来越快，一线交付能力越来越贵。FDE 是这轮 AI 浪潮里少数「离钱最近」的技术岗位——手册给你地图，课程和社群陪你走第一程。',
+    closingLead: '技术贬值越来越快，一线交付能力越来越贵。FDE 是这轮 AI 浪潮里少数「离钱最近」的技术岗位——手册给你地图，课程陪你走第一程。',
     closingRead: '免费阅读手册',
     footBrand: '《前线部署工程师》开源书 · 作者范冰',
     footGh: 'GitHub 开源共建',
@@ -182,7 +171,7 @@ const copy = {
     badge: 'Open-source Handbook · Free to Read · 4k+ GitHub Stars',
     titleDim: 'Forward Deployed Engineer',
     titleEm: 'FDE',
-    heroSub: 'Free Open Handbook + Paid Course & Community',
+    heroSub: 'Free Open Handbook + Paid Course',
     authorLine: 'by Fan Bing',
     tagMono: '前线部署工程师的开源实战手册',
     tagPre: 'A field guide for AI builders: from the FDE landscape and winning customers to activating deployments — how FDEs ',
@@ -190,7 +179,7 @@ const copy = {
     tagPost: '.',
     ctaGh: 'GitHub Project ↗',
     ctaRead: 'Read the Handbook Free →',
-    ctaCourse: 'Paid Course & Community ↓',
+    ctaCourse: 'Paid Course ↓',
     info: [['Free to Read', ''], ['GitHub · ', '4k+ Stars'], ['Versioned, Continuously Updated', '']],
     features: [],
     whyEyebrow: 'WHY FDE · THE ROLE',
@@ -229,29 +218,19 @@ const copy = {
     courseTitle2: 'join the cohort',
     lead1: 'The free handbook covers the "what": the role, the methodology backbone, the landing frameworks — free forever, and enough for many.',
     lead2: 'But if you want to get from "knowing" to "doing" — this paid course is the hands-on extension of the handbook: less than 20% overlap with the book, the other 80% is all new material.',
-    lead3: 'Practice-first: the author\'s own consulting experience and failure post-mortems — two failures and one delivery, all from real engagements — plus take-away toolkits and a learning community you join on purchase.',
+    lead3: 'Practice-first: the author\'s own consulting experience and failure post-mortems — two failures and one delivery, all from real engagements; PDF materials and the full replay are delivered by email on purchase.',
     stats: [
       { num: '~2', unit: 'hrs', lbl: 'Full live replay incl. Q&A' },
       { num: '80', unit: '%', lbl: 'New Beyond the Free Handbook' },
-      { num: '5', unit: '', lbl: 'Take-away Toolkits' },
+      { num: '6', unit: 'Sessions', lbl: 'Core sessions + live Q&A' },
       { num: 'Live', unit: '+ Replay', lbl: 'Aired Aug 26 · Full Replay' },
     ],
     courseCta: 'Buy Now · ¥299',
     cards: [
       { idx: '01 / CORE', h: 'Core Videos', p: 'Full replay of the live session, including the on-site Q&A' },
-      { idx: '02 / TOOLKIT', h: 'Toolkit × 5', p: 'Take-away templates that work out of the box' },
-      { idx: '03 / PRACTICE', h: 'Live Teardown', p: 'Real consulting scenarios worked through: two failure post-mortems and one delivery, three delivery gates practiced end to end' },
-      { idx: '04 / MATERIAL', h: 'Materials & Replay', p: 'Viewing PDF and full video replay delivered by email on purchase' },
-      { idx: '05 / LIVE', h: 'Live & Q&A', p: 'Premiered live in the community on Aug 26 — full recording included' },
-      { idx: '06 / COMMUNITY', h: 'Learning Community', p: 'Join the community on purchase; the live premiere is members-only — the community is a natural filter for fellow travelers' },
-    ],
-    kitHead: 'TOOLKIT · ALL FIVE',
-    kits: [
-      'FDE Competency Self-Assessment',
-      'Enterprise AI Feasibility One-Pager',
-      'Delivery Three-Gate Checklist',
-      '30-Day Pre-Entry Checklist',
-      'FDE Interview Bank & Prep Plan',
+      { idx: '02 / PRACTICE', h: 'Live Teardown', p: 'Real consulting scenarios worked through: two failure post-mortems and one delivery, three delivery gates practiced end to end' },
+      { idx: '03 / MATERIAL', h: 'Materials & Replay', p: 'Viewing PDF and full video replay delivered by email on purchase' },
+      { idx: '04 / LIVE', h: 'Live & Q&A', p: 'The live premiere aired on Aug 26; the full recording ships with the course' },
     ],
     syllTitle: 'Syllabus (As Delivered)',
     syllTag: 'AIRED AUG 26 · AS DELIVERED',
@@ -263,7 +242,7 @@ const copy = {
       ['04', 'Failure Post-mortem: From Pitfalls to Delivery', 'Two of my own consulting failures + one delivery — the heaviest case of the course'],
       ['05', 'Joining a Company: Bar & Evidence of Ability', 'Three ten-minute rules to spot a fake FDE; how to build interview-ready evidence'],
       ['06', 'Going Independent: Clients, Pricing & Saying No', 'Client acquisition, pricing math (the ¥20k-for-20-minutes case), and client screening'],
-      ['QA', 'Live Q&A + Community Follow-ups', 'Recorded Q&A from the premiere; unanswered questions continue in the community'],
+      ['QA', 'Live Q&A Recording', 'On-site Q&A from the premiere, delivered with the full replay'],
     ],
     priceEyebrow: 'Pricing · Early Bird Ended · Now Live',
     priceTitle: 'Standard ¥299 · Now Live, Instant Access',
@@ -297,10 +276,9 @@ const copy = {
     ],
     faqEyebrow: 'FAQ · YOU MAY WONDER',
     faqs: [
-      ['I already read the handbook. Do I need the course?', 'Less than 20% overlap. The handbook gives the methodology; the course gives cases, first-hand post-mortems, toolkits, and community.'],
+      ['I already read the handbook. Do I need the course?', 'Less than 20% overlap. The handbook gives the methodology; the course gives cases and first-hand post-mortems.'],
       ['Live or recorded?', 'The live premiere aired on Aug 26; buy now and all materials plus the full recording arrive by email — instant access.'],
-      ['When do I get access?', 'The course is officially live — the premiere aired on Aug 26. Buy now and the materials (PDF + video replay) arrive by email; joining the community is optional.'],
-      ['How do I join the community (WeChat group)?', 'The order form asks for your WeChat ID, and I\'ll add you myself — usually during work hours; evenings and weekends are family time, so replies may be slow. Once enough people have joined, I\'ll invite everyone into the group together. Note: you can also choose not to join — the Aug 26 premiere has aired, but all videos and materials still arrive by email, nothing lost.'],
+      ['Is there a learning community (WeChat group)?', 'The community was an early-bird pre-sale exclusive and ended on Aug 26. The standard version now includes the video course and materials only (PDF + full replay, delivered by email) — no community access.'],
       ['How are materials delivered?', 'After purchase, the PDF and video replay (cloud drive / YouTube link) are sent by email — Gmail / iCloud recommended; QQ / 163 and other domestic providers may misfilter. If nothing arrives, check spam first. Support: xdash@duck.com'],
       ['Can I get an invoice? Is it refundable?', 'Invoice: this is a personal digital product with no corporate entity, so no invoice (fapiao) can be issued — please don\'t buy if you need one. Refund: digital content is final sale, no refunds once purchased — if you have any doubts, email xdash@duck.com and ask before ordering.'],
       ['I\'m a business owner / decision-maker, not a frontline practitioner. Is this for me?', 'It depends on your goal: if you enjoy getting into the details and want to lead from the front — to understand how AI projects actually land on the ground — yes, that\'s exactly what this course teaches. If you only want concepts and direction, it\'s probably too hands-on for you — a course designed for you is in the works.'],
@@ -317,7 +295,7 @@ const copy = {
     finalRisk: 'Materials (PDF + video replay) arrive by email after purchase — no third-party platform required',
     closingEyebrow: 'WHY NOW · PARTING WORDS',
     closingTitle: 'The scarcest thing in the AI era is not models — it\'s people who turn models into results',
-    closingLead: 'Tech depreciates fast; frontline delivery appreciates. FDE is one of the closest-to-revenue technical roles of this wave — the handbook gives you the map; the course and community walk the first mile with you.',
+    closingLead: 'Tech depreciates fast; frontline delivery appreciates. FDE is one of the closest-to-revenue technical roles of this wave — the handbook gives you the map; the course walks the first mile with you.',
     closingRead: 'Read the Handbook Free',
     footBrand: 'The FDE Field Guide (open source) · by Fan Bing',
     footGh: 'GitHub',
@@ -444,13 +422,6 @@ const friendLinks = [
             <h3>{{ card.h }}</h3>
             <p>{{ card.p }}</p>
           </div>
-        </div>
-
-        <div class="kit rv d3">
-          <div class="kit-head">{{ c.kitHead }}</div>
-          <ul>
-            <li v-for="(k, i) in c.kits" :key="i">{{ k }}</li>
-          </ul>
         </div>
 
         <div class="syllabus rv d3">
@@ -878,27 +849,7 @@ h2.sec-title{
 .card h3{font-size:17px;font-weight:700;margin-bottom:8px}
 .card p{font-size:13.8px;color:var(--ink-2);line-height:1.75}
 
-/* ============ 工具包 K1-K5 ============ */
-.kit{
-  margin-top:56px;
-  border:1px dashed rgba(24,240,80,.3);
-  border-radius:var(--radius);
-  padding:26px 30px;
-  background:linear-gradient(180deg,rgba(24,240,80,.04),transparent);
-}
-.kit .kit-head{
-  font-family:var(--font-mono);font-size:12px;
-  letter-spacing:.24em;text-transform:uppercase;color:var(--neon);
-  margin-bottom:14px;
-}
-.kit ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 26px}
-.kit li{
-  font-size:13.5px;color:var(--ink-2);
-  font-family:var(--font-mono);letter-spacing:.01em;
-}
-.kit li b{color:var(--neon);font-weight:600;margin-right:6px}
-
-/* ============ 七节大纲 ============ */
+/* ============ 课程大纲 ============ */
 .syllabus{margin-top:64px}
 .syll-head{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:20px}
 .syll-head h3{font-size:20px;font-weight:700}
@@ -1076,23 +1027,15 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
 .faq-q::before{content:"Q ";color:var(--neon);font-family:var(--font-mono);margin-right:6px}
 .faq-a{font-size:14px;color:var(--ink-2);line-height:1.85;padding-left:24px}
 
-/* 预购专享福利带 */
+/* 预购专享福利带（已结束：整体调暗，仅「预购专享 · 已结束」标签保持醒目） */
 .perks{
   position:relative;
   margin:8px 0 52px;
-  border:1px solid rgba(24,240,80,.45);
+  border:1px solid var(--line);
   border-radius:20px;
   padding:40px 40px 30px;
-  background:linear-gradient(180deg,rgba(24,240,80,.09),rgba(24,240,80,.015) 60%,transparent);
-  box-shadow:0 0 60px rgba(24,240,80,.08),inset 0 0 0 1px rgba(24,240,80,.06);
+  background:linear-gradient(180deg,rgba(255,255,255,.02),transparent 60%);
   overflow:hidden;
-}
-.perks::before{
-  content:"";
-  position:absolute;top:-40%;right:-8%;
-  width:420px;height:420px;
-  background:radial-gradient(circle,rgba(24,240,80,.12) 0%,transparent 65%);
-  pointer-events:none;
 }
 .perks-head{
   position:relative;z-index:2;
@@ -1109,32 +1052,30 @@ table.syll-table{width:100%;border-collapse:collapse;font-size:14px}
   box-shadow:0 0 20px rgba(24,240,80,.35);
 }
 .perks-title{
-  font-size:clamp(28px,4.2vw,44px);
-  font-weight:800;letter-spacing:-.02em;line-height:1.15;
-  color:var(--ink);
+  font-size:20px;
+  font-weight:700;letter-spacing:-.01em;line-height:1.3;
+  color:var(--ink-3);
 }
 .perks-grid{
   position:relative;z-index:2;
   display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
 }
 .perk{
-  background:rgba(10,10,10,.72);
-  border:1px solid var(--line-strong);border-radius:14px;
+  background:rgba(10,10,10,.5);
+  border:1px solid var(--line);border-radius:14px;
   padding:26px 26px;
-  transition:border-color .25s,box-shadow .25s,transform .2s;
 }
-.perk:hover{border-color:rgba(24,240,80,.55);box-shadow:0 0 26px rgba(24,240,80,.12);transform:translateY(-3px)}
 .perk-no{
   font-family:var(--font-mono);font-size:12px;
-  letter-spacing:.22em;color:var(--neon);margin-bottom:12px;
+  letter-spacing:.22em;color:var(--ink-3);margin-bottom:12px;
 }
-.perk-t{font-size:17px;font-weight:800;color:var(--ink);margin-bottom:10px}
-.perk-p{font-size:14px;color:var(--ink-2);line-height:1.85}
+.perk-t{font-size:15px;font-weight:700;color:var(--ink-3);margin-bottom:10px}
+.perk-p{font-size:13.5px;color:var(--ink-3);line-height:1.85}
 .perks-note{
   position:relative;z-index:2;
   margin-top:24px;
   font-family:var(--font-mono);font-size:13px;letter-spacing:.05em;
-  color:var(--ink-2);
+  color:var(--ink-3);
 }
 .perks-note::before{content:"※ ";font-size:12px}
 
