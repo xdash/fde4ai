@@ -1,6 +1,6 @@
 <script setup>
 // fde4.ai 首页 · V1 深色极客工具风（参考 dimagent.com）
-// 文案真源：课程 canon v1.1（2026-08-10 锁定 + 08-12 口径增补）；2026-09-03 按 8/26 直播实际交付内容（最终手工润色逐字稿 6 节 + QA）校准课纲、时长与实操卡口径
+// 文案真源：课程 canon v1.1（2026-08-10 锁定 + 08-12 口径增补）；2026-09-03 按 8/26 直播实际交付内容（最终手工润色逐字稿 6 节 + QA）校准课纲、时长与实操卡口径；2026-10-12 明确口径：正式版不含学习社群（社群为早鸟限定特权），固底条提前至第二屏出现
 import { ref, onMounted, onUnmounted } from 'vue'
 
 const props = defineProps({
@@ -11,13 +11,10 @@ const BOOK_REPO = 'https://github.com/xdash/FDE-the-Guidance-Book-of-Forward-Dep
 // 正式版 2026-09-02 上线：恢复 MikeCRM 购买表单链接（与预售同一表单），全站 CTA 解除置灰
 const ORDER_FORM = 'https://zerodaybook.mikecrm.com/oc3Whb0'
 
-// 固底条：滑到课程区（第三屏）后逐渐出现
+// 固底条：滑过第一屏（进入第二屏）后逐渐出现
 const showDock = ref(false)
-let courseEl = null
 const onScroll = () => {
-  if (!courseEl) courseEl = document.getElementById('course')
-  const trigger = courseEl ? courseEl.offsetTop - window.innerHeight * 0.5 : window.innerHeight * 1.5
-  showDock.value = window.scrollY > trigger
+  showDock.value = window.scrollY > window.innerHeight
 }
 const toTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
@@ -78,7 +75,7 @@ const copy = {
     bookCta: '免费阅读手册 →',
     courseEyebrow: '付费课程 · FDE 线上课程（2026）· 正式版已上线',
     courseTitle1: '一个人读书，',
-    courseTitle2: '一群人实战',
+    courseTitle2: '一门课实战',
     lead1: '开源手册解决「知道」：岗位全貌、方法论主干、落地框架——全文免费，读到够用就到此为止。',
     lead2: '但如果你要的是「做到」——这门付费课程是手册的实战延伸：与书的重合度不到 20%，其余 80% 全是书里没有的东西。',
     lead3: '实战为主：作者本人的亲身顾问经验与失败复盘打底——两次踩坑、一次交付，全是真实现场；课件 PDF 与完整回放购课后 Email 交付。',
@@ -111,8 +108,8 @@ const copy = {
     priceTitle: '正式价 ¥299 · 已上线，即买即学',
     priceLead: '¥299 即全部——无后端升单、不加微信卖咨询。',
     tiers: [
-      { hot: true, corner: '已上线', name: '正式价', price: '299', desc: '早鸟预售已结束 · 明码标价，不议价', cta: '立即购买 ¥299', link: ORDER_FORM },
-      { hot: false, ended: true, corner: '已结束', name: '早鸟预售', price: '199', desc: '预售价 ¥199 · 已于 8 月 26 日截止，感谢预购用户', cta: '早鸟已结束', disabled: true },
+      { hot: true, corner: '已上线', name: '正式价', price: '299', desc: '含完整课程：6 节正课 + 现场 QA、约 2 小时全程回放 + 课件 PDF（Email 交付）· 不含学习社群', cta: '立即购买 ¥299', link: ORDER_FORM },
+      { hot: false, ended: true, corner: '已结束', name: '早鸟预售', price: '199', desc: '预售价 ¥199 · 已于 8 月 26 日截止 · 早鸟限定特权含专属学习社群（微信群）', cta: '早鸟已结束', disabled: true },
       { hot: false, name: '老客户红包', price: '99', desc: '知识星球（ZengZhang.AI VIP）成员购买后，微信联络我并出示购买成功截图，派发 99 元红包', cta: '去我知识星球看看 →', link: 'https://wx.zsxq.com/group/15528815482422' },
     ],
     fitYes: '适合谁',
@@ -147,12 +144,13 @@ const copy = {
       ['我是企业经营决策者 / 老板 / 非一线业务人士，适合学吗？', '看您的学习目标：如果您对业务细节感兴趣、希望身先士卒搞清楚一线怎么把 AI 项目做成，可以学——这门课教的就是一线实操；如果您只想建立概念、把握方向，这门课的实操浓度对您可能太高——更适合您的线下课我正在制作中。'],
     ],
     perksTag: '预购专享 · 已结束',
-    perksTitle: '预购用户独享三项福利',
-    perksNote: '三项福利均为预购专享——8 月 26 日开播后购买，只有回放与课件，不再享有',
+    perksTitle: '预购用户独享四项福利',
+    perksNote: '四项福利均为预购专享——8 月 26 日开播后购买，只有回放与课件，不再享有',
     perks: [
       { t: '首发直播入场券', p: '8 月 26 日（周三）21:00 学习社群内直播，仅限群内观看，现场提问现场答；开播后购买只能看回放' },
       { t: '你的问题进课堂', p: '提交购买表单时留下你最感兴趣的问题——我大概率会在课程内直接解答' },
       { t: '让我认识你', p: '表单里留下你的背景信息 / 业务介绍：为你介绍适合的项目；信息足够真实优质，收录进 fde4.ai 生态地图、行业名录、案例库，向行业公开展示' },
+      { t: '专属学习社群', p: '早鸟限定特权：预购用户齐聚专属微信群，直播首发在群内进行，课程期间与同路人交流切磋；正式版不含社群' },
     ],
     finalCta: '立即购买 · 正式价 ¥299',
     finalRisk: '购买后 Email 收到课件（PDF + 视频回放），不依赖任何第三方平台',
@@ -165,7 +163,7 @@ const copy = {
     footNote: '课程咨询：xdash@duck.com',
     footLinks: '友情链接',
     dockTop: '返回顶部 ↑',
-    dockCta: '立即购买 · 正式价 ¥299',
+    dockCta: '购买配套课程',
   },
   en: {
     badge: 'Open-source Handbook · Free to Read · 4k+ GitHub Stars',
@@ -214,8 +212,8 @@ const copy = {
     ],
     bookCta: 'Read the Handbook Free →',
     courseEyebrow: 'PAID COURSE · FDE ONLINE COURSE (2026) · NOW LIVE',
-    courseTitle1: 'Don\'t read alone —',
-    courseTitle2: 'join the cohort',
+    courseTitle1: 'Read the book.',
+    courseTitle2: 'Ship the work.',
     lead1: 'The free handbook covers the "what": the role, the methodology backbone, the landing frameworks — free forever, and enough for many.',
     lead2: 'But if you want to get from "knowing" to "doing" — this paid course is the hands-on extension of the handbook: less than 20% overlap with the book, the other 80% is all new material.',
     lead3: 'Practice-first: the author\'s own consulting experience and failure post-mortems — two failures and one delivery, all from real engagements; PDF materials and the full replay are delivered by email on purchase.',
@@ -248,8 +246,8 @@ const copy = {
     priceTitle: 'Standard ¥299 · Now Live, Instant Access',
     priceLead: '¥299 is all-inclusive — no upsells, no WeChat consulting funnel.',
     tiers: [
-      { hot: true, corner: 'NOW LIVE', name: 'Standard', price: '299', desc: 'Early bird has ended · flat price, no bargaining', cta: 'Buy Now ¥299', link: ORDER_FORM },
-      { hot: false, ended: true, corner: 'ENDED', name: 'Early Bird Pre-sale', price: '199', desc: '¥199 pre-sale · closed on Aug 26 — thanks to all who pre-ordered', cta: 'Early Bird Ended', disabled: true },
+      { hot: true, corner: 'NOW LIVE', name: 'Standard', price: '299', desc: 'Full course included: 6 sessions + live Q&A, ~2 hrs full replay + PDF materials (email delivery) · no community access', cta: 'Buy Now ¥299', link: ORDER_FORM },
+      { hot: false, ended: true, corner: 'ENDED', name: 'Early Bird Pre-sale', price: '199', desc: '¥199 pre-sale · closed on Aug 26 · early-bird exclusive: private learning community (WeChat group)', cta: 'Early Bird Ended', disabled: true },
       { hot: false, name: 'Alumni Red Packet', price: '99', desc: 'Planet (ZengZhang.AI VIP) members: after purchase, message me on WeChat with your receipt screenshot for a ¥99 red packet', cta: 'Visit my Planet →', link: 'https://wx.zsxq.com/group/15528815482422' },
     ],
     fitYes: 'Who it\'s for',
@@ -284,12 +282,13 @@ const copy = {
       ['I\'m a business owner / decision-maker, not a frontline practitioner. Is this for me?', 'It depends on your goal: if you enjoy getting into the details and want to lead from the front — to understand how AI projects actually land on the ground — yes, that\'s exactly what this course teaches. If you only want concepts and direction, it\'s probably too hands-on for you — a course designed for you is in the works.'],
     ],
     perksTag: 'PRE-ORDER ONLY · ENDED',
-    perksTitle: 'Three perks reserved for pre-order buyers',
-    perksNote: 'All three are pre-order exclusives — buy after the Aug 26 premiere and you get the replay and materials only',
+    perksTitle: 'Four perks reserved for pre-order buyers',
+    perksNote: 'All four are pre-order exclusives — buy after the Aug 26 premiere and you get the replay and materials only',
     perks: [
       { t: 'Seat at the Premiere', p: 'Live in the community on Aug 26 (Wed) 21:00, members only — ask questions in real time; later buyers get the replay only' },
       { t: 'Your Question in Class', p: 'Leave the question you care about most in the order form — chances are I\'ll answer it directly in the course' },
       { t: 'Let Me Know You', p: 'Share your background / business in the form: I\'ll point you to fitting projects; authentic, strong profiles get featured in fde4.ai\'s ecosystem map, industry directory, and case library' },
+      { t: 'Private Community', p: 'Early-bird exclusive: a private WeChat group where the premiere aired and peers compared notes throughout the course — the standard version has no community' },
     ],
     finalCta: 'Buy Now · ¥299',
     finalRisk: 'Materials (PDF + video replay) arrive by email after purchase — no third-party platform required',
@@ -302,7 +301,7 @@ const copy = {
     footNote: 'Course inquiries: xdash@duck.com',
     footLinks: 'Links',
     dockTop: 'Back to Top ↑',
-    dockCta: 'Buy Now · ¥299',
+    dockCta: 'Get the Course',
   },
 }
 
@@ -547,7 +546,7 @@ const friendLinks = [
       </div>
     </section>
 
-    <!-- 固底条：滑到课程区后逐渐出现 -->
+    <!-- 固底条：滑过第一屏后逐渐出现 -->
     <div class="dock" :class="{ show: showDock }">
       <div class="dock-inner">
         <button class="dock-btn" type="button" @click="toTop">{{ c.dockTop }}</button>
